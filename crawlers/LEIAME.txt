@@ -1,0 +1,5 @@
+Coloca os crawlers aqui por estado.
+
+Atualiza o README.txt do projeto sobre como rodar. 
+Tá OKAY?
+
