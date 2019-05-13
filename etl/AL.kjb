@@ -604,7 +604,7 @@
         </field>
         <field>
           <variable_name>URL_BASE</variable_name>
-          <variable_value>https://normativas-dev.nees.com.br/api/documentos/</variable_value>
+          <variable_value>http://normativas-dev.nees.com.br/api/documentos/</variable_value>
           <variable_type>JVM</variable_type>
         </field>
       </fields>
