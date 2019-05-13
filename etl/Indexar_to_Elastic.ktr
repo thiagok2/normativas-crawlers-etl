@@ -507,6 +507,11 @@
       <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>HTTP post</from>
+      <to>Write to log</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Calculator</name>
@@ -605,7 +610,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <timeout>1</timeout>
+    <timeout>2</timeout>
     <scaletime>seconds</scaletime>
     <attributes />
     <cluster_schema />
@@ -688,9 +693,9 @@
       </lookup>
     <result>
       <name>result</name>
-      <code />
-      <response_time />
-      <response_header />
+      <code>status_code</code>
+      <response_time>response_time</response_time>
+      <response_header>response_header</response_header>
     </result>
     <attributes />
     <cluster_schema />
@@ -734,6 +739,65 @@
     </remotesteps>
     <GUI>
       <xloc>64</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Write to log</name>
+    <type>WriteToLog</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>-------------------------------------------
+${arquivo}
+${status_code}
+${result}</logmessage>
+    <fields>
+      <field>
+        <name>id</name>
+      </field>
+      <field>
+        <name>arquivo</name>
+      </field>
+      <field>
+        <name>URL_BASE</name>
+      </field>
+      <field>
+        <name>url</name>
+      </field>
+      <field>
+        <name>result</name>
+      </field>
+      <field>
+        <name>status_code</name>
+      </field>
+      <field>
+        <name>response_time</name>
+      </field>
+      <field>
+        <name>response_header</name>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
