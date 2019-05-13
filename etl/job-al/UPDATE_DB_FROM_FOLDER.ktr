@@ -826,8 +826,10 @@
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT * FROM documentos WHERE tipo_entrada = 'extrator' and unidade_id = 26
-and status_extrator is null</sql>
+    <sql>SELECT d.* FROM documentos d
+INNER JOIN unidades u on u.id = d.unidade_id
+WHERE d.tipo_entrada = 'extrator' 
+and u.sigla = 'CEE-AL'</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>

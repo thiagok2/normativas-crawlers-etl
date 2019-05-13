@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>DB_to_Donwload</name>
+    <name>UPDATE_DB_FROM_FOLDER</name>
     <description />
     <extended_description />
     <trans_version />
@@ -428,34 +428,13 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/05/05 14:18:21.633</created_date>
+    <created_date>2019/05/03 11:49:47.774</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/05/05 14:18:21.633</modified_date>
+    <modified_date>2019/05/03 11:49:47.774</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>AL</note>
-      <xloc>90</xloc>
-      <yloc>35</yloc>
-      <width>49</width>
-      <heigth>49</heigth>
-      <fontname>Ubuntu</fontname>
-      <fontsize>25</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>normativas</name>
@@ -510,34 +489,44 @@
   </connection>
   <order>
     <hop>
-      <from>Get PDF Job</from>
-      <to>result files</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get PDF Job</from>
-      <to>result rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get PDF Job</from>
-      <to>results</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Table input</from>
-      <to>Get variables</to>
+      <to>Stream lookup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get variables</from>
-      <to>Get PDF Job</to>
+      <from>Stream lookup</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Execute SQL script</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Execute SQL script 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Execute SQL script 2</from>
+      <to>Block this step until steps finish</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Block this step until steps finish</from>
+      <to>Delete File</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get file names</from>
+      <to>Stream lookup</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Get PDF Job</name>
-    <type>JobExecutor</type>
+    <name>Block this step until steps finish</name>
+    <type>BlockUntilStepsFinish</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -546,55 +535,16 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <job_object_id />
-    <job_name />
-    <filename>${Internal.Entry.Current.Directory}/HTTT_GET_PDF.kjb</filename>
-    <directory_path />
-    <group_size>1</group_size>
-    <group_field />
-    <group_time />
-    <parameters>
-      <variablemapping>
-        <variable>documento_url</variable>
-        <field>url</field>
-        <input />
-      </variablemapping>
-      <variablemapping>
-        <variable>documento_nome</variable>
-        <field>arquivo</field>
-        <input />
-      </variablemapping>
-      <variablemapping>
-        <variable>DIR_UPLOAD</variable>
-        <field>DIR_UPLOAD</field>
-        <input />
-      </variablemapping>
-      <variablemapping>
-        <variable>URL_BASE</variable>
-        <field>URL_BASE</field>
-        <input />
-      </variablemapping>
-      <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    <execution_result_target_step>results</execution_result_target_step>
-    <execution_time_field>ExecutionTime</execution_time_field>
-    <execution_result_field>ExecutionResult</execution_result_field>
-    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
-    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
-    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
-    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
-    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
-    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
-    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
-    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
-    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
-    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
-    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
-    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
-    <result_rows_target_step>result rows</result_rows_target_step>
-    <result_files_target_step>result files</result_files_target_step>
-    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <steps>
+      <step>
+        <name>Execute SQL script 2</name>
+        <CopyNr>0</CopyNr>
+      </step>
+      <step>
+        <name>Execute SQL script</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -604,67 +554,16 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>672</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Get variables</name>
-    <type>GetVariable</type>
+    <name>Execute SQL script</name>
+    <type>ExecSQL</type>
     <description />
     <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>DIR_UPLOAD</name>
-        <variable>${DIR_UPLOAD}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>URL_BASE</name>
-        <variable>${URL_BASE}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Table input</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -672,15 +571,266 @@
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT d.* FROM documentos d
-INNER JOIN unidades u on u.id = d.unidade_id
-WHERE d.tipo_entrada = 'extrator' 
-and u.sigla = 'CEE-AL' and 
-d.status_extrator != 'BAIXADO'</sql>
+    <execute_each_row>Y</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>UPDATE documentos SET status_extrator = 'BAIXADO' WHERE id = ?</sql>
+    <set_params>Y</set_params>
+    <insert_field />
+    <update_field />
+    <delete_field />
+    <read_field />
+    <arguments>
+      <argument>
+        <name>id</name>
+      </argument>
+    </arguments>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Execute SQL script 2</name>
+    <type>ExecSQL</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>normativas</connection>
+    <execute_each_row>Y</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>UPDATE documentos SET status_extrator = 'FALHA' WHERE id = ?</sql>
+    <set_params>Y</set_params>
+    <insert_field />
+    <update_field />
+    <delete_field />
+    <read_field />
+    <arguments>
+      <argument>
+        <name>id</name>
+      </argument>
+    </arguments>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Execute SQL script</send_true_to>
+    <send_false_to>Execute SQL script 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>size</leftvalue>
+        <function>&gt;</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>0</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get file names</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${DIR_UPLOAD}</name>
+      <filemask>.*\.pdf$</filemask>
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>${DIR_UPLOAD}</name>
+      <filemask>.*\.doc$</filemask>
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>${DIR_UPLOAD}</name>
+      <filemask>.*\.docx$</filemask>
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Delete File</name>
+    <type>ProcessFiles</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <sourcefilenamefield>filename</sourcefilenamefield>
+    <targetfilenamefield />
+    <operation_type>delete</operation_type>
+    <addresultfilenames>N</addresultfilenames>
+    <overwritetargetfile>N</overwritetargetfile>
+    <createparentfolder>N</createparentfolder>
+    <simulate>N</simulate>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>768</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>Table input</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>short_filename</name>
+        <field>arquivo</field>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table input</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>normativas</connection>
+    <sql>SELECT * FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator is null</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
+    <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
     <attributes />
     <cluster_schema />
@@ -691,83 +841,8 @@ d.status_extrator != 'BAIXADO'</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>result files</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>566</xloc>
-      <yloc>227</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>result rows</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>566</xloc>
-      <yloc>163</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>results</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>566</xloc>
-      <yloc>99</yloc>
+      <xloc>224</xloc>
+      <yloc>0</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

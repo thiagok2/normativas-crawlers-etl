@@ -488,11 +488,6 @@
   </connection>
   <order>
     <hop>
-      <from>Table input</from>
-      <to>Calculator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Calculator</from>
       <to>Delay row</to>
       <enabled>Y</enabled>
@@ -500,6 +495,16 @@
     <hop>
       <from>Delay row</from>
       <to>HTTP post</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Table input</from>
+      <to>Get variables</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get variables</from>
+      <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -517,8 +522,8 @@
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>base_url</field_name>
-      <calc_type>CONSTANT</calc_type>
-      <field_a>http://normativas-v02.com/api/documentos/</field_a>
+      <calc_type>COPY_FIELD</calc_type>
+      <field_a>URL_BASE</field_a>
       <field_b />
       <field_c />
       <value_type>String</value_type>
@@ -590,6 +595,72 @@
     </GUI>
   </step>
   <step>
+    <name>Delay row</name>
+    <type>Delay</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <timeout>1</timeout>
+    <scaletime>seconds</scaletime>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get variables</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>URL_BASE</name>
+        <variable>${URL_BASE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>HTTP post</name>
     <type>HTTPPOST</type>
     <description />
@@ -647,8 +718,7 @@
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' and unidade_id = 26
-and status_extrator = 'BAIXADO' limit 1000</sql>
+    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator = 'BAIXADO'</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -664,33 +734,6 @@ and status_extrator = 'BAIXADO' limit 1000</sql>
     </remotesteps>
     <GUI>
       <xloc>64</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Delay row</name>
-    <type>Delay</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <timeout>1</timeout>
-    <scaletime>seconds</scaletime>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>416</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>

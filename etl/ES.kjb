@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>PRINCIPAL</name>
+  <name>ES</name>
   <description />
   <extended_description />
   <job_version />
+  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
   <created_date>2019/05/05 15:07:31.516</created_date>
@@ -309,13 +310,13 @@
       <attributes_kjc />
     </entry>
     <entry>
-      <name>CSV_to_DB</name>
+      <name>CSV_to_DB_ES</name>
       <description />
       <type>TRANS</type>
       <attributes />
       <specification_method>filename</specification_method>
       <trans_object_id />
-      <filename>${Internal.Entry.Current.Directory}/CSV_to_DB2.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/CSV_to_DB2_ES.ktr</filename>
       <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -347,11 +348,6 @@
           <name>URL_BASE</name>
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
-        </parameter>
-        <parameter>
-          <name>UNIDADE_SIGLA</name>
-          <stream_name>UNIDADE_SIGLA</stream_name>
-          <value>${UNIDADE_SIGLA}</value>
         </parameter>
       </parameters>
       <parallel>N</parallel>
@@ -445,100 +441,6 @@
       <nr>0</nr>
       <xloc>592</xloc>
       <yloc>144</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>Mail - CSV</name>
-      <description />
-      <type>MAIL</type>
-      <attributes />
-      <server>smtp.gmail.com</server>
-      <port>587</port>
-      <destination>thiago.oliveira@ifal.edu.br</destination>
-      <destinationCc />
-      <destinationBCc />
-      <replyto>normativas@nees.com.br</replyto>
-      <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-SP</subject>
-      <include_date>Y</include_date>
-      <contact_person />
-      <contact_phone />
-      <comment>Carga da planilha concluída.
-
-Download dos arquivos iniciado.</comment>
-      <include_files>Y</include_files>
-      <zip_files>N</zip_files>
-      <zip_name />
-      <use_auth>Y</use_auth>
-      <use_secure_auth>Y</use_secure_auth>
-      <auth_user>normativas@nees.com.br</auth_user>
-      <auth_password>Encrypted 2be98afc86aa7f2e481088c42d9bc9df7</auth_password>
-      <only_comment>Y</only_comment>
-      <use_HTML>Y</use_HTML>
-      <use_Priority>N</use_Priority>
-      <encoding>UTF-8</encoding>
-      <priority>normal</priority>
-      <importance>normal</importance>
-      <sensitivity>normal</sensitivity>
-      <secureconnectiontype>TLS</secureconnectiontype>
-      <replyToAddresses />
-      <filetypes>
-        <filetype>LOG</filetype>
-      </filetypes>
-      <embeddedimages>
-      </embeddedimages>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>272</xloc>
-      <yloc>32</yloc>
-      <attributes_kjc />
-    </entry>
-    <entry>
-      <name>Mail Download</name>
-      <description />
-      <type>MAIL</type>
-      <attributes />
-      <server>smtp.gmail.com</server>
-      <port>587</port>
-      <destination>thiago.oliveira@ifal.edu.br</destination>
-      <destinationCc />
-      <destinationBCc />
-      <replyto>normativas@nees.com.br</replyto>
-      <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-SP</subject>
-      <include_date>Y</include_date>
-      <contact_person />
-      <contact_phone />
-      <comment>Download dos arquivos concluído.
-
-Indexação dos documentos iniciado.</comment>
-      <include_files>Y</include_files>
-      <zip_files>N</zip_files>
-      <zip_name />
-      <use_auth>Y</use_auth>
-      <use_secure_auth>Y</use_secure_auth>
-      <auth_user>normativas@nees.com.br</auth_user>
-      <auth_password>Encrypted 2be98afc86aa7f2e481088c42d9bc9df7</auth_password>
-      <only_comment>Y</only_comment>
-      <use_HTML>Y</use_HTML>
-      <use_Priority>N</use_Priority>
-      <encoding>UTF-8</encoding>
-      <priority>normal</priority>
-      <importance>normal</importance>
-      <sensitivity>normal</sensitivity>
-      <secureconnectiontype>TLS</secureconnectiontype>
-      <replyToAddresses />
-      <filetypes>
-        <filetype>LOG</filetype>
-      </filetypes>
-      <embeddedimages>
-      </embeddedimages>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>432</xloc>
-      <yloc>32</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -653,7 +555,7 @@ Indexação dos documentos iniciado.</comment>
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-SP</subject>
+      <subject>Normativas - Carga CEE-AL</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -705,23 +607,63 @@ Indexação dos documentos iniciado.</comment>
           <variable_value>http://normativas-v02.com/api/documentos/</variable_value>
           <variable_type>JVM</variable_type>
         </field>
-        <field>
-          <variable_name>UNIDADE_SIGLA</variable_name>
-          <variable_value>CEE-AL</variable_value>
-          <variable_type>CURRENT_JOB</variable_type>
-        </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>144</xloc>
+      <xloc>112</xloc>
       <yloc>144</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Mail Start</name>
+      <description />
+      <type>MAIL</type>
+      <attributes />
+      <server>smtp.gmail.com</server>
+      <port>587</port>
+      <destination>thiago.oliveira@ifal.edu.br</destination>
+      <destinationCc />
+      <destinationBCc />
+      <replyto>normativas@nees.com.br</replyto>
+      <replytoname>Normativas</replytoname>
+      <subject>Normativas - Carga CEE-AL</subject>
+      <include_date>Y</include_date>
+      <contact_person />
+      <contact_phone />
+      <comment>Iniciando o processamento dos dados.</comment>
+      <include_files>Y</include_files>
+      <zip_files>N</zip_files>
+      <zip_name />
+      <use_auth>Y</use_auth>
+      <use_secure_auth>Y</use_secure_auth>
+      <auth_user>normativas@nees.com.br</auth_user>
+      <auth_password>Encrypted 2be98afc86aa7f2e481088c42d9bc9df7</auth_password>
+      <only_comment>Y</only_comment>
+      <use_HTML>Y</use_HTML>
+      <use_Priority>N</use_Priority>
+      <encoding>UTF-8</encoding>
+      <priority>normal</priority>
+      <importance>normal</importance>
+      <sensitivity>normal</sensitivity>
+      <secureconnectiontype>TLS</secureconnectiontype>
+      <replyToAddresses />
+      <filetypes>
+        <filetype>LOG</filetype>
+      </filetypes>
+      <embeddedimages>
+      </embeddedimages>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>192</xloc>
+      <yloc>32</yloc>
       <attributes_kjc />
     </entry>
   </entries>
   <hops>
     <hop>
-      <from>CSV_to_DB</from>
+      <from>CSV_to_DB_ES</from>
       <to>DB_to_Donwload</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -739,25 +681,7 @@ Indexação dos documentos iniciado.</comment>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>CSV_to_DB</from>
-      <to>Mail - CSV</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>DB_to_Donwload</from>
-      <to>Mail Download</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>CSV_to_DB</from>
+      <from>CSV_to_DB_ES</from>
       <to>Mail Falha</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -821,7 +745,16 @@ Indexação dos documentos iniciado.</comment>
     </hop>
     <hop>
       <from>Set variables</from>
-      <to>CSV_to_DB</to>
+      <to>Mail Start</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Mail Start</from>
+      <to>CSV_to_DB_ES</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -831,10 +764,10 @@ Indexação dos documentos iniciado.</comment>
   </hops>
   <notepads>
     <notepad>
-      <note>AL</note>
-      <xloc>32</xloc>
-      <yloc>48</yloc>
-      <width>49</width>
+      <note>CEE-ES</note>
+      <xloc>24</xloc>
+      <yloc>39</yloc>
+      <width>116</width>
       <heigth>49</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>25</fontsize>

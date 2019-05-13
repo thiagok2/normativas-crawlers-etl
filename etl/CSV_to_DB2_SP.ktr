@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CSV_to_DB2</name>
+    <name>CSV_to_DB2_SP</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -435,10 +436,10 @@
   </info>
   <notepads>
     <notepad>
-      <note>AL</note>
-      <xloc>80</xloc>
-      <yloc>16</yloc>
-      <width>49</width>
+      <note>SP</note>
+      <xloc>240</xloc>
+      <yloc>0</yloc>
+      <width>48</width>
       <heigth>49</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>25</fontsize>
@@ -514,6 +515,16 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Filter rows</from>
+      <to>Ano_Numero</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Ano_Numero</from>
+      <to>JS1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>JS1</from>
       <to>JS2</to>
       <enabled>Y</enabled>
@@ -529,6 +540,11 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Not Exists</from>
+      <to>Tipo Documento</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Tipo Documento</from>
       <to>LookupUnidade</to>
       <enabled>Y</enabled>
@@ -541,7 +557,7 @@
     <hop>
       <from>DB Join extrator</from>
       <to>Select</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select</from>
@@ -551,11 +567,6 @@
     <hop>
       <from>Strings cut</from>
       <to>Insert / update</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>URL</from>
-      <to>Lookup File</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -564,28 +575,33 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>ceesp.csv</from>
-      <to>Get variables</to>
+      <from>URL</from>
+      <to>Lookup File</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get variables</from>
+      <to>Mapper Tipo</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Mapper Tipo</from>
       <to>Add Constants</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>JS1</to>
+      <from>ceesp.csv</from>
+      <to>Add sequence</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Not Exists</from>
-      <to>Value mapper</to>
+      <from>Add sequence</from>
+      <to>Filter rows 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Value mapper</from>
-      <to>Tipo Documento</to>
+      <from>Filter rows 2</from>
+      <to>Get variables</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -608,7 +624,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>CEE-AL</nullif>
+        <nullif>CEE-SP</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -632,7 +648,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>False</nullif>
+        <nullif>True</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -672,7 +688,67 @@
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>144</yloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Ano_Numero</name>
+    <type>FieldSplitter</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <splitfield>Numero</splitfield>
+    <delimiter>/</delimiter>
+    <enclosure />
+    <fields>
+      <field>
+        <name>numero_num</name>
+        <id />
+        <idrem>N</idrem>
+        <type>String</type>
+        <format />
+        <group />
+        <decimal />
+        <currency />
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif />
+        <ifnull />
+        <trimtype>both</trimtype>
+      </field>
+      <field>
+        <name>ano</name>
+        <id />
+        <idrem>N</idrem>
+        <type>String</type>
+        <format />
+        <group />
+        <decimal />
+        <currency />
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif />
+        <ifnull />
+        <trimtype>both</trimtype>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -779,7 +855,7 @@ and unidade_id = ? limit 1</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>JS1</send_true_to>
+    <send_true_to>Ano_Numero</send_true_to>
     <send_false_to />
     <compare>
       <condition>
@@ -801,6 +877,61 @@ and unidade_id = ? limit 1</sql>
               <name>constant</name>
               <type>String</type>
               <text>''</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Assunto</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>''</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Assunto</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Assunto</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>assunto</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND NOT</operator>
+            <leftvalue>Assunto</leftvalue>
+            <function>STARTS WITH</function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>test</text>
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
@@ -871,7 +1002,7 @@ and unidade_id = ? limit 1</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>144</yloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1025,7 +1156,19 @@ and unidade_id = ? limit 1</sql>
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        <jsScript_script>var idAto;
+
+var parameter = 'id_atos';
+parameter = parameter.replace(/[\[\]]/g, '\\$&amp;');
+var regex = new RegExp('[?&amp;]' + parameter + '(=([^&amp;#]*)|&amp;|#|$)'),
+results = regex.exec(Url);
+if (!results) idAto =  0;
+if (!results[2]) idAto = 0;
+
+idAto = decodeURIComponent(results[2].replace(/\+/g, ' '));
+
+
+var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
     '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
@@ -1038,6 +1181,14 @@ var urlValida = !!pattern.test(Documento);
       </jsScript>
     </jsScripts>
     <fields>
+      <field>
+        <name>idAto</name>
+        <rename>idAto</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
       <field>
         <name>urlValida</name>
         <rename>urlValida</rename>
@@ -1078,51 +1229,64 @@ var urlValida = !!pattern.test(Documento);
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var indexDot = Documento.lastIndexOf('.');
+        <jsScript_script>if(ano.length &lt;= 2){
+	ano = (str2num(ano) &lt; 30) ? ('20' + ano) : ('19' + ano);
+}
+
+var ano = str2num(ano);
+
+var DataPublicacao = (Data == '0000-00-00') ? ano+'-01-01' : Data;
+
+
+var indexDot = Documento.lastIndexOf('.');
 var formato =  substr(substr(Documento,indexDot+1, Documento.length),0,4);
 
 
 var index = Documento.lastIndexOf('/');
 var documentoOriginalNome = substr(substr(Documento,index+1, Documento.length),0,255);
 
-var er = /[^a-z0-9.]/gi;
-//texto = texto.replace(er, "");
-var NomeArquivoFinal = sigla+'_'+replace(documentoOriginalNome.replace(er, ""),'20','_');
-//NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/g, '');
+var NomeArquivoFinal = sigla+'_'+Tipo+'_'+numero_num+'_'+ replace(Processo,'/','_')+'.'+formato;
+NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/g, '');
+
+var numero = numero_num+'/'+ano;
+
+var ementa = '';
+
+if(Tipo){
+	ementa += TipoDesc+ '.\n';
+}
+if(Processo &amp;&amp;  Processo != '0/0'){
+	ementa += 'Processo: '+ Processo + '.\n';
+}
+if(Assunto &amp;&amp; Assunto != '0' &amp;&amp; Assunto != ''){
+	ementa += Assunto +'.\n';
+}
+if(Relator &amp;&amp; Relator!='0'){
+	ementa += 'Relator: '+Relator +'.\n';
+}
+if(Interessado &amp;&amp; Interessado!='0'){
+	ementa += 'Interessado:' +Interessado+'.\n';
+}
+if(numero_num &amp;&amp; numero_num!='0' ){
+	ementa +=  'Número: '+numero_num+'/'+ano;
+}
+
+var Assunto = Assunto;
+if(Assunto == '0' || Assunto == '')
+	Assunto = Tipo + ' ' +numero;
 
 </jsScript_script>
       </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
-//
-// Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
-//
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
-//
-// 2006-11-15
-//
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
-      </jsScript>
     </jsScripts>
     <fields>
+      <field>
+        <name>ano</name>
+        <rename>ano</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
       <field>
         <name>documentoOriginalNome</name>
         <rename>documentoOriginalNome</rename>
@@ -1147,6 +1311,38 @@ Alert(str2);</jsScript_script>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
+      <field>
+        <name>DataPublicacao</name>
+        <rename>DataPublicacao</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>ementa</name>
+        <rename>ementa</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>numero</name>
+        <rename>numero</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>Assunto</name>
+        <rename>Assunto</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -1158,7 +1354,7 @@ Alert(str2);</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>544</xloc>
-      <yloc>144</yloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1247,8 +1443,62 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
-      <yloc>80</yloc>
+      <xloc>928</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Mapper Tipo</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>Tipo</field_to_use>
+    <target_field>TipoDesc</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>RES</source_value>
+        <target_value>Resolução</target_value>
+      </field>
+      <field>
+        <source_value>ATA</source_value>
+        <target_value>Ata</target_value>
+      </field>
+      <field>
+        <source_value>DEL</source_value>
+        <target_value>Deliberação</target_value>
+      </field>
+      <field>
+        <source_value>PAR</source_value>
+        <target_value>Parecer</target_value>
+      </field>
+      <field>
+        <source_value>PORT</source_value>
+        <target_value>Portaria</target_value>
+      </field>
+      <field>
+        <source_value>IND</source_value>
+        <target_value>Indicação</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1263,7 +1513,7 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Value mapper</send_true_to>
+    <send_true_to>Tipo Documento</send_true_to>
     <send_false_to />
     <compare>
       <condition>
@@ -1338,6 +1588,12 @@ Alert(str2);</jsScript_script>
       </remove>
       <remove>
         <name>exists</name>
+      </remove>
+      <remove>
+        <name>TipoDesc</name>
+      </remove>
+      <remove>
+        <name>contador</name>
       </remove>
       <meta>
         <name>ano</name>
@@ -1447,7 +1703,7 @@ Alert(str2);</jsScript_script>
         <type>Date</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>dd/MM/yyyy</conversion_mask>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale />
         <date_format_timezone />
@@ -1795,8 +2051,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>80</yloc>
+      <xloc>800</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1853,14 +2109,14 @@ Alert(str2);</jsScript_script>
     <name>ceesp.csv</name>
     <type>CsvInput</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/ceeal-v0.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/csv/ceespSPvTest.csv</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -1868,7 +2124,7 @@ Alert(str2);</jsScript_script>
     <enclosure>"</enclosure>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
-    <lazy_conversion>Y</lazy_conversion>
+    <lazy_conversion>N</lazy_conversion>
     <add_filename_result>N</add_filename_result>
     <parallel>Y</parallel>
     <newline_possible>N</newline_possible>
@@ -1876,13 +2132,13 @@ Alert(str2);</jsScript_script>
     <fields>
       <field>
         <name>Id</name>
-        <type>String</type>
-        <format />
+        <type>Integer</type>
+        <format>#</format>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>19</length>
-        <precision>-1</precision>
+        <length>15</length>
+        <precision>0</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
@@ -1892,9 +2148,9 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>68</length>
+        <length>82</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Tipo</name>
@@ -1903,9 +2159,9 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>10</length>
+        <length>4</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Numero</name>
@@ -1914,53 +2170,53 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>156</length>
+        <length>9</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Data</name>
-        <type>Boolean</type>
+        <type>String</type>
         <format />
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Processo</name>
-        <type>Boolean</type>
+        <type>String</type>
         <format />
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Relator</name>
-        <type>Boolean</type>
+        <type>String</type>
         <format />
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>-1</length>
+        <length>67</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Interessado</name>
-        <type>Boolean</type>
+        <type>String</type>
         <format />
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>-1</length>
+        <length>100</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Ementa</name>
@@ -1969,20 +2225,20 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>407</length>
+        <length>300</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Assunto</name>
-        <type>Boolean</type>
+        <type>String</type>
         <format />
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>-1</length>
+        <length>300</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Documento</name>
@@ -1991,9 +2247,20 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>253</length>
+        <length>84</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>Titulo</name>
+        <type>String</type>
+        <format />
+        <currency>R$</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <length>400</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
       </field>
     </fields>
     <attributes />
@@ -2006,13 +2273,13 @@ Alert(str2);</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>32</xloc>
-      <yloc>144</yloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Value mapper</name>
-    <type>ValueMapper</type>
+    <name>Add sequence</name>
+    <type>Sequence</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -2021,19 +2288,16 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use>Tipo</field_to_use>
-    <target_field />
-    <non_match_default>IND</non_match_default>
-    <fields>
-      <field>
-        <source_value>resolucoes</source_value>
-        <target_value>RES</target_value>
-      </field>
-      <field>
-        <source_value>pareceres</source_value>
-        <target_value>PAR</target_value>
-      </field>
-    </fields>
+    <valuename>contador</valuename>
+    <use_database>N</use_database>
+    <connection>normativas</connection>
+    <schema />
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name />
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -2043,8 +2307,52 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>160</yloc>
+      <xloc>128</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows 2</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Get variables</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>contador</leftvalue>
+        <function>&lt;</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1000</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

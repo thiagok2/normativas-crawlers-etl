@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CSV_to_DB2</name>
+    <name>CSV_to_DB2_ES</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -435,10 +436,10 @@
   </info>
   <notepads>
     <notepad>
-      <note>AL</note>
+      <note>ES</note>
       <xloc>80</xloc>
       <yloc>16</yloc>
-      <width>49</width>
+      <width>47</width>
       <heigth>49</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>25</fontsize>
@@ -539,19 +540,9 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>DB Join extrator</from>
-      <to>Select</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Select</from>
-      <to>Strings cut</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Strings cut</from>
       <to>Insert / update</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>URL</from>
@@ -564,18 +555,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>ceesp.csv</from>
+      <from>ceeEScsv</from>
       <to>Get variables</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get variables</from>
       <to>Add Constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>JS1</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -586,6 +572,21 @@
     <hop>
       <from>Value mapper</from>
       <to>Tipo Documento</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DB Join extrator</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Strings cut</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>JS1</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -608,7 +609,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>CEE-AL</nullif>
+        <nullif>CEE-ES</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -632,7 +633,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>False</nullif>
+        <nullif>True</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -763,8 +764,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
-      <yloc>256</yloc>
+      <xloc>1168</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -819,8 +820,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>256</yloc>
+      <xloc>320</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -906,11 +907,6 @@ and unidade_id = ? limit 1</sql>
       <value>
         <name>ano</name>
         <rename>ano</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>numero_processo</name>
-        <rename>numero_processo</rename>
         <update>Y</update>
       </value>
       <value>
@@ -1057,7 +1053,7 @@ var urlValida = !!pattern.test(Documento);
     </remotesteps>
     <GUI>
       <xloc>480</xloc>
-      <yloc>256</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1090,36 +1086,82 @@ var er = /[^a-z0-9.]/gi;
 var NomeArquivoFinal = sigla+'_'+replace(documentoOriginalNome.replace(er, ""),'20','_');
 //NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/g, '');
 
+var ano = Numero.split('/')[1];
+
+var strTipo = '';
+if(Tipo == 'leicomplementar')
+	strTipo = 'Lei Complementar';
+if(Tipo == 'parecer')
+	strTipo = 'Parecer';
+
+var titulo = strTipo + ' CEE-ES Nº ' + Numero;
+var Ementa = (Ementa == null || Ementa == '') ? titulo:Ementa;
+
+
+var dataPublicacao = str2date(ano+"-12-31","yyyy-MM-dd");
 </jsScript_script>
       </jsScript>
       <jsScript>
         <jsScript_type>-1</jsScript_type>
-        <jsScript_name>replace_Sample</jsScript_name>
-        <jsScript_script>// Replaces Strings inside the given Variable.
-// It is possible to make more replacements inside
-// one call. The given variables must be an odd number
+        <jsScript_name>indexOf_Sample</jsScript_name>
+        <jsScript_script>// Perform the indexOf function
+// 
+// Usage:
+// indexOf(string, substring);
+// indexOf(string, substring, fromIndex);
+//
+// 2007-09-25
+//
+var str1= "Hello Pentaho!";
+var str2= indexOf(str1, "Pentaho");
+var str3= indexOf(str1, "o", 7);
+Alert("Input : " + str1);
+Alert("Index of 'Pentaho' : " + str2);
+Alert("index of 'o', search from position 7 : " + str3);
+</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>str2date_Sample</jsScript_name>
+        <jsScript_script>// Converts the given String to a date Value.
 //
 // Usage:
-// replace(var, var, var);
-// 1: String - The Variable with the content to replace.
-// 2: String - The Value to search for.
-// 3: String - The Value to replace with.
+// str2date(var);
+// 1: String - The Variable with the String to convert.
+// This call uses your localized format.
 //
-// replace(var, var, var, var,var,...)
-// 1: String - The Variable with the content to replace.
-// 2: String - The First Value to search for.
-// 3: String - The First Value to replace with.
-// 4: String - The Second Value to search for.
-// 5: String - The Second Value to replace with.
-// ...
+// str2date(var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+//        yy / yyyy - 06 / 2006
+//        MM / MMM / MMMMM - 11 / Nov / November
+//        d / dd  - 1 / 01
+//        E / EEEE - Tue / Tuesday
+//        hh / HH - 11 / 23
+//        m / mm - 5 / 05
+//        s / ss - 8 / 08
 //
+// str2date(var, var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 3: String - The Locale Parameter
+//    An valid ISO Language Code. (DE = German, EN = English, FR = France, ...)
+//
+// str2date(var, var, var, var);
+// 1: String - The Variable with the String to convert.
+// 2: String - The Format:
+// 3: String - The Locale Parameter
+//    An valid ISO Language Code. (DE = German, EN = English, FR = France, ...)
+// 4: String - The Timezone Parameter.
+//    A valid timezone: EST, GMT, ... (if invalid GMT will be selected as default)
+// 
 // 2006-11-15
 //
-var str1 = "Hello World, this is a nice function";      
-var str2 = replace(str1,"World", "Folk");
-Alert(str2);
-var str2 = replace(str1,"World", "Folk", "nice","beautifull");
-Alert(str2);</jsScript_script>
+Alert(str2date("01.12.2006","dd.MM.yyyy"));
+Alert(str2date("01.12.2006 23:23:01","dd.MM.yyyy HH:mm:ss"));
+Alert(str2date("Tue.May.2006","E.MMM.yyyy","EN"));
+Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE"));
+Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
@@ -1147,6 +1189,38 @@ Alert(str2);</jsScript_script>
         <precision>-1</precision>
         <replace>N</replace>
       </field>
+      <field>
+        <name>ano</name>
+        <rename>ano</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>dataPublicacao</name>
+        <rename>dataPublicacao</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>Ementa</name>
+        <rename>Ementa2</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>titulo</name>
+        <rename>titulo</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -1158,7 +1232,7 @@ Alert(str2);</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>544</xloc>
-      <yloc>144</yloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1247,7 +1321,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>1024</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1298,15 +1372,15 @@ Alert(str2);</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>768</xloc>
-      <yloc>256</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select</name>
+    <name>Select values</name>
     <type>SelectValues</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1314,303 +1388,163 @@ Alert(str2);</jsScript_script>
       <schema_name />
     </partitioning>
     <fields>
+      <field>
+        <name>Id</name>
+        <rename />
+      </field>
+      <field>
+        <name>Url</name>
+        <rename />
+      </field>
+      <field>
+        <name>Tipo</name>
+        <rename />
+      </field>
+      <field>
+        <name>Numero</name>
+        <rename />
+      </field>
+      <field>
+        <name>Data</name>
+        <rename />
+      </field>
+      <field>
+        <name>Processo</name>
+        <rename />
+      </field>
+      <field>
+        <name>Relator</name>
+        <rename />
+      </field>
+      <field>
+        <name>Interessado</name>
+        <rename />
+      </field>
+      <field>
+        <name>Ementa</name>
+        <rename />
+      </field>
+      <field>
+        <name>Assunto</name>
+        <rename />
+      </field>
+      <field>
+        <name>Documento</name>
+        <rename />
+      </field>
+      <field>
+        <name>Titulo</name>
+        <rename />
+      </field>
+      <field>
+        <name>URL_BASE</name>
+        <rename />
+      </field>
+      <field>
+        <name>DIR_UPLOAD</name>
+        <rename />
+      </field>
+      <field>
+        <name>sigla</name>
+        <rename />
+      </field>
+      <field>
+        <name>assunto_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>completed</name>
+        <rename />
+      </field>
+      <field>
+        <name>tipo_entrada</name>
+        <rename />
+      </field>
+      <field>
+        <name>status_extrator</name>
+        <rename />
+      </field>
+      <field>
+        <name>urlValida</name>
+        <rename />
+      </field>
+      <field>
+        <name>documentoOriginalNome</name>
+        <rename />
+      </field>
+      <field>
+        <name>formato</name>
+        <rename />
+      </field>
+      <field>
+        <name>NomeArquivoFinal</name>
+        <rename />
+      </field>
+      <field>
+        <name>ano</name>
+        <rename />
+      </field>
+      <field>
+        <name>dataPublicacao</name>
+        <rename />
+      </field>
+      <field>
+        <name>Ementa2</name>
+        <rename />
+      </field>
+      <field>
+        <name>exists</name>
+        <rename />
+      </field>
+      <field>
+        <name>tipo_documento_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>unidade_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>user_id</name>
+        <rename />
+      </field>
       <select_unspecified>N</select_unspecified>
       <remove>
-        <name>Interessado</name>
+        <name>DIR_UPLOAD</name>
       </remove>
       <remove>
-        <name>Relator</name>
+        <name>URL_BASE</name>
       </remove>
       <remove>
         <name>Data</name>
       </remove>
       <remove>
-        <name>sigla</name>
+        <name>exists</name>
+      </remove>
+      <remove>
+        <name>Assunto</name>
       </remove>
       <remove>
         <name>Tipo</name>
       </remove>
       <remove>
-        <name>numero_num</name>
+        <name>Processo</name>
+      </remove>
+      <remove>
+        <name>Relator</name>
+      </remove>
+      <remove>
+        <name>Interessado</name>
+      </remove>
+      <remove>
+        <name>sigla</name>
       </remove>
       <remove>
         <name>urlValida</name>
       </remove>
       <remove>
-        <name>exists</name>
+        <name>Ementa</name>
       </remove>
-      <meta>
-        <name>ano</name>
-        <rename>ano</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>0</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>Assunto</name>
-        <rename>titulo</rename>
-        <type>String</type>
-        <length>400</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>Documento</name>
-        <rename>url</rename>
-        <type>String</type>
-        <length>400</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type>normal</storage_type>
-      </meta>
-      <meta>
-        <name>documentoOriginalNome</name>
-        <rename>nome_original</rename>
-        <type>String</type>
-        <length>400</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>NomeArquivoFinal</name>
-        <rename>arquivo</rename>
-        <type>String</type>
-        <length>200</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>ementa</name>
-        <rename>ementa</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>DataPublicacao</name>
-        <rename>data_publicacao</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>dd/MM/yyyy</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>tipo_id</name>
-        <rename>tipo_documento_id</rename>
-        <type>Integer</type>
-        <length>9</length>
-        <precision>0</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>unidade_id</name>
-        <rename>unidade_id</rename>
-        <type>Integer</type>
-        <length>9</length>
-        <precision>0</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>numero</name>
-        <rename>numero</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>assunto_id</name>
-        <rename>assunto_id</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>idAto</name>
-        <rename>id_original_extrator</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>completed</name>
-        <rename>completed</rename>
-        <type>Boolean</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>tipo_entrada</name>
-        <rename>tipo_entrada</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>user_id</name>
-        <rename>user_id</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>formato</name>
-        <rename>formato</rename>
-        <type>String</type>
-        <length>4</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
       <meta>
         <name>Url</name>
         <rename>url_extrator</rename>
@@ -1629,10 +1563,10 @@ Alert(str2);</jsScript_script>
         <storage_type />
       </meta>
       <meta>
-        <name>Processo</name>
-        <rename>numero_processo</rename>
+        <name>documentoOriginalNome</name>
+        <rename>nome_original</rename>
         <type>String</type>
-        <length>20</length>
+        <length>-2</length>
         <precision>-2</precision>
         <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
@@ -1646,9 +1580,111 @@ Alert(str2);</jsScript_script>
         <storage_type />
       </meta>
       <meta>
-        <name>status_extrator</name>
-        <rename>status_extrator</rename>
+        <name>NomeArquivoFinal</name>
+        <rename>arquivo</rename>
         <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Ementa2</name>
+        <rename>ementa</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Documento</name>
+        <rename>url</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>titulo</name>
+        <rename>titulo</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Numero</name>
+        <rename>numero</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Id</name>
+        <rename>id_original_extrator</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>dataPublicacao</name>
+        <rename>data_publicacao</rename>
+        <type>None</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask />
@@ -1672,8 +1708,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>144</yloc>
+      <xloc>1168</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1694,12 +1730,6 @@ Alert(str2);</jsScript_script>
         <out_stream_name />
         <cut_from>0</cut_from>
         <cut_to>400</cut_to>
-      </field>
-      <field>
-        <in_stream_name>numero_processo</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>20</cut_to>
       </field>
       <field>
         <in_stream_name>titulo</in_stream_name>
@@ -1747,8 +1777,8 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>304</yloc>
+      <xloc>1168</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1781,7 +1811,7 @@ Alert(str2);</jsScript_script>
       </key>
       <value>
         <name>id</name>
-        <rename>tipo_id</rename>
+        <rename>tipo_documento_id</rename>
         <default>0</default>
         <type>Integer</type>
       </value>
@@ -1795,7 +1825,7 @@ Alert(str2);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
+      <xloc>896</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1845,12 +1875,50 @@ Alert(str2);</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>624</xloc>
-      <yloc>256</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>ceesp.csv</name>
+    <name>Value mapper</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>Tipo</field_to_use>
+    <target_field />
+    <non_match_default>IND</non_match_default>
+    <fields>
+      <field>
+        <source_value>leicomplementar</source_value>
+        <target_value>LEI</target_value>
+      </field>
+      <field>
+        <source_value>parecer</source_value>
+        <target_value>PAR</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ceeEScsv</name>
     <type>CsvInput</type>
     <description />
     <distribute>Y</distribute>
@@ -1860,7 +1928,7 @@ Alert(str2);</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/ceeal-v0.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/csv/ceeESv1.csv</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -1881,7 +1949,7 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>19</length>
+        <length>23</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1892,7 +1960,7 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>68</length>
+        <length>49</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1903,7 +1971,7 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>10</length>
+        <length>15</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1914,7 +1982,7 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>156</length>
+        <length>10</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1969,7 +2037,7 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>407</length>
+        <length>244</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1991,7 +2059,7 @@ Alert(str2);</jsScript_script>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>253</length>
+        <length>81</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -2007,44 +2075,6 @@ Alert(str2);</jsScript_script>
     <GUI>
       <xloc>32</xloc>
       <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Value mapper</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>Tipo</field_to_use>
-    <target_field />
-    <non_match_default>IND</non_match_default>
-    <fields>
-      <field>
-        <source_value>resolucoes</source_value>
-        <target_value>RES</target_value>
-      </field>
-      <field>
-        <source_value>pareceres</source_value>
-        <target_value>PAR</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
-      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

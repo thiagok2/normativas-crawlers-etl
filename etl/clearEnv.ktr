@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>UPDATE_DB_FROM_FOLDER</name>
+    <name>clearEnv</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/05/03 11:49:47.774</created_date>
+    <created_date>2019/05/13 11:15:55.986</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/05/03 11:49:47.774</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2019/05/13 11:15:55.986</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -489,76 +488,21 @@
   </connection>
   <order>
     <hop>
-      <from>Table input</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Stream lookup</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
+      <from>Generate rows</from>
       <to>Execute SQL script</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Execute SQL script 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Execute SQL script 2</from>
-      <to>Block this step until steps finish</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Block this step until steps finish</from>
+      <from>Get file names</from>
       <to>Process files</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get file names</from>
-      <to>Stream lookup</to>
+      <from>Generate body</from>
+      <to>REST client</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Block this step until steps finish</name>
-    <type>BlockUntilStepsFinish</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <steps>
-      <step>
-        <name>Execute SQL script 2</name>
-        <CopyNr>0</CopyNr>
-      </step>
-      <step>
-        <name>Execute SQL script</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>672</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Execute SQL script</name>
     <type>ExecSQL</type>
@@ -571,20 +515,17 @@
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <execute_each_row>Y</execute_each_row>
+    <execute_each_row>N</execute_each_row>
     <single_statement>N</single_statement>
-    <replace_variables>Y</replace_variables>
+    <replace_variables>N</replace_variables>
     <quoteString>N</quoteString>
-    <sql>UPDATE documentos SET status_extrator = 'BAIXADO' WHERE id = ?</sql>
-    <set_params>Y</set_params>
+    <sql>delete FROM documentos where tipo_entrada = 'extrator'</sql>
+    <set_params>N</set_params>
     <insert_field />
     <update_field />
     <delete_field />
     <read_field />
     <arguments>
-      <argument>
-        <name>id</name>
-      </argument>
     </arguments>
     <attributes />
     <cluster_schema />
@@ -595,14 +536,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>416</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Execute SQL script 2</name>
-    <type>ExecSQL</type>
+    <name>Generate rows</name>
+    <type>RowGenerator</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -611,22 +552,25 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>normativas</connection>
-    <execute_each_row>Y</execute_each_row>
-    <single_statement>N</single_statement>
-    <replace_variables>Y</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>UPDATE documentos SET status_extrator = 'FALHA' WHERE id = ?</sql>
-    <set_params>Y</set_params>
-    <insert_field />
-    <update_field />
-    <delete_field />
-    <read_field />
-    <arguments>
-      <argument>
-        <name>id</name>
-      </argument>
-    </arguments>
+    <fields>
+      <field>
+        <name>exec</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <interval_in_ms>5000</interval_in_ms>
+    <row_time_field>now</row_time_field>
+    <last_time_field>FiveSecondsAgo</last_time_field>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -636,14 +580,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>601</xloc>
-      <yloc>219</yloc>
+      <xloc>96</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
+    <name>Process files</name>
+    <type>ProcessFiles</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -652,25 +596,13 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Execute SQL script</send_true_to>
-    <send_false_to>Execute SQL script 2</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>size</leftvalue>
-        <function>&gt;</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>0</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
+    <sourcefilenamefield />
+    <targetfilenamefield />
+    <operation_type>delete</operation_type>
+    <addresultfilenames>N</addresultfilenames>
+    <overwritetargetfile>N</overwritetargetfile>
+    <createparentfolder>N</createparentfolder>
+    <simulate>Y</simulate>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -680,8 +612,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>144</yloc>
+      <xloc>416</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -710,18 +642,8 @@
     <dynamic_include_subfolders>N</dynamic_include_subfolders>
     <limit>0</limit>
     <file>
-      <name>/var/www/normativas-v02/storage/app/public/uploads</name>
-      <filemask>.*\.pdf$</filemask>
-      <exclude_filemask />
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name>/var/www/normativas-v02/storage/app/public/uploads</name>
-      <filemask>.*\.doc$</filemask>
-      <exclude_filemask />
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name>/var/www/normativas-v02/storage/app/public/uploads</name>
-      <filemask>.*\.docx$</filemask>
+      <name>/var/www/normativas-v02/storage/app/public/uploads/</name>
+      <filemask>CEE*</filemask>
       <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
@@ -735,46 +657,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Process files</name>
-    <type>ProcessFiles</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <sourcefilenamefield>filename</sourcefilenamefield>
-    <targetfilenamefield />
-    <operation_type>delete</operation_type>
-    <addresultfilenames>N</addresultfilenames>
-    <overwritetargetfile>N</overwritetargetfile>
-    <createparentfolder>N</createparentfolder>
-    <simulate>N</simulate>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>768</xloc>
+      <xloc>96</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
+    <name>REST client</name>
+    <type>Rest</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -783,23 +673,33 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <from>Table input</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>short_filename</name>
-        <field>arquivo</field>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>id</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
+    <applicationType>TEXT PLAIN</applicationType>
+    <method>POST</method>
+    <url>http://localhost:9200/normativas/_doc/_delete_by_query</url>
+    <urlInField>N</urlInField>
+    <dynamicMethod>N</dynamicMethod>
+    <methodFieldName />
+    <urlField />
+    <bodyField />
+    <httpLogin />
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost />
+    <proxyPort />
+    <preemptive>N</preemptive>
+    <trustStoreFile />
+    <trustStorePassword>Encrypted </trustStorePassword>
+    <headers>
+      </headers>
+    <parameters>
+      </parameters>
+    <matrixParameters>
+      </matrixParameters>
+    <result>
+      <name>result</name>
+      <code />
+      <response_time />
+      <response_header />
+    </result>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -809,14 +709,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>144</yloc>
+      <xloc>432</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Table input</name>
-    <type>TableInput</type>
+    <name>Generate body</name>
+    <type>RowGenerator</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -825,14 +725,25 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>normativas</connection>
-    <sql>SELECT * FROM documentos WHERE tipo_entrada = 'extrator' and unidade_id = 26
-and status_extrator is null</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <fields>
+      <field>
+        <name>body</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <limit>1</limit>
+    <never_ending>N</never_ending>
+    <interval_in_ms>5000</interval_in_ms>
+    <row_time_field>now</row_time_field>
+    <last_time_field>FiveSecondsAgo</last_time_field>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -842,8 +753,8 @@ and status_extrator is null</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>0</yloc>
+      <xloc>96</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
