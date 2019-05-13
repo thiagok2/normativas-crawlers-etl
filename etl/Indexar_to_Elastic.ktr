@@ -442,7 +442,7 @@
     <access>Native</access>
     <database>normativas</database>
     <port>5432</port>
-    <username>postgres</username>
+    <username>normativas</username>
     <password>Encrypted 2be98afa6598398a9f813bd74f5a5fcf7</password>
     <servername />
     <data_tablespace />
