@@ -465,7 +465,7 @@
     <database>normativas</database>
     <port>5432</port>
     <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb09a163ca95bddf</password>
+    <password>Encrypted 2be98afa6598398a9f813bd74f5a5fcf7</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
