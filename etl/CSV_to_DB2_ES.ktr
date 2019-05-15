@@ -464,8 +464,8 @@
     <access>Native</access>
     <database>normativas</database>
     <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb09a163ca95bddf</password>
+    <username>normativas</username>
+    <password>Encrypted 2be98afa6598398a9f813bd74f5a5fcf7</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -1390,123 +1390,93 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
     <fields>
       <field>
         <name>Id</name>
-        <rename />
       </field>
       <field>
         <name>Url</name>
-        <rename />
       </field>
       <field>
         <name>Tipo</name>
-        <rename />
       </field>
       <field>
         <name>Numero</name>
-        <rename />
       </field>
       <field>
         <name>Data</name>
-        <rename />
       </field>
       <field>
         <name>Processo</name>
-        <rename />
       </field>
       <field>
         <name>Relator</name>
-        <rename />
       </field>
       <field>
         <name>Interessado</name>
-        <rename />
       </field>
       <field>
         <name>Ementa</name>
-        <rename />
       </field>
       <field>
         <name>Assunto</name>
-        <rename />
       </field>
       <field>
         <name>Documento</name>
-        <rename />
       </field>
       <field>
         <name>Titulo</name>
-        <rename />
       </field>
       <field>
         <name>URL_BASE</name>
-        <rename />
       </field>
       <field>
         <name>DIR_UPLOAD</name>
-        <rename />
       </field>
       <field>
         <name>sigla</name>
-        <rename />
       </field>
       <field>
         <name>assunto_id</name>
-        <rename />
       </field>
       <field>
         <name>completed</name>
-        <rename />
       </field>
       <field>
         <name>tipo_entrada</name>
-        <rename />
       </field>
       <field>
         <name>status_extrator</name>
-        <rename />
       </field>
       <field>
         <name>urlValida</name>
-        <rename />
       </field>
       <field>
         <name>documentoOriginalNome</name>
-        <rename />
       </field>
       <field>
         <name>formato</name>
-        <rename />
       </field>
       <field>
         <name>NomeArquivoFinal</name>
-        <rename />
       </field>
       <field>
         <name>ano</name>
-        <rename />
       </field>
       <field>
         <name>dataPublicacao</name>
-        <rename />
       </field>
       <field>
         <name>Ementa2</name>
-        <rename />
       </field>
       <field>
         <name>exists</name>
-        <rename />
       </field>
       <field>
         <name>tipo_documento_id</name>
-        <rename />
       </field>
       <field>
         <name>unidade_id</name>
-        <rename />
       </field>
       <field>
         <name>user_id</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>

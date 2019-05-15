@@ -644,12 +644,12 @@
       <fields>
         <field>
           <variable_name>DIR_UPLOAD</variable_name>
-          <variable_value>/var/www/normativas-v02/storage/app/public/uploads</variable_value>
+          <variable_value>/home/nees/prod/normativas-v02/storage/app/public/uploads/</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>URL_BASE</variable_name>
-          <variable_value>http://normativas-v02.com/api/documentos/</variable_value>
+          <variable_value>http://normativas-dev.nees.com.br/api/documentos/</variable_value>
           <variable_type>JVM</variable_type>
         </field>
       </fields>
@@ -771,6 +771,51 @@
       <heigth>49</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>25</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>/home/nees/prod/normativas-v02/storage/app/public/uploads/
+
+http://normativas-dev.nees.com.br/api/documentos/</note>
+      <xloc>336</xloc>
+      <yloc>16</yloc>
+      <width>442</width>
+      <heigth>61</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>DIR_UPLOAD="/var/www/normativas-v02/storage/app/public/uploads"
+URL_BASE="http://normativas-v02.com/api/documentos/"</note>
+      <xloc>352</xloc>
+      <yloc>400</yloc>
+      <width>488</width>
+      <heigth>44</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>

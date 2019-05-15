@@ -464,8 +464,8 @@
     <access>Native</access>
     <database>normativas</database>
     <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb09a163ca95bddf</password>
+    <username>normativas</username>
+    <password>Encrypted 2be98afa6598398a9f813bd74f5a5fcf7</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -591,16 +591,6 @@
     </hop>
     <hop>
       <from>ceesp.csv</from>
-      <to>Add sequence</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add sequence</from>
-      <to>Filter rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows 2</from>
       <to>Get variables</to>
       <enabled>Y</enabled>
     </hop>
@@ -1592,9 +1582,6 @@ if(Assunto == '0' || Assunto == '')
       <remove>
         <name>TipoDesc</name>
       </remove>
-      <remove>
-        <name>contador</name>
-      </remove>
       <meta>
         <name>ano</name>
         <rename>ano</rename>
@@ -2116,7 +2103,7 @@ if(Assunto == '0' || Assunto == '')
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/csv/ceespSPvTest.csv</filename>
+    <filename>/home/thiago/desenv/Normativas/normativas-crawlers-etl/etl/csv/ceesp-v2.csv</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -2148,9 +2135,9 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>82</length>
+        <length>80</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Tipo</name>
@@ -2159,9 +2146,9 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>4</length>
+        <length>5</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Numero</name>
@@ -2170,9 +2157,9 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>9</length>
+        <length>8</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Data</name>
@@ -2181,9 +2168,9 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>-1</length>
+        <length>10</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Processo</name>
@@ -2194,7 +2181,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>10</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Relator</name>
@@ -2203,9 +2190,9 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>67</length>
+        <length>30</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Interessado</name>
@@ -2214,9 +2201,9 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>100</length>
+        <length>66</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Ementa</name>
@@ -2225,9 +2212,9 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>300</length>
+        <length>221</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Assunto</name>
@@ -2236,9 +2223,9 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>300</length>
+        <length>221</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Documento</name>
@@ -2247,20 +2234,20 @@ if(Assunto == '0' || Assunto == '')
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>84</length>
+        <length>104</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
       <field>
         <name>Titulo</name>
-        <type>String</type>
+        <type>Boolean</type>
         <format />
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>400</length>
+        <length>-1</length>
         <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
       </field>
     </fields>
     <attributes />
@@ -2274,85 +2261,6 @@ if(Assunto == '0' || Assunto == '')
     <GUI>
       <xloc>32</xloc>
       <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add sequence</name>
-    <type>Sequence</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <valuename>contador</valuename>
-    <use_database>N</use_database>
-    <connection>normativas</connection>
-    <schema />
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name />
-    <start_at>1</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows 2</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Get variables</send_true_to>
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>contador</leftvalue>
-        <function>&lt;</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1000</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
