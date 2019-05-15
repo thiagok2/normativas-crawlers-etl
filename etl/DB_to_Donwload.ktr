@@ -651,7 +651,7 @@
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT * FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator != 'BAIXADO'</sql>
+    <sql>SELECT * FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator = 'CADASTRADO'</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>

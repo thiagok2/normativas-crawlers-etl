@@ -437,8 +437,8 @@
   <notepads>
     <notepad>
       <note>AL</note>
-      <xloc>80</xloc>
-      <yloc>16</yloc>
+      <xloc>0</xloc>
+      <yloc>0</yloc>
       <width>49</width>
       <heigth>49</heigth>
       <fontname>Ubuntu</fontname>
@@ -555,16 +555,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>ceesp.csv</from>
-      <to>Get variables</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get variables</from>
-      <to>Add Constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Not Exists</from>
       <to>Value mapper</to>
       <enabled>Y</enabled>
@@ -587,6 +577,16 @@
     <hop>
       <from>Filter rows</from>
       <to>JS1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ceesp.csv</from>
+      <to>Get variables</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get variables</from>
+      <to>Add Constants</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -672,8 +672,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>144</yloc>
+      <xloc>288</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -727,8 +727,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>48</yloc>
+      <xloc>656</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -764,8 +764,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>80</yloc>
+      <xloc>1152</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -820,8 +820,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>272</yloc>
+      <xloc>288</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -837,18 +837,6 @@ and unidade_id = ? limit 1</sql>
       <schema_name />
     </partitioning>
     <fields>
-      <field>
-        <name>URL_BASE</name>
-        <variable>${URL_BASE}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
       <field>
         <name>DIR_UPLOAD</name>
         <variable>${DIR_UPLOAD}</variable>
@@ -871,8 +859,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>112</yloc>
+      <xloc>160</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -999,8 +987,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>400</yloc>
+      <xloc>1040</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1052,8 +1040,8 @@ var urlValida = !!pattern.test(Documento);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>272</yloc>
+      <xloc>448</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1220,8 +1208,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>128</yloc>
+      <xloc>512</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1262,8 +1250,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>160</yloc>
+      <xloc>656</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1310,8 +1298,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>80</yloc>
+      <xloc>1008</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1360,8 +1348,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>272</yloc>
+      <xloc>736</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1412,9 +1400,6 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </field>
       <field>
         <name>Titulo</name>
-      </field>
-      <field>
-        <name>URL_BASE</name>
       </field>
       <field>
         <name>DIR_UPLOAD</name>
@@ -1470,9 +1455,6 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       <select_unspecified>N</select_unspecified>
       <remove>
         <name>DIR_UPLOAD</name>
-      </remove>
-      <remove>
-        <name>URL_BASE</name>
       </remove>
       <remove>
         <name>Data</name>
@@ -1667,8 +1649,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>224</yloc>
+      <xloc>1152</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1736,8 +1718,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>336</yloc>
+      <xloc>1152</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1784,8 +1766,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>80</yloc>
+      <xloc>864</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1833,8 +1815,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>272</yloc>
+      <xloc>592</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1871,8 +1853,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>160</yloc>
+      <xloc>784</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2043,8 +2025,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>144</yloc>
+      <xloc>48</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

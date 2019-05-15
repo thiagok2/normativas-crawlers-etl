@@ -434,6 +434,28 @@
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>DIR_UPLOAD="/var/www/normativas-v02/storage/app/public/uploads"
+URL_BASE="http://normativas-v02.com/api/documentos/"</note>
+      <xloc>80</xloc>
+      <yloc>320</yloc>
+      <width>488</width>
+      <heigth>44</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>normativas</name>
@@ -494,7 +516,12 @@
     </hop>
     <hop>
       <from>Delay row</from>
-      <to>HTTP post</to>
+      <to>REST client</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>REST client</from>
+      <to>Write to log</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -508,8 +535,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>HTTP post</from>
-      <to>Write to log</to>
+      <from>Write to log</from>
+      <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -594,8 +621,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>96</yloc>
+      <xloc>288</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -603,7 +630,7 @@
     <name>Delay row</name>
     <type>Delay</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -622,7 +649,7 @@
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>96</yloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -638,6 +665,18 @@
       <schema_name />
     </partitioning>
     <fields>
+      <field>
+        <name>DIR_UPLOAD</name>
+        <variable>${DIR_UPLOAD}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
       <field>
         <name>URL_BASE</name>
         <variable>${URL_BASE}</variable>
@@ -661,13 +700,13 @@
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>16</yloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>HTTP post</name>
-    <type>HTTPPOST</type>
+    <name>REST client</name>
+    <type>Rest</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -676,26 +715,32 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <postafile>N</postafile>
-    <encoding>UTF-8</encoding>
+    <applicationType>TEXT PLAIN</applicationType>
+    <method>GET</method>
     <url />
     <urlInField>Y</urlInField>
+    <dynamicMethod>N</dynamicMethod>
+    <methodFieldName />
     <urlField>url</urlField>
-    <requestEntity />
+    <bodyField />
     <httpLogin />
     <httpPassword>Encrypted </httpPassword>
     <proxyHost />
     <proxyPort />
-    <socketTimeout>10000</socketTimeout>
-    <connectionTimeout>10000</connectionTimeout>
-    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
-    <lookup>
-      </lookup>
+    <preemptive>N</preemptive>
+    <trustStoreFile />
+    <trustStorePassword>Encrypted </trustStorePassword>
+    <headers>
+      </headers>
+    <parameters>
+      </parameters>
+    <matrixParameters>
+      </matrixParameters>
     <result>
       <name>result</name>
-      <code>status_code</code>
-      <response_time>response_time</response_time>
-      <response_header>response_header</response_header>
+      <code>result_code</code>
+      <response_time>result_time</response_time>
+      <response_header>result_header</response_header>
     </result>
     <attributes />
     <cluster_schema />
@@ -707,7 +752,7 @@
     </remotesteps>
     <GUI>
       <xloc>544</xloc>
-      <yloc>96</yloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -723,7 +768,7 @@
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator = 'BAIXADO'</sql>
+    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' --and status_extrator = 'BAIXADO'</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -738,8 +783,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>96</yloc>
+      <xloc>32</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -760,8 +805,11 @@
     <limitRowsNumber>0</limitRowsNumber>
     <logmessage>-------------------------------------------
 ${arquivo}
-${status_code}
-${result}</logmessage>
+status: ${result_code}
+header: ${result_header}
+result: ${result}
+time: ${result_time}
+</logmessage>
     <fields>
       <field>
         <name>id</name>
@@ -779,13 +827,13 @@ ${result}</logmessage>
         <name>result</name>
       </field>
       <field>
-        <name>status_code</name>
+        <name>result_code</name>
       </field>
       <field>
-        <name>response_time</name>
+        <name>result_time</name>
       </field>
       <field>
-        <name>response_header</name>
+        <name>result_header</name>
       </field>
     </fields>
     <attributes />
@@ -797,8 +845,113 @@ ${result}</logmessage>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>96</yloc>
+      <xloc>688</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Text file output</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>	</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding />
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>${Internal.Job.Filename.Directory}/elastic.log</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>Y</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>Y</add_date>
+      <add_time>Y</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery />
+    </file>
+    <fields>
+      <field>
+        <name>id</name>
+        <type>Integer</type>
+        <format>####0;-####0</format>
+        <currency />
+        <decimal>,</decimal>
+        <group>.</group>
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>9</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>result_code</name>
+        <type>Integer</type>
+        <format>####0;-####0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>result</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal>,</decimal>
+        <group>.</group>
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>result_header</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

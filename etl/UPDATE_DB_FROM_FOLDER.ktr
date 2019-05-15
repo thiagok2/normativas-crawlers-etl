@@ -607,7 +607,7 @@
     <single_statement>N</single_statement>
     <replace_variables>Y</replace_variables>
     <quoteString>N</quoteString>
-    <sql>UPDATE documentos SET status_extrator = 'BAIXADO' WHERE id = ?</sql>
+    <sql>UPDATE documentos SET status_extrator = 'BAIXADO' WHERE id = ? AND status_extrator != 'INDEXADO'</sql>
     <set_params>Y</set_params>
     <insert_field />
     <update_field />
@@ -826,7 +826,7 @@
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT * FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator is null</sql>
+    <sql>SELECT * FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator != 'INDEXADO'</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
