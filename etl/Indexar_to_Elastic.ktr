@@ -768,7 +768,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' --and status_extrator = 'BAIXADO'</sql>
+    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator = 'BAIXADO'</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -785,68 +785,6 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <GUI>
       <xloc>32</xloc>
       <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Write to log</name>
-    <type>WriteToLog</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <loglevel>log_level_basic</loglevel>
-    <displayHeader>Y</displayHeader>
-    <limitRows>N</limitRows>
-    <limitRowsNumber>0</limitRowsNumber>
-    <logmessage>-------------------------------------------
-${arquivo}
-status: ${result_code}
-header: ${result_header}
-result: ${result}
-time: ${result_time}
-</logmessage>
-    <fields>
-      <field>
-        <name>id</name>
-      </field>
-      <field>
-        <name>arquivo</name>
-      </field>
-      <field>
-        <name>URL_BASE</name>
-      </field>
-      <field>
-        <name>url</name>
-      </field>
-      <field>
-        <name>result</name>
-      </field>
-      <field>
-        <name>result_code</name>
-      </field>
-      <field>
-        <name>result_time</name>
-      </field>
-      <field>
-        <name>result_header</name>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -951,6 +889,68 @@ time: ${result_time}
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Write to log</name>
+    <type>WriteToLog</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>-------------------------------------------
+${arquivo}
+status: ${result_code}
+header: ${result_header}
+result: ${result}
+time: ${result_time}
+</logmessage>
+    <fields>
+      <field>
+        <name>id</name>
+      </field>
+      <field>
+        <name>arquivo</name>
+      </field>
+      <field>
+        <name>URL_BASE</name>
+      </field>
+      <field>
+        <name>url</name>
+      </field>
+      <field>
+        <name>result</name>
+      </field>
+      <field>
+        <name>result_code</name>
+      </field>
+      <field>
+        <name>result_time</name>
+      </field>
+      <field>
+        <name>result_header</name>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
