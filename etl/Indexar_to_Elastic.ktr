@@ -437,8 +437,8 @@
     <notepad>
       <note>DIR_UPLOAD="/var/www/normativas-v02/storage/app/public/uploads"
 URL_BASE="http://normativas-v02.com/api/documentos/"</note>
-      <xloc>80</xloc>
-      <yloc>320</yloc>
+      <xloc>16</xloc>
+      <yloc>256</yloc>
       <width>488</width>
       <heigth>44</heigth>
       <fontname>Ubuntu</fontname>
@@ -539,6 +539,16 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
       <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Write to log</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Execute SQL script</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Calculator</name>
@@ -637,7 +647,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <timeout>2</timeout>
+    <timeout>1</timeout>
     <scaletime>seconds</scaletime>
     <attributes />
     <cluster_schema />
@@ -650,6 +660,91 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <GUI>
       <xloc>416</xloc>
       <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Execute SQL script</name>
+    <type>ExecSQL</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>normativas</connection>
+    <execute_each_row>Y</execute_each_row>
+    <single_statement>N</single_statement>
+    <replace_variables>Y</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>UPDATE documentos SET status_extrator = 'FALHA_ELASTIC' WHERE id = ?</sql>
+    <set_params>Y</set_params>
+    <insert_field />
+    <update_field />
+    <delete_field />
+    <read_field />
+    <arguments>
+      <argument>
+        <name>id</name>
+      </argument>
+    </arguments>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Execute SQL script</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>result_code</leftvalue>
+        <function>&lt;></function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>200</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -768,7 +863,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator = 'BAIXADO'</sql>
+    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator in ('BAIXADO', 'FALHA_ELASTIC')</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -813,10 +908,10 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${Internal.Job.Filename.Directory}/elastic.log</name>
+      <name>${Internal.Job.Filename.Directory}/logs/elastic</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention />
+      <extention>log</extention>
       <append>Y</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -866,18 +961,6 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
         <length>-1</length>
         <precision>0</precision>
       </field>
-      <field>
-        <name>result_header</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -897,7 +980,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <name>Write to log</name>
     <type>WriteToLog</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -911,7 +994,6 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <logmessage>-------------------------------------------
 ${arquivo}
 status: ${result_code}
-header: ${result_header}
 result: ${result}
 time: ${result_time}
 </logmessage>
@@ -921,9 +1003,6 @@ time: ${result_time}
       </field>
       <field>
         <name>arquivo</name>
-      </field>
-      <field>
-        <name>URL_BASE</name>
       </field>
       <field>
         <name>url</name>
@@ -936,9 +1015,6 @@ time: ${result_time}
       </field>
       <field>
         <name>result_time</name>
-      </field>
-      <field>
-        <name>result_header</name>
       </field>
     </fields>
     <attributes />
