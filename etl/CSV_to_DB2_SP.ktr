@@ -581,16 +581,21 @@
     </hop>
     <hop>
       <from>Get variables</from>
-      <to>Mapper Tipo</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Mapper Tipo</from>
       <to>Add Constants</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>ceesp.csv</from>
+      <to>UpperTipo</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>UpperTipo</from>
+      <to>Mapper IND2INDI</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Mapper IND2INDI</from>
       <to>Get variables</to>
       <enabled>Y</enabled>
     </hop>
@@ -677,8 +682,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>160</yloc>
+      <xloc>336</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -737,8 +742,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>160</yloc>
+      <xloc>448</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -829,8 +834,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
-      <yloc>256</yloc>
+      <xloc>1040</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -940,8 +945,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>256</yloc>
+      <xloc>384</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -949,7 +954,7 @@ and unidade_id = ? limit 1</sql>
     <name>Get variables</name>
     <type>GetVariable</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -991,8 +996,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>160</yloc>
+      <xloc>208</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1124,7 +1129,7 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>1120</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1197,8 +1202,8 @@ var urlValida = !!pattern.test(Documento);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>256</yloc>
+      <xloc>496</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1243,7 +1248,7 @@ var numero = numero_num+'/'+ano;
 var ementa = '';
 
 if(Tipo){
-	ementa += TipoDesc+ '.\n';
+	ementa += Tipo+ '.\n';
 }
 if(Processo &amp;&amp;  Processo != '0/0'){
 	ementa += 'Processo: '+ Processo + '.\n';
@@ -1433,62 +1438,8 @@ if(Assunto == '0' || Assunto == '')
       </output>
     </remotesteps>
     <GUI>
-      <xloc>928</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Mapper Tipo</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>Tipo</field_to_use>
-    <target_field>TipoDesc</target_field>
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>RES</source_value>
-        <target_value>Resolução</target_value>
-      </field>
-      <field>
-        <source_value>ATA</source_value>
-        <target_value>Ata</target_value>
-      </field>
-      <field>
-        <source_value>DEL</source_value>
-        <target_value>Deliberação</target_value>
-      </field>
-      <field>
-        <source_value>PAR</source_value>
-        <target_value>Parecer</target_value>
-      </field>
-      <field>
-        <source_value>PORT</source_value>
-        <target_value>Portaria</target_value>
-      </field>
-      <field>
-        <source_value>IND</source_value>
-        <target_value>Indicação</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>224</yloc>
+      <xloc>944</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1578,9 +1529,6 @@ if(Assunto == '0' || Assunto == '')
       </remove>
       <remove>
         <name>exists</name>
-      </remove>
-      <remove>
-        <name>TipoDesc</name>
       </remove>
       <meta>
         <name>ano</name>
@@ -1915,7 +1863,7 @@ if(Assunto == '0' || Assunto == '')
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>1120</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1990,7 +1938,7 @@ if(Assunto == '0' || Assunto == '')
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>1120</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2038,8 +1986,8 @@ if(Assunto == '0' || Assunto == '')
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>144</yloc>
+      <xloc>816</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2103,7 +2051,7 @@ if(Assunto == '0' || Assunto == '')
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>/home/thiago/desenv/Normativas/normativas-crawlers-etl/etl/csv/ceesp-v2.csv</filename>
+    <filename>${Internal.Job.Filename.Directory}/csv/ceesp-v2.csv</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -2126,7 +2074,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>15</length>
         <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Url</name>
@@ -2137,7 +2085,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>80</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Tipo</name>
@@ -2148,7 +2096,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>5</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Numero</name>
@@ -2159,7 +2107,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>8</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Data</name>
@@ -2170,7 +2118,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>10</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Processo</name>
@@ -2181,7 +2129,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>10</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Relator</name>
@@ -2192,7 +2140,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>30</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Interessado</name>
@@ -2203,7 +2151,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>66</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Ementa</name>
@@ -2214,7 +2162,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>221</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Assunto</name>
@@ -2225,7 +2173,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>221</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Documento</name>
@@ -2236,7 +2184,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>104</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Titulo</name>
@@ -2247,7 +2195,7 @@ if(Assunto == '0' || Assunto == '')
         <group>.</group>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
     </fields>
     <attributes />
@@ -2259,8 +2207,82 @@ if(Assunto == '0' || Assunto == '')
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>112</yloc>
+      <xloc>48</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>UpperTipo</name>
+    <type>StringOperations</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>Tipo</in_stream_name>
+        <out_stream_name />
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char />
+        <pad_len />
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Mapper IND2INDI</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>Tipo</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>IND</source_value>
+        <target_value>INDI</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
