@@ -564,7 +564,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <hop>
       <from>Strings cut</from>
       <to>Insert / update</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>URL</from>
@@ -587,16 +587,6 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Not Exists</from>
-      <to>Value mapper</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Value mapper</from>
-      <to>Tipo Documento</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>DB Join extrator</from>
       <to>Select values</to>
       <enabled>Y</enabled>
@@ -609,6 +599,11 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <hop>
       <from>Filter rows</from>
       <to>JS1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Not Exists</from>
+      <to>Tipo Documento</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -725,17 +720,17 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <limit>0</limit>
     <file>
       <name>${DIR_UPLOAD}</name>
-      <filemask>.*\.pdf$</filemask>
+      <filemask>CEE-ES*.*\.pdf$</filemask>
       <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
       <name>${DIR_UPLOAD}</name>
-      <filemask>.*\.doc$</filemask>
+      <filemask>CEE-ES*.*\.doc$</filemask>
       <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
       <name>${DIR_UPLOAD}</name>
-      <filemask>.*\.docx$</filemask>
+      <filemask>CEE-ES*.*\.docx$</filemask>
       <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
@@ -750,7 +745,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     </remotesteps>
     <GUI>
       <xloc>688</xloc>
-      <yloc>48</yloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -786,8 +781,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>80</yloc>
+      <xloc>1152</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1021,7 +1016,7 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>976</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1104,86 +1099,24 @@ var index = Documento.lastIndexOf('/');
 var documentoOriginalNome = substr(substr(Documento,index+1, Documento.length),0,255);
 
 var er = /[^a-z0-9.]/gi;
-//texto = texto.replace(er, "");
-var NomeArquivoFinal = sigla+'_'+replace(documentoOriginalNome.replace(er, ""),'20','_');
-//NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/g, '');
 
-var ano = Numero.split('/')[1];
+var NomeArquivoFinal = sigla+'_'+replace(documentoOriginalNome.replace(er, ""),'20','_');
+
+var ano = (Numero.indexOf('/') != -1) ? (Numero.split('/')[1].replace(/\D/g,'')) : Numero.substring(Numero.length - 4, Numero.length);;
+
+if(!isNum(ano)){
+	ano = 1000;
+}
 
 var strTipo = '';
-if(Tipo == 'leicomplementar')
-	strTipo = 'Lei Complementar';
-if(Tipo == 'parecer')
-	strTipo = 'Parecer';
-
-var titulo = strTipo + ' CEE-ES Nº ' + Numero;
-var Ementa = (Ementa == null || Ementa == '') ? titulo:Ementa;
+if(Tipo == 'resolucoes-normativas')
+	strTipo = 'RES';
+if(Tipo == 'resolucoes-autorizativas')
+	strTipo = 'AUT';
 
 
 var dataPublicacao = str2date(ano+"-12-31","yyyy-MM-dd");
 </jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>indexOf_Sample</jsScript_name>
-        <jsScript_script>// Perform the indexOf function
-// 
-// Usage:
-// indexOf(string, substring);
-// indexOf(string, substring, fromIndex);
-//
-// 2007-09-25
-//
-var str1= "Hello Pentaho!";
-var str2= indexOf(str1, "Pentaho");
-var str3= indexOf(str1, "o", 7);
-Alert("Input : " + str1);
-Alert("Index of 'Pentaho' : " + str2);
-Alert("index of 'o', search from position 7 : " + str3);
-</jsScript_script>
-      </jsScript>
-      <jsScript>
-        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>str2date_Sample</jsScript_name>
-        <jsScript_script>// Converts the given String to a date Value.
-//
-// Usage:
-// str2date(var);
-// 1: String - The Variable with the String to convert.
-// This call uses your localized format.
-//
-// str2date(var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-//        yy / yyyy - 06 / 2006
-//        MM / MMM / MMMMM - 11 / Nov / November
-//        d / dd  - 1 / 01
-//        E / EEEE - Tue / Tuesday
-//        hh / HH - 11 / 23
-//        m / mm - 5 / 05
-//        s / ss - 8 / 08
-//
-// str2date(var, var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 3: String - The Locale Parameter
-//    An valid ISO Language Code. (DE = German, EN = English, FR = France, ...)
-//
-// str2date(var, var, var, var);
-// 1: String - The Variable with the String to convert.
-// 2: String - The Format:
-// 3: String - The Locale Parameter
-//    An valid ISO Language Code. (DE = German, EN = English, FR = France, ...)
-// 4: String - The Timezone Parameter.
-//    A valid timezone: EST, GMT, ... (if invalid GMT will be selected as default)
-// 
-// 2006-11-15
-//
-Alert(str2date("01.12.2006","dd.MM.yyyy"));
-Alert(str2date("01.12.2006 23:23:01","dd.MM.yyyy HH:mm:ss"));
-Alert(str2date("Tue.May.2006","E.MMM.yyyy","EN"));
-Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE"));
-Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
@@ -1228,16 +1161,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <replace>N</replace>
       </field>
       <field>
-        <name>Ementa</name>
-        <rename>Ementa2</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>titulo</name>
-        <rename>titulo</rename>
+        <name>strTipo</name>
+        <rename>strTipo</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1343,8 +1268,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>80</yloc>
+      <xloc>1008</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1359,7 +1284,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Value mapper</send_true_to>
+    <send_true_to>Tipo Documento</send_true_to>
     <send_false_to />
     <compare>
       <condition>
@@ -1393,8 +1318,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>272</yloc>
+      <xloc>784</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1486,7 +1411,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <name>dataPublicacao</name>
       </field>
       <field>
-        <name>Ementa2</name>
+        <name>strTipo</name>
       </field>
       <field>
         <name>exists</name>
@@ -1506,9 +1431,6 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </remove>
       <remove>
         <name>URL_BASE</name>
-      </remove>
-      <remove>
-        <name>Data</name>
       </remove>
       <remove>
         <name>exists</name>
@@ -1535,62 +1457,14 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <name>urlValida</name>
       </remove>
       <remove>
-        <name>Ementa</name>
+        <name>strTipo</name>
+      </remove>
+      <remove>
+        <name>Data</name>
       </remove>
       <meta>
         <name>Url</name>
         <rename>url_extrator</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>documentoOriginalNome</name>
-        <rename>nome_original</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>NomeArquivoFinal</name>
-        <rename>arquivo</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-      <meta>
-        <name>Ementa2</name>
-        <rename>ementa</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -1623,7 +1497,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <storage_type />
       </meta>
       <meta>
-        <name>titulo</name>
+        <name>Titulo</name>
         <rename>titulo</rename>
         <type>String</type>
         <length>-2</length>
@@ -1657,8 +1531,42 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <storage_type />
       </meta>
       <meta>
+        <name>documentoOriginalNome</name>
+        <rename>nome_original</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
         <name>Id</name>
         <rename>id_original_extrator</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Ementa</name>
+        <rename>ementa</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -1690,6 +1598,40 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <currency_symbol />
         <storage_type />
       </meta>
+      <meta>
+        <name>NomeArquivoFinal</name>
+        <rename>arquivo</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>tipo_documento_id</name>
+        <rename>tipo_documento_id</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <attributes />
     <cluster_schema />
@@ -1700,8 +1642,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>224</yloc>
+      <xloc>1152</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1769,8 +1711,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>336</yloc>
+      <xloc>1152</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1796,7 +1738,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>Tipo</name>
+        <name>strTipo</name>
         <field>sigla</field>
         <condition>=</condition>
         <name2 />
@@ -1817,8 +1759,8 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>80</yloc>
+      <xloc>880</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1872,44 +1814,6 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
     </GUI>
   </step>
   <step>
-    <name>Value mapper</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>Tipo</field_to_use>
-    <target_field />
-    <non_match_default>IND</non_match_default>
-    <fields>
-      <field>
-        <source_value>leicomplementar</source_value>
-        <target_value>LEI</target_value>
-      </field>
-      <field>
-        <source_value>parecer</source_value>
-        <target_value>PAR</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>ceeEScsv</name>
     <type>CsvInput</type>
     <description />
@@ -1920,7 +1824,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/csv/ceeESv1.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/csv/ceees-resolucoesESv2.csv</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -1941,7 +1845,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>23</length>
+        <length>31</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1952,7 +1856,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>49</length>
+        <length>64</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1963,7 +1867,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>15</length>
+        <length>21</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1974,19 +1878,19 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>10</length>
+        <length>9</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
         <name>Data</name>
-        <type>Boolean</type>
-        <format />
+        <type>Integer</type>
+        <format>#</format>
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
+        <length>15</length>
+        <precision>0</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
@@ -2029,7 +1933,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>244</length>
+        <length>380</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -2051,7 +1955,18 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>81</length>
+        <length>96</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Titulo</name>
+        <type>String</type>
+        <format />
+        <currency>R$</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <length>35</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
