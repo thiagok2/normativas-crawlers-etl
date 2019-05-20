@@ -435,7 +435,7 @@
       <description />
       <type>SQL</type>
       <attributes />
-      <sql>UPDATE documentos SET status_extrator = 'FALHA' WHERE arquivo = '${documento_nome}'</sql>
+      <sql>UPDATE documentos SET status_extrator = 'FALHA_DOWNLOAD' WHERE arquivo = '${documento_nome}'</sql>
       <useVariableSubstitution>T</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename />
