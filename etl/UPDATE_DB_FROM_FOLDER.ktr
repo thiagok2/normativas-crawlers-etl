@@ -495,16 +495,16 @@
     </hop>
     <hop>
       <from>Stream lookup</from>
-      <to>Filter rows</to>
+      <to>Filter Size 0</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
+      <from>Filter Size 0</from>
       <to>Execute SQL script</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
+      <from>Filter Size 0</from>
       <to>Execute SQL script 2</to>
       <enabled>Y</enabled>
     </hop>
@@ -648,7 +648,7 @@
     <single_statement>N</single_statement>
     <replace_variables>Y</replace_variables>
     <quoteString>N</quoteString>
-    <sql>UPDATE documentos SET status_extrator = 'FALHA' WHERE id = ?</sql>
+    <sql>UPDATE documentos SET status_extrator = 'FALHA_DOWNLOAD' WHERE id = ?</sql>
     <set_params>Y</set_params>
     <insert_field />
     <update_field />
@@ -674,7 +674,7 @@
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
+    <name>Filter Size 0</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
