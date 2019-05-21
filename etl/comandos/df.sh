@@ -3,4 +3,4 @@ export ETL_ROOT="/home/thiago/desenv/Normativas/normativas-crawlers-etl/etl"
 
 
 cd $PDI_ROOT
-./pan.sh /file $ETL_ROOT/clearEnv.ktr
+./kitchen.sh /file $ETL_ROOT/DF.kjb

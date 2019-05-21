@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>clearES</name>
+    <name>clearCEE</name>
     <description />
     <extended_description />
     <trans_version />
@@ -9,6 +9,11 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>PARAM_CEE</name>
+        <default_value>CEE-AL</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -435,72 +440,6 @@
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>/home/nees/prod/normativas-v02/storage/app/public/uploads/
-
-http://normativas-dev.nees.com.br/api/documentos/</note>
-      <xloc>592</xloc>
-      <yloc>97</yloc>
-      <width>442</width>
-      <heigth>61</heigth>
-      <fontname>Ubuntu</fontname>
-      <fontsize>11</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>DIR_UPLOAD="/var/www/normativas-v02/storage/app/public/uploads"
-URL_BASE="http://normativas-v02.com/api/documentos/"</note>
-      <xloc>612</xloc>
-      <yloc>320</yloc>
-      <width>488</width>
-      <heigth>44</heigth>
-      <fontname>Ubuntu</fontname>
-      <fontsize>11</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>ES</note>
-      <xloc>16</xloc>
-      <yloc>16</yloc>
-      <width>39</width>
-      <heigth>41</heigth>
-      <fontname>Ubuntu</fontname>
-      <fontsize>20</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>normativas</name>
@@ -555,17 +494,37 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
   </connection>
   <order>
     <hop>
-      <from>Generate rows</from>
-      <to>Execute SQL script</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Get file names</from>
       <to>Process files</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Process files</from>
+      <to>Log Files</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>REST normativas</from>
+      <to>Log Elastic</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get variables</from>
+      <to>Get file names</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get PARAM_CEE</from>
+      <to>Execute SQL script</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Create Body</from>
+      <to>ReplaceParamCEE</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ReplaceParamCEE</from>
       <to>REST normativas</to>
       <enabled>Y</enabled>
     </hop>
@@ -574,7 +533,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
     <name>Create Body</name>
     <type>RowGenerator</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -589,7 +548,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
         <currency />
         <decimal />
         <group />
-        <nullif>{"query":{		"bool" : {    		"must" : [				{"term":{ "ato.tipo_entrada": "extrator" }},				{"term":{ "ato.fonte.uf_sigla": "ES"     }}   		]		}	}}</nullif>
+        <nullif>{"query":{		"bool" : {    		"must" : [				{"term":{ "ato.tipo_entrada": "extrator" }},				{"term":{ "ato.fonte.sigla": "?"     }}   		]		}	}}</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -621,7 +580,7 @@ URL_BASE="http://normativas-v02.com/api/documentos/"</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>144</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -653,7 +612,7 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
     <read_field />
     <arguments>
       <argument>
-        <name>CEE</name>
+        <name>PARAM_CEE</name>
       </argument>
     </arguments>
     <attributes />
@@ -666,63 +625,7 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Generate rows</name>
-    <type>RowGenerator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>exec</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>CEE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>CEE-ES</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <limit>1</limit>
-    <never_ending>N</never_ending>
-    <interval_in_ms>5000</interval_in_ms>
-    <row_time_field>now</row_time_field>
-    <last_time_field>FiveSecondsAgo</last_time_field>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>80</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -751,8 +654,8 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
     <dynamic_include_subfolders>N</dynamic_include_subfolders>
     <limit>0</limit>
     <file>
-      <name>/home/nees/prod/normativas-v02/storage/app/public/uploads/</name>
-      <filemask>CEE-ES*.*</filemask>
+      <name>${DIR_UPLOAD}</name>
+      <filemask>${PARAM_CEE}*.*</filemask>
       <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
@@ -766,7 +669,81 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>240</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Log Elastic</name>
+    <type>WriteToLog</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>status: ${result_code}
+result: ${result}</logmessage>
+    <fields>
+      <field>
+        <name>result_code</name>
+      </field>
+      <field>
+        <name>result</name>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Log Files</name>
+    <type>WriteToLog</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>Arquivo ${short_filename} removido.</logmessage>
+    <fields>
+      <field>
+        <name>short_filename</name>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -821,7 +798,7 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
     <dynamicMethod>N</dynamicMethod>
     <methodFieldName />
     <urlField>url</urlField>
-    <bodyField>url</bodyField>
+    <bodyField>body</bodyField>
     <httpLogin />
     <httpPassword>Encrypted </httpPassword>
     <proxyHost />
@@ -852,6 +829,123 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
     <GUI>
       <xloc>416</xloc>
       <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get variables</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>PARAM_CEE</name>
+        <variable>${PARAM_CEE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>64</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get PARAM_CEE</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>PARAM_CEE</name>
+        <variable>${PARAM_CEE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ReplaceParamCEE</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>body</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>?</replace_string>
+        <replace_by_string>${PARAM_CEE}</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
