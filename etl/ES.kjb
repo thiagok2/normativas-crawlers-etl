@@ -599,12 +599,12 @@
       <fields>
         <field>
           <variable_name>DIR_UPLOAD</variable_name>
-          <variable_value>/var/www/normativas-v02/storage/app/public/uploads</variable_value>
+          <variable_value>/home/nees/prod/normativas-v02/storage/app/public/uploads/</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>URL_BASE</variable_name>
-          <variable_value>http://normativas-v02.com/api/documentos/</variable_value>
+          <variable_value>http://normativas-dev.nees.com.br/api/documentos/</variable_value>
           <variable_type>JVM</variable_type>
         </field>
       </fields>
