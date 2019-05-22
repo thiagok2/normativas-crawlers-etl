@@ -13,3 +13,4 @@
 ## Execução dos comandos
 * As cargas prontas possuem scripts .sh de execução;
 * Para limpar uma carga, basta executar o clear-cee.sh, passando a sigla do conselho como parâmetro, por exemplo CEE-AL
+./clear-cee.sh CEE-AL
