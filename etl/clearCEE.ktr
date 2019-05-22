@@ -519,13 +519,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Create Body</from>
-      <to>ReplaceParamCEE</to>
+      <from>ReplaceParams</from>
+      <to>REST normativas</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>ReplaceParamCEE</from>
-      <to>REST normativas</to>
+      <from>Create Body</from>
+      <to>Get ELASTIC_HOST</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get ELASTIC_HOST</from>
+      <to>ReplaceParams</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -560,7 +565,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>http://localhost:9200/normativas/_doc/_delete_by_query</nullif>
+        <nullif>?normativas/_doc/_delete_by_query</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -580,8 +585,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>368</yloc>
+      <xloc>32</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -630,6 +635,45 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
     </GUI>
   </step>
   <step>
+    <name>Get PARAM_CEE</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>PARAM_CEE</name>
+        <variable>${PARAM_CEE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Get file names</name>
     <type>GetFileNames</type>
     <description />
@@ -670,6 +714,45 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get variables</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>PARAM_CEE</name>
+        <variable>${PARAM_CEE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>64</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -833,85 +916,7 @@ result: ${result}</logmessage>
     </GUI>
   </step>
   <step>
-    <name>Get variables</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>PARAM_CEE</name>
-        <variable>${PARAM_CEE}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>64</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get PARAM_CEE</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>PARAM_CEE</name>
-        <variable>${PARAM_CEE}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>ReplaceParamCEE</name>
+    <name>ReplaceParams</name>
     <type>ReplaceString</type>
     <description />
     <distribute>Y</distribute>
@@ -934,6 +939,18 @@ result: ${result}</logmessage>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
+      <field>
+        <in_stream_name>url</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>?</replace_string>
+        <replace_by_string>${ELASTIC_HOST}</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -944,8 +961,47 @@ result: ${result}</logmessage>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>304</yloc>
+      <xloc>288</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get ELASTIC_HOST</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>ELASTIC_HOST</name>
+        <variable>${ELASTIC_HOST}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
