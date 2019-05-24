@@ -520,6 +520,33 @@
     </hop>
   </order>
   <step>
+    <name>Delay row</name>
+    <type>Delay</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <timeout>1</timeout>
+    <scaletime>seconds</scaletime>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Get PDF Job</name>
     <type>JobExecutor</type>
     <description />
@@ -748,33 +775,6 @@
     <GUI>
       <xloc>566</xloc>
       <yloc>99</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Delay row</name>
-    <type>Delay</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <timeout>1</timeout>
-    <scaletime>seconds</scaletime>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

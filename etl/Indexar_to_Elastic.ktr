@@ -519,12 +519,22 @@
     </hop>
     <hop>
       <from>Write to log</from>
-      <to>Filter rows</to>
+      <to>Filtra Falhas</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Execute SQL script</to>
+      <from>LogHtml</from>
+      <to>Update Falha Elastic</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filtra Falhas</from>
+      <to>Path</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Path</from>
+      <to>LogHtml</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -642,7 +652,7 @@
     </GUI>
   </step>
   <step>
-    <name>Execute SQL script</name>
+    <name>Update Falha Elastic</name>
     <type>ExecSQL</type>
     <description />
     <distribute>Y</distribute>
@@ -677,13 +687,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>32</yloc>
+      <xloc>992</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
+    <name>Filtra Falhas</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -693,7 +703,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Execute SQL script</send_true_to>
+    <send_true_to>Path</send_true_to>
     <send_false_to />
     <compare>
       <condition>
@@ -721,8 +731,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>32</yloc>
+      <xloc>688</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -753,6 +763,18 @@
       <field>
         <name>URL_BASE</name>
         <variable>${URL_BASE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PATH</name>
+        <variable>${Internal.Entry.Current.Directory}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -880,7 +902,7 @@
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding />
+    <encoding>UTF-8</encoding>
     <endedLine />
     <fileNameInField>N</fileNameInField>
     <fileNameField />
@@ -1006,6 +1028,131 @@ time: ${result_time}
     <GUI>
       <xloc>688</xloc>
       <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>LogHtml</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator />
+    <enclosure />
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>None</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>Y</fileNameInField>
+    <fileNameField>pathHtmlLog</fileNameField>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention>html</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>result</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Path</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>dirLog</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>/logs/</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>pathHtmlLog</field_name>
+      <calc_type>ADD3</calc_type>
+      <field_a>PATH</field_a>
+      <field_b>dirLog</field_b>
+      <field_c>id</field_c>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>800</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

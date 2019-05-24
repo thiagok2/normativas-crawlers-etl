@@ -11,7 +11,7 @@
     <parameters>
       <parameter>
         <name>PARAM_CEE</name>
-        <default_value>CEE-AL</default_value>
+        <default_value>CEE-ES</default_value>
         <description />
       </parameter>
     </parameters>
@@ -635,6 +635,45 @@ AND d.tipo_entrada = 'extrator' and u.sigla = ?
     </GUI>
   </step>
   <step>
+    <name>Get ELASTIC_HOST</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>ELASTIC_HOST</name>
+        <variable>${ELASTIC_HOST}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Get PARAM_CEE</name>
     <type>GetVariable</type>
     <description />
@@ -963,45 +1002,6 @@ result: ${result}</logmessage>
     <GUI>
       <xloc>288</xloc>
       <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get ELASTIC_HOST</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>ELASTIC_HOST</name>
-        <variable>${ELASTIC_HOST}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
