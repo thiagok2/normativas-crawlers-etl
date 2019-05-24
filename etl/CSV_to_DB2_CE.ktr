@@ -1018,11 +1018,16 @@ and unidade_id = ? limit 1</sql>
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>if(Data == null || isEmpty(Numero)){
-	Numero = 'NA';
+        <jsScript_script>var Numero2 = Numero;
+if(Data == null || isEmpty(Numero)){
+	Numero2 = 'NA';
 }
 if(Data == null || isEmpty(Data)){
 	Data = '1900';
+}
+var Ementa2 = Ementa;
+if(Ementa == null || isEmpty(Ementa)){
+	Ementa2 = Titulo;
 }
 
 var ano = str2num(Data);
@@ -1074,6 +1079,22 @@ var NomeArquivoFinal = sigla+'_'+documentoOriginalNome.replace(er, "");</jsScrip
       <field>
         <name>NomeArquivoFinal</name>
         <rename>NomeArquivoFinal</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>Numero2</name>
+        <rename>Numero2</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>Ementa2</name>
+        <rename>Ementa2</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1248,78 +1269,111 @@ var NomeArquivoFinal = sigla+'_'+documentoOriginalNome.replace(er, "");</jsScrip
     <fields>
       <field>
         <name>Id</name>
+        <rename />
       </field>
       <field>
         <name>Url</name>
+        <rename />
       </field>
       <field>
         <name>Tipo</name>
+        <rename />
       </field>
       <field>
         <name>Numero</name>
+        <rename />
       </field>
       <field>
         <name>Data</name>
+        <rename />
       </field>
       <field>
         <name>Ementa</name>
+        <rename />
       </field>
       <field>
         <name>Assunto</name>
+        <rename />
       </field>
       <field>
         <name>Documento</name>
+        <rename />
       </field>
       <field>
         <name>Titulo</name>
+        <rename />
       </field>
       <field>
         <name>URL_BASE</name>
+        <rename />
       </field>
       <field>
         <name>DIR_UPLOAD</name>
+        <rename />
       </field>
       <field>
         <name>sigla</name>
+        <rename />
       </field>
       <field>
         <name>assunto_id</name>
+        <rename />
       </field>
       <field>
         <name>completed</name>
+        <rename />
       </field>
       <field>
         <name>tipo_entrada</name>
+        <rename />
       </field>
       <field>
         <name>status_extrator</name>
+        <rename />
       </field>
       <field>
         <name>ano</name>
+        <rename />
       </field>
       <field>
         <name>data_publicacao</name>
+        <rename />
       </field>
       <field>
         <name>formato</name>
+        <rename />
       </field>
       <field>
         <name>documentoOriginalNome</name>
+        <rename />
       </field>
       <field>
         <name>NomeArquivoFinal</name>
+        <rename />
+      </field>
+      <field>
+        <name>Numero2</name>
+        <rename />
+      </field>
+      <field>
+        <name>Ementa2</name>
+        <rename />
       </field>
       <field>
         <name>exists</name>
+        <rename />
       </field>
       <field>
         <name>tipo_documento_id</name>
+        <rename />
       </field>
       <field>
         <name>unidade_id</name>
+        <rename />
       </field>
       <field>
         <name>user_id</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>
@@ -1336,6 +1390,12 @@ var NomeArquivoFinal = sigla+'_'+documentoOriginalNome.replace(er, "");</jsScrip
       </remove>
       <remove>
         <name>Data</name>
+      </remove>
+      <remove>
+        <name>Ementa</name>
+      </remove>
+      <remove>
+        <name>Numero</name>
       </remove>
       <meta>
         <name>Url</name>
@@ -1389,7 +1449,7 @@ var NomeArquivoFinal = sigla+'_'+documentoOriginalNome.replace(er, "");</jsScrip
         <storage_type />
       </meta>
       <meta>
-        <name>Numero</name>
+        <name>Numero2</name>
         <rename>numero</rename>
         <type>String</type>
         <length>-2</length>
@@ -1440,7 +1500,7 @@ var NomeArquivoFinal = sigla+'_'+documentoOriginalNome.replace(er, "");</jsScrip
         <storage_type />
       </meta>
       <meta>
-        <name>Ementa</name>
+        <name>Ementa2</name>
         <rename>ementa</rename>
         <type>String</type>
         <length>-2</length>
