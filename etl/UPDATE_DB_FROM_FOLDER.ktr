@@ -500,22 +500,12 @@
     </hop>
     <hop>
       <from>Filter Size 0</from>
-      <to>Execute SQL script</to>
+      <to>UpdateBaixado</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Filter Size 0</from>
-      <to>Execute SQL script 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Execute SQL script 2</from>
-      <to>Block this step until steps finish</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Block this step until steps finish</from>
-      <to>Delete File</to>
+      <to>UpdateFalhaDownload</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -523,42 +513,12 @@
       <to>Stream lookup</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>UpdateFalhaDownload</from>
+      <to>Delete File</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
-  <step>
-    <name>Block this step until steps finish</name>
-    <type>BlockUntilStepsFinish</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <steps>
-      <step>
-        <name>Execute SQL script 2</name>
-        <CopyNr>0</CopyNr>
-      </step>
-      <step>
-        <name>Execute SQL script</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>672</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Delete File</name>
     <type>ProcessFiles</type>
@@ -592,7 +552,7 @@
     </GUI>
   </step>
   <step>
-    <name>Execute SQL script</name>
+    <name>UpdateBaixado</name>
     <type>ExecSQL</type>
     <description />
     <distribute>Y</distribute>
@@ -633,7 +593,7 @@
     </GUI>
   </step>
   <step>
-    <name>Execute SQL script 2</name>
+    <name>UpdateFalhaDownload</name>
     <type>ExecSQL</type>
     <description />
     <distribute>Y</distribute>
@@ -684,8 +644,8 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Execute SQL script</send_true_to>
-    <send_false_to>Execute SQL script 2</send_false_to>
+    <send_true_to>UpdateBaixado</send_true_to>
+    <send_false_to>UpdateFalhaDownload</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
