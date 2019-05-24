@@ -638,7 +638,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>False</nullif>
+        <nullif>True</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
