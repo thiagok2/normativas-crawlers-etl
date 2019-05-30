@@ -8,8 +8,8 @@
 
 ## Produção
 
-* Copiar o arquivo kettle.properties para ~/.kettle/
-* Alterar as configurações para ambiente de produção
+* Copiar o arquivo kettle.properties para ~/.kettle/. [~] é a pasta do usuário no SO;
+* Alterar as propriedades do arquivo para ambiente de produção.
 
 ## Execução dos comandos
 * As cargas prontas possuem scripts .sh de execução;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CSV_to_DB2_MG</name>
+    <name>CSV_to_DB2_SE</name>
     <description />
     <extended_description />
     <trans_version />
@@ -436,10 +436,10 @@
   </info>
   <notepads>
     <notepad>
-      <note>MG</note>
-      <xloc>48</xloc>
-      <yloc>0</yloc>
-      <width>61</width>
+      <note>SE</note>
+      <xloc>160</xloc>
+      <yloc>112</yloc>
+      <width>47</width>
       <heigth>49</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>25</fontsize>
@@ -515,11 +515,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Lookup File</from>
-      <to>Not Exists</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Tipo Documento</from>
       <to>LookupUnidade</to>
       <enabled>Y</enabled>
@@ -530,33 +525,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Strings cut</from>
-      <to>Insert / update</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Not Exists</from>
-      <to>Value mapper</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Value mapper</from>
-      <to>Tipo Documento</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>DB Join extrator</from>
-      <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Strings cut</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ceeMG.csv</from>
-      <to>Get variables</to>
+      <to>Select</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -565,18 +535,33 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>JS1</from>
+      <from>Add Constants</from>
+      <to>JS2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>JS2</from>
       <to>Lookup File</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add Constants</from>
-      <to>GoogleDrive</to>
+      <from>Value mapper</from>
+      <to>Get variables</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>GoogleDrive</from>
-      <to>JS1</to>
+      <from>Lookup File</from>
+      <to>Tipo Documento</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ceeSE.csv</from>
+      <to>Value mapper</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select</from>
+      <to>Insert / update</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -599,7 +584,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>CEE-MG</nullif>
+        <nullif>CEE-SE</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -652,18 +637,6 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
-      <field>
-        <name>formato</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>pdf</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -674,8 +647,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>240</yloc>
+      <xloc>336</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -705,17 +678,17 @@
     <limit>0</limit>
     <file>
       <name>${DIR_UPLOAD}</name>
-      <filemask>CEE-MG*.*\.pdf$</filemask>
+      <filemask>.*\.pdf$</filemask>
       <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
       <name>${DIR_UPLOAD}</name>
-      <filemask>CEE-MG*.*\.doc$</filemask>
+      <filemask>.*\.doc$</filemask>
       <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
       <name>${DIR_UPLOAD}</name>
-      <filemask>CEE-MG*.*\.docx$</filemask>
+      <filemask>.*\.docx$</filemask>
       <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
@@ -729,8 +702,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>128</yloc>
+      <xloc>592</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -766,8 +739,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>128</yloc>
+      <xloc>864</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -775,7 +748,7 @@ and unidade_id = ? limit 1</sql>
     <name>Get variables</name>
     <type>GetVariable</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -783,6 +756,18 @@ and unidade_id = ? limit 1</sql>
       <schema_name />
     </partitioning>
     <fields>
+      <field>
+        <name>URL_BASE</name>
+        <variable>${URL_BASE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
       <field>
         <name>DIR_UPLOAD</name>
         <variable>${DIR_UPLOAD}</variable>
@@ -805,71 +790,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>GoogleDrive</name>
-    <type>ReplaceString</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>Documento</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>https://drive.google.com/file/d/</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>Documento</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>/view</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>Documento</in_stream_name>
-        <out_stream_name>GoogleId</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>?usp=sharing</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>128</yloc>
+      <xloc>208</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -907,11 +829,6 @@ and unidade_id = ? limit 1</sql>
         <update>Y</update>
       </value>
       <value>
-        <name>numero</name>
-        <rename>numero</rename>
-        <update>Y</update>
-      </value>
-      <value>
         <name>url</name>
         <rename>url</rename>
         <update>Y</update>
@@ -919,6 +836,21 @@ and unidade_id = ? limit 1</sql>
       <value>
         <name>titulo</name>
         <rename>titulo</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>numero</name>
+        <rename>numero</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>data_publicacao</name>
+        <rename>data_publicacao</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>ementa</name>
+        <rename>ementa</rename>
         <update>Y</update>
       </value>
       <value>
@@ -942,13 +874,13 @@ and unidade_id = ? limit 1</sql>
         <update>Y</update>
       </value>
       <value>
-        <name>ementa</name>
-        <rename>ementa</rename>
+        <name>nome_original</name>
+        <rename>nome_original</rename>
         <update>Y</update>
       </value>
       <value>
-        <name>ano</name>
-        <rename>ano</rename>
+        <name>formato</name>
+        <rename>formato</rename>
         <update>Y</update>
       </value>
       <value>
@@ -957,8 +889,8 @@ and unidade_id = ? limit 1</sql>
         <update>Y</update>
       </value>
       <value>
-        <name>data_publicacao</name>
-        <rename>data_publicacao</rename>
+        <name>ano</name>
+        <rename>ano</rename>
         <update>Y</update>
       </value>
       <value>
@@ -987,12 +919,12 @@ and unidade_id = ? limit 1</sql>
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>384</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>JS1</name>
+    <name>JS2</name>
     <type>ScriptValueMod</type>
     <description />
     <distribute>Y</distribute>
@@ -1008,27 +940,48 @@ and unidade_id = ? limit 1</sql>
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var ementa = Titulo;
+        <jsScript_script>var indexDot = Documento.lastIndexOf('.');
+var formato =  substr(substr(Documento,indexDot+1, Documento.length),0,4);
 
-var ano = Data != null ? Data :Numero.split('-')[1];
 
-var er = /[^a-z0-9.]/gi;
-var arquivo = sigla+'_'+replace(Titulo.replace(er, ""),'20','_')+'.pdf';
+var index = Documento.lastIndexOf('/');
+var documentoOriginalNome = substr(substr(Documento,index+1, Documento.length),0,255);
 
-var data_publicacao = str2date(ano+"-12-31","yyyy-MM-dd");
+var NomeArquivoFinal = sigla+'_'+documentoOriginalNome;
+NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/g, '');
 
-var Documento = Documento;
-if(Documento.indexOf('http') == -1){
-	Documento = 'https://drive.google.com/uc?authuser=0&amp;id='+GoogleId+'&amp;export=download';
-}
+var ano = year(Data);
+
+if(!Ementa)
+	Ementa = Titulo;
+
+
+
+
 
 </jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
       <field>
-        <name>ementa</name>
-        <rename>ementa</rename>
+        <name>documentoOriginalNome</name>
+        <rename>documentoOriginalNome</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>formato</name>
+        <rename>formato</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>NomeArquivoFinal</name>
+        <rename>NomeArquivoFinal</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1043,24 +996,8 @@ if(Documento.indexOf('http') == -1){
         <replace>N</replace>
       </field>
       <field>
-        <name>arquivo</name>
-        <rename>arquivo</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>data_publicacao</name>
-        <rename>data_publicacao</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>Documento</name>
-        <rename>Documento</rename>
+        <name>Ementa</name>
+        <rename>Ementa</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1076,8 +1013,8 @@ if(Documento.indexOf('http') == -1){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>240</yloc>
+      <xloc>464</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1099,7 +1036,7 @@ if(Documento.indexOf('http') == -1){
     <integer_pair>N</integer_pair>
     <lookup>
       <key>
-        <name>arquivo</name>
+        <name>NomeArquivoFinal</name>
         <field>short_filename</field>
       </key>
       <value>
@@ -1118,8 +1055,8 @@ if(Documento.indexOf('http') == -1){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>240</yloc>
+      <xloc>592</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1166,66 +1103,16 @@ if(Documento.indexOf('http') == -1){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>128</yloc>
+      <xloc>864</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Not Exists</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Value mapper</send_true_to>
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>exists</leftvalue>
-            <function>=</function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>N</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
+    <name>Select</name>
     <type>SelectValues</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1243,16 +1130,22 @@ if(Documento.indexOf('http') == -1){
         <name>Tipo</name>
       </field>
       <field>
+        <name>Documento</name>
+      </field>
+      <field>
+        <name>Titulo</name>
+      </field>
+      <field>
         <name>Numero</name>
       </field>
       <field>
         <name>Data</name>
       </field>
       <field>
-        <name>Documento</name>
+        <name>Ementa</name>
       </field>
       <field>
-        <name>Titulo</name>
+        <name>URL_BASE</name>
       </field>
       <field>
         <name>DIR_UPLOAD</name>
@@ -1273,28 +1166,22 @@ if(Documento.indexOf('http') == -1){
         <name>status_extrator</name>
       </field>
       <field>
+        <name>documentoOriginalNome</name>
+      </field>
+      <field>
         <name>formato</name>
       </field>
       <field>
-        <name>GoogleId</name>
-      </field>
-      <field>
-        <name>ementa</name>
+        <name>NomeArquivoFinal</name>
       </field>
       <field>
         <name>ano</name>
       </field>
       <field>
-        <name>arquivo</name>
-      </field>
-      <field>
-        <name>data_publicacao</name>
-      </field>
-      <field>
         <name>exists</name>
       </field>
       <field>
-        <name>tipo_documento_id</name>
+        <name>tipo_id</name>
       </field>
       <field>
         <name>unidade_id</name>
@@ -1303,12 +1190,6 @@ if(Documento.indexOf('http') == -1){
         <name>user_id</name>
       </field>
       <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>DIR_UPLOAD</name>
-      </remove>
-      <remove>
-        <name>Data</name>
-      </remove>
       <remove>
         <name>Tipo</name>
       </remove>
@@ -1319,13 +1200,33 @@ if(Documento.indexOf('http') == -1){
         <name>exists</name>
       </remove>
       <remove>
-        <name>GoogleId</name>
+        <name>DIR_UPLOAD</name>
+      </remove>
+      <remove>
+        <name>URL_BASE</name>
       </remove>
       <meta>
-        <name>Url</name>
-        <rename>url_extrator</rename>
-        <type>String</type>
+        <name>ano</name>
+        <rename>ano</rename>
+        <type>Integer</type>
         <length>-2</length>
+        <precision>0</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Titulo</name>
+        <rename>titulo</rename>
+        <type>String</type>
+        <length>400</length>
         <precision>-2</precision>
         <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
@@ -1342,8 +1243,110 @@ if(Documento.indexOf('http') == -1){
         <name>Documento</name>
         <rename>url</rename>
         <type>String</type>
+        <length>400</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type>normal</storage_type>
+      </meta>
+      <meta>
+        <name>documentoOriginalNome</name>
+        <rename>nome_original</rename>
+        <type>String</type>
+        <length>400</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>NomeArquivoFinal</name>
+        <rename>arquivo</rename>
+        <type>String</type>
+        <length>200</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Ementa</name>
+        <rename>ementa</rename>
+        <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Data</name>
+        <rename>data_publicacao</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>tipo_id</name>
+        <rename>tipo_documento_id</rename>
+        <type>Integer</type>
+        <length>9</length>
+        <precision>0</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>unidade_id</name>
+        <rename>unidade_id</rename>
+        <type>Integer</type>
+        <length>9</length>
+        <precision>0</precision>
         <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale />
@@ -1359,6 +1362,23 @@ if(Documento.indexOf('http') == -1){
         <name>Numero</name>
         <rename>numero</rename>
         <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>assunto_id</name>
+        <rename>assunto_id</rename>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask />
@@ -1390,8 +1410,93 @@ if(Documento.indexOf('http') == -1){
         <storage_type />
       </meta>
       <meta>
-        <name>Titulo</name>
-        <rename>titulo</rename>
+        <name>completed</name>
+        <rename>completed</rename>
+        <type>Boolean</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>tipo_entrada</name>
+        <rename>tipo_entrada</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>user_id</name>
+        <rename>user_id</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>formato</name>
+        <rename>formato</rename>
+        <type>String</type>
+        <length>4</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Url</name>
+        <rename>url_extrator</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>status_extrator</name>
+        <rename>status_extrator</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -1416,65 +1521,8 @@ if(Documento.indexOf('http') == -1){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Strings cut</name>
-    <type>StringCut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>url_extrator</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>400</cut_to>
-      </field>
-      <field>
-        <in_stream_name>titulo</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>400</cut_to>
-      </field>
-      <field>
-        <in_stream_name>url</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>400</cut_to>
-      </field>
-      <field>
-        <in_stream_name>arquivo</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>200</cut_to>
-      </field>
-      <field>
-        <in_stream_name>numero</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>20</cut_to>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1152</xloc>
-      <yloc>320</yloc>
+      <xloc>1040</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1507,7 +1555,7 @@ if(Documento.indexOf('http') == -1){
       </key>
       <value>
         <name>id</name>
-        <rename>tipo_documento_id</rename>
+        <rename>tipo_id</rename>
         <default>0</default>
         <type>Integer</type>
       </value>
@@ -1521,8 +1569,8 @@ if(Documento.indexOf('http') == -1){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>64</yloc>
+      <xloc>736</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1539,19 +1587,19 @@ if(Documento.indexOf('http') == -1){
     </partitioning>
     <field_to_use>Tipo</field_to_use>
     <target_field />
-    <non_match_default>IND</non_match_default>
+    <non_match_default />
     <fields>
-      <field>
-        <source_value>lei</source_value>
-        <target_value>LEI</target_value>
-      </field>
       <field>
         <source_value>resolucao</source_value>
         <target_value>RES</target_value>
       </field>
       <field>
-        <source_value>parecer</source_value>
-        <target_value>PAR</target_value>
+        <source_value>portaria</source_value>
+        <target_value>POR</target_value>
+      </field>
+      <field>
+        <source_value>lei</source_value>
+        <target_value>LEI</target_value>
       </field>
     </fields>
     <attributes />
@@ -1563,23 +1611,23 @@ if(Documento.indexOf('http') == -1){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>128</yloc>
+      <xloc>48</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>ceeMG.csv</name>
+    <name>ceeSE.csv</name>
     <type>CsvInput</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/csv/ceemg-v2.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/csv/ceese.csv</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -1587,7 +1635,7 @@ if(Documento.indexOf('http') == -1){
     <enclosure>"</enclosure>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
-    <lazy_conversion>Y</lazy_conversion>
+    <lazy_conversion>N</lazy_conversion>
     <add_filename_result>N</add_filename_result>
     <parallel>Y</parallel>
     <newline_possible>N</newline_possible>
@@ -1600,7 +1648,7 @@ if(Documento.indexOf('http') == -1){
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>22</length>
+        <length>184</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1611,9 +1659,9 @@ if(Documento.indexOf('http') == -1){
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>82</length>
+        <length>50</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Tipo</name>
@@ -1622,31 +1670,9 @@ if(Documento.indexOf('http') == -1){
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>9</length>
+        <length>65</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Numero</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Data</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Documento</name>
@@ -1655,9 +1681,9 @@ if(Documento.indexOf('http') == -1){
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>86</length>
+        <length>98</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Titulo</name>
@@ -1666,7 +1692,40 @@ if(Documento.indexOf('http') == -1){
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>48</length>
+        <length>145</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>Numero</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>Data</name>
+        <type>Date</type>
+        <format>yyyy-MM-dd</format>
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>Ementa</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1680,8 +1739,8 @@ if(Documento.indexOf('http') == -1){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>240</yloc>
+      <xloc>48</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
