@@ -88,7 +88,7 @@ for url in urls:
             if(len(ano) == 2):
                 ano = '19'+ano
 
-            data = ano+'-01-01'
+            data = ano+'-12-31'
 
             id = conselho + '-' + tipo + '-' + str(i)
             i = i + 1
