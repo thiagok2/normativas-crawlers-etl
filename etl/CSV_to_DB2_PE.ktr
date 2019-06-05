@@ -464,8 +464,8 @@
     <access>Native</access>
     <database>normativas</database>
     <port>5432</port>
-    <username>normativas</username>
-    <password>Encrypted 2be98afa6598398a9f813bd74f5a5fcf7</password>
+    <username>${USER_DATABASE}</username>
+    <password>${PASSWORD_DATABASE}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -1617,6 +1617,45 @@ NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/
     </GUI>
   </step>
   <step>
+    <name>Strings cut</name>
+    <type>StringCut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>id_original_extrator</in_stream_name>
+        <out_stream_name />
+        <cut_from>0</cut_from>
+        <cut_to>20</cut_to>
+      </field>
+      <field>
+        <in_stream_name>numero</in_stream_name>
+        <out_stream_name />
+        <cut_from>0</cut_from>
+        <cut_to>20</cut_to>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>928</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Tipo Documento</name>
     <type>DBLookup</type>
     <description />
@@ -1854,45 +1893,6 @@ NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/
     <GUI>
       <xloc>48</xloc>
       <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Strings cut</name>
-    <type>StringCut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>id_original_extrator</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>20</cut_to>
-      </field>
-      <field>
-        <in_stream_name>numero</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>20</cut_to>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>928</xloc>
-      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
