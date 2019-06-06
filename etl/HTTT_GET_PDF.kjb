@@ -20,7 +20,7 @@
     <database>normativas</database>
     <port>5432</port>
     <username>normativas</username>
-    <password>Encrypted 2be98afa6598398a9f813bd74f5a5fcf7</password>
+    <password>${PASSWORD_DATABASE}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -376,7 +376,7 @@
       <upload_fieldname />
       <dest_fieldname />
       <username />
-      <password>Encrypted </password>
+      <password>${PASSWORD_DATABASE}</password>
       <proxy_host />
       <proxy_port />
       <non_proxy_hosts />
