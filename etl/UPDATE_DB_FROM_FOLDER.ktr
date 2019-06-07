@@ -663,7 +663,7 @@
     </partitioning>
     <from>Table input</from>
     <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
+    <preserve_memory>N</preserve_memory>
     <sorted_list>N</sorted_list>
     <integer_pair>N</integer_pair>
     <lookup>

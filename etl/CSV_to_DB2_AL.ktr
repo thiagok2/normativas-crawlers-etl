@@ -437,8 +437,8 @@
   <notepads>
     <notepad>
       <note>AL</note>
-      <xloc>0</xloc>
-      <yloc>0</yloc>
+      <xloc>48</xloc>
+      <yloc>32</yloc>
       <width>49</width>
       <heigth>49</heigth>
       <fontname>Ubuntu</fontname>
@@ -580,7 +580,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>ceesp.csv</from>
+      <from>ceeal.csv</from>
       <to>Get variables</to>
       <enabled>Y</enabled>
     </hop>
@@ -1859,7 +1859,7 @@ Alert(str2date("22.02.2008 23:23:01","dd.MM.yyyy HH:mm:ss","DE", "EST"));</jsScr
     </GUI>
   </step>
   <step>
-    <name>ceesp.csv</name>
+    <name>ceeal.csv</name>
     <type>CsvInput</type>
     <description />
     <distribute>Y</distribute>

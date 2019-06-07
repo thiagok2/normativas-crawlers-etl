@@ -1,0 +1,1296 @@
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=512m; support was removed in 8.0
+20:30:13,781 INFO  [KarafBoot] Checking to see if org.pentaho.clean.karaf.cache is enabled
+20:30:13,872 INFO  [KarafInstance] 
+*******************************************************************************
+*** Karaf Instance Number: 1 at /home/thiago/desenv/pentaho/pdi-ce-8.2.0.0- ***
+***   342/data-integration/./system/karaf/caches/kitchen/data-1             ***
+*** FastBin Provider Port:52901                                             ***
+*** Karaf Port:8802                                                         ***
+*** OSGI Service Port:9051                                                  ***
+*******************************************************************************
+jun 05, 2019 8:30:14 PM org.apache.karaf.main.Main$KarafLockCallback lockAquired
+INFORMAÇÕES: Lock acquired. Setting startlevel to 100
+2019/06/05 20:30:14 - Kitchen - Start of run.
+2019-06-05 20:30:19.147:INFO:oejs.Server:jetty-8.1.15.v20140411
+2019-06-05 20:30:19.220:INFO:oejs.AbstractConnector:Started NIOSocketConnectorWrapper@0.0.0.0:9051
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/blueprint/core
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/configuration/beans
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/configuration/parameterized-types
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/configuration/security
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://schemas.xmlsoap.org/wsdl/
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://www.w3.org/2005/08/addressing
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://schemas.xmlsoap.org/ws/2004/08/addressing
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-management (195) [org.apache.cxf.management.InstrumentationManager]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-wsdl (198) [org.apache.cxf.wsdl.WSDLManager]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-bindings-xml (200) [org.apache.cxf.binding.xml.XMLBindingFactory, org.apache.cxf.binding.xml.wsdl11.XMLWSDLExtensionLoader]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-bindings-soap (201) [org.apache.cxf.binding.soap.SoapBindingFactory, org.apache.cxf.binding.soap.SoapTransportFactory]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/blueprint/bindings/soap
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-transports-http (202) [org.apache.cxf.transport.http.HTTPTransportFactory, org.apache.cxf.transport.http.HTTPWSDLExtensionLoader, org.apache.cxf.transport.http.policy.HTTPClientAssertionBuilder, org.apache.cxf.transport.http.policy.HTTPServerAssertionBuilder, org.apache.cxf.transport.http.policy.NoOpPolicyInterceptorProvider]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-ws-policy (220) [org.apache.cxf.ws.policy.PolicyEngine, org.apache.cxf.policy.PolicyDataEngine, org.apache.cxf.ws.policy.AssertionBuilderRegistry, org.apache.cxf.ws.policy.PolicyInterceptorProviderRegistry, org.apache.cxf.ws.policy.PolicyBuilder, org.apache.cxf.ws.policy.PolicyAnnotationListener, org.apache.cxf.ws.policy.attachment.ServiceModelPolicyProvider, org.apache.cxf.ws.policy.attachment.external.DomainExpressionBuilderRegistry, org.apache.cxf.ws.policy.attachment.external.EndpointReferenceDomainExpressionBuilder, org.apache.cxf.ws.policy.attachment.external.URIDomainExpressionBuilder, org.apache.cxf.ws.policy.attachment.wsdl11.Wsdl11AttachmentPolicyProvider, org.apache.cxf.ws.policy.mtom.MTOMAssertionBuilder, org.apache.cxf.ws.policy.mtom.MTOMPolicyInterceptorProvider]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/transports/http/configuration
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/blueprint/simple
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-frontend-jaxws (204) [org.apache.cxf.jaxws.context.WebServiceContextResourceResolver]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/blueprint/jaxws
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/blueprint/jaxrs
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/blueprint/jaxrs-client
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/binding/coloc
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-transports-local (216) [org.apache.cxf.transport.local.LocalTransportFactory]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-bindings-object (217) [org.apache.cxf.binding.object.ObjectBindingFactory]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/blueprint/binding/object
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/policy
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://www.w3.org/ns/ws-policy
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://www.w3.org/2006/07/ws-policy
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://schemas.xmlsoap.org/ws/2004/09/policy
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://www.w3.org/2000/09/xmldsig#
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-ws-addr (237) [org.apache.cxf.ws.addressing.policy.AddressingAssertionBuilder, org.apache.cxf.ws.addressing.policy.UsingAddressingAssertionBuilder, org.apache.cxf.ws.addressing.policy.AddressingPolicyInterceptorProvider, org.apache.cxf.ws.addressing.impl.AddressingWSDLExtensionLoader, org.apache.cxf.ws.addressing.WSAddressingFeature$WSAddressingFeatureApplier, org.apache.cxf.ws.addressing.MAPAggregator$MAPAggregatorLoader]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/ws/addressing
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-ws-security (239) [org.apache.cxf.ws.security.policy.WSSecurityPolicyLoader, org.apache.cxf.ws.security.cache.CacheCleanupListener]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-ws-rm (241) [org.apache.cxf.ws.rm.RMManager, org.apache.cxf.ws.rm.policy.RMPolicyInterceptorProvider, org.apache.cxf.ws.rm.policy.RM10AssertionBuilder, org.apache.cxf.ws.rm.policy.RM12AssertionBuilder, org.apache.cxf.ws.rm.policy.WSRMP12PolicyLoader, org.apache.cxf.ws.rm.policy.MC11PolicyLoader, org.apache.cxf.ws.rm.policy.RSPPolicyLoader]
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://cxf.apache.org/ws/rm/manager
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer register
+INFORMAÇÕES: Registered blueprint namespace handler for http://schemas.xmlsoap.org/ws/2005/02/rm/policy
+jun 05, 2019 8:30:20 PM org.apache.cxf.bus.osgi.CXFExtensionBundleListener addExtensions
+INFORMAÇÕES: Adding the extensions from bundle org.apache.cxf.cxf-rt-javascript (242) [org.apache.cxf.javascript.JavascriptServerListener]
+jun 05, 2019 8:30:20 PM org.pentaho.caching.impl.PentahoCacheManagerFactory$RegistrationHandler$1 onSuccess
+INFORMAÇÕES: New Caching Service registered
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/thiago/desenv/pentaho/pdi-ce-8.2.0.0-342/data-integration/launcher/../lib/slf4j-log4j12-1.7.7.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/thiago/desenv/pentaho/pdi-ce-8.2.0.0-342/data-integration/plugins/pentaho-big-data-plugin/lib/slf4j-log4j12-1.7.7.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+2019/06/05 20:30:23 - AL - Início da execução do job
+2019/06/05 20:30:24 - AL - Starting entry [Set variables]
+2019/06/05 20:30:24 - AL - Starting entry [Mail Start]
+jun 05, 2019 8:30:24 PM org.apache.cxf.endpoint.ServerImpl initDestination
+INFORMAÇÕES: Setting the server's publish address to be /lineage
+jun 05, 2019 8:30:24 PM org.apache.cxf.endpoint.ServerImpl initDestination
+INFORMAÇÕES: Setting the server's publish address to be /i18n
+jun 05, 2019 8:30:25 PM org.apache.cxf.endpoint.ServerImpl initDestination
+INFORMAÇÕES: Setting the server's publish address to be /marketplace
+2019/06/05 20:30:30 - AL - Starting entry [CSV_to_DB_AL]
+2019/06/05 20:30:30 - Carte - Installing timer to purge stale objects after 1440 minutes.
+2019/06/05 20:30:30 - CSV_to_DB_AL - Using run configuration [Pentaho local]
+2019/06/05 20:30:30 - CSV_to_DB_AL - Using legacy execution engine
+2019/06/05 20:30:30 - CSV_to_DB2_AL - Expedindo in�cio para transforma��o [CSV_to_DB2_AL]
+2019/06/05 20:30:31 - Arquivos baixados.0 - Finished processing (I=0, O=0, R=0, W=6, U=0, E=0)
+2019/06/05 20:30:31 - ceeal.csv.0 - Header row skipped in file 'file:///home/thiago/desenv/Normativas/normativas-crawlers-etl/etl/csv/ceeALv2.csv'
+2019/06/05 20:30:31 - ceeal.csv.0 - Finished processing (I=38, O=0, R=0, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Get variables.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Add Constants.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Filter rows.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - JS1.0 - Optimization level set to 9.
+2019/06/05 20:30:31 - JS2.0 - Optimization level set to 9.
+2019/06/05 20:30:31 - JS1.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - JS2.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - URL.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Lookup File.0 - Finished processing (I=0, O=0, R=43, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Not Exists.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Value mapper.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Tipo Documento.0 - Finished processing (I=16, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - LookupUnidade.0 - Finished processing (I=29, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - DB Join extrator.0 - Finished processing (I=37, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Select values.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Strings cut.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - Insert / update.0 - Finished processing (I=37, O=37, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:31 - AL - Starting entry [DB_to_Donwload]
+2019/06/05 20:30:31 - DB_to_Donwload - Using run configuration [Pentaho local]
+2019/06/05 20:30:31 - DB_to_Donwload - Using legacy execution engine
+2019/06/05 20:30:31 - DB_to_Donwload - Expedindo in�cio para transforma��o [DB_to_Donwload]
+2019/06/05 20:30:32 - Table input.0 - Finished reading query, closing connection.
+2019/06/05 20:30:32 - Table input.0 - Finished processing (I=37, O=0, R=0, W=37, U=0, E=0)
+2019/06/05 20:30:32 - Get variables.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:30:33 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:33 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:33 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/RESOLUCaO%20No%20145-2018%20-%20Normas%20de%20ingresso%20de%20novos%20conselheiros.pdf
+2019/06/05 20:30:33 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:44 BRT 2019.
+2019/06/05 20:30:34 - HTTP - Finished writing 110584 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_RESOLUCaO_No_145_18__Normas_de_ingresso_de_novos_conselheiros.pdf]
+2019/06/05 20:30:34 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:34 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:34 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:34 - Download - Documento CEE-AL_RESOLUCaO_No_145_18__Normas_de_ingresso_de_novos_conselheiros.pdf baixado.
+2019/06/05 20:30:34 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:34 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:34 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:34 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:34 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:34 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:34 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/RESOLUCaO%20No.%20050.2018%20-%20Regularizacao%20de%20Jovens%20e%20Adultos%20no%20ambito%20do%20Sistema%20Estadual%20de%20Ensino%20Alagoas.pdf
+2019/06/05 20:30:34 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:46 BRT 2019.
+2019/06/05 20:30:35 - HTTP - Finished writing 221503 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_RESOLUCaO_No._050._18__Regularizacao_de_Jovens_e_Adultos_no_ambito_do_Sistema_Estadual_de_Ensino_Alagoas.pdf]
+2019/06/05 20:30:35 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:35 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:35 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:35 - Download - Documento CEE-AL_RESOLUCaO_No._050._18__Regularizacao_de_Jovens_e_Adultos_no_ambito_do_Sistema_Estadual_de_Ensino_Alagoas.pdf baixado.
+2019/06/05 20:30:35 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:35 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:35 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:35 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:35 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:35 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:35 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/RESOLUCaO%20No%201-2018%20-%20NOVA%20REDACaO%20ART%203%20DA%20RESOLUCaO%20No%2018-2017.pdf
+2019/06/05 20:30:35 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 14:25:39 BRT 2019.
+2019/06/05 20:30:35 - HTTP - Finished writing 97240 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_RESOLUCaO_No_1_18__NOVA_REDACaO_ART_3_DA_RESOLUCaO_No_18_17.pdf]
+2019/06/05 20:30:35 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:35 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:35 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:35 - Download - Documento CEE-AL_RESOLUCaO_No_1_18__NOVA_REDACaO_ART_3_DA_RESOLUCaO_No_18_17.pdf baixado.
+2019/06/05 20:30:35 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:35 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:35 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:35 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:36 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:36 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:36 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/RESOLUCaO%20no%2018.2017%202013%20CEE-AL%20-Processos%20remanescentes%20no%20ambito%20das%20Camaras%20de%20Educacao%20Basica%20e%20de%20Educacao%20Profissional.pdf
+2019/06/05 20:30:36 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:48 BRT 2019.
+2019/06/05 20:30:36 - HTTP - Finished writing 100977 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_RESOLUCaO_no_18._17__13_CEEAL_Processos_remanescentes_no_ambito_das_Camaras_de_Educacao_Basica_e_de_Educacao_Profissional.pdf]
+2019/06/05 20:30:36 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:36 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:36 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:36 - Download - Documento CEE-AL_RESOLUCaO_no_18._17__13_CEEAL_Processos_remanescentes_no_ambito_das_Camaras_de_Educacao_Basica_e_de_Educacao_Profissional.pdf baixado.
+2019/06/05 20:30:36 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:36 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:36 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:36 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:37 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:37 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:37 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/Res%20no%2002-2014%20Educacao%20nas%20Prisoes%20Corrigida.pdf
+2019/06/05 20:30:37 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:49 BRT 2019.
+2019/06/05 20:30:37 - HTTP - Finished writing 99428 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Res_no_02_14_Educacao_nas_Prisoes_Corrigida.pdf]
+2019/06/05 20:30:38 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:38 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:38 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:38 - Download - Documento CEE-AL_Res_no_02_14_Educacao_nas_Prisoes_Corrigida.pdf baixado.
+2019/06/05 20:30:38 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:38 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:38 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:38 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:38 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:38 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:38 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/RESOLUCaO%2028-2016%20CEB.CEP-CEE.AL.pdf
+2019/06/05 20:30:38 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:49 BRT 2019.
+2019/06/05 20:30:38 - HTTP - Finished writing 72931 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_RESOLUCaO_28_16_CEB.CEPCEE.AL.pdf]
+2019/06/05 20:30:38 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:38 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:38 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:38 - Download - Documento CEE-AL_RESOLUCaO_28_16_CEB.CEPCEE.AL.pdf baixado.
+2019/06/05 20:30:38 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:38 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:38 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:38 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:39 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:39 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:39 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/2.%20Resoluaa7aa3o%20Normativa%20de%20Ed%20do%20Campo.pdf
+2019/06/05 20:30:39 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:50 BRT 2019.
+2019/06/05 20:30:39 - HTTP - Finished writing 68050 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_2._Resoluaa7aa3o_Normativa_de_Ed_do_Campo.pdf]
+2019/06/05 20:30:39 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:39 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:39 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:39 - Download - Documento CEE-AL_2._Resoluaa7aa3o_Normativa_de_Ed_do_Campo.pdf baixado.
+2019/06/05 20:30:39 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:39 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:39 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:39 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:40 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:40 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:40 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/Resol%20no%2007%20de%202014-CEE-AL-Ciclos%20Avaliativos.pdf
+2019/06/05 20:30:40 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:50 BRT 2019.
+2019/06/05 20:30:40 - HTTP - Finished writing 58190 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Resol_no_07_de__14CEEALCiclos_Avaliativos.pdf]
+2019/06/05 20:30:40 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:40 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:40 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:40 - Download - Documento CEE-AL_Resol_no_07_de__14CEEALCiclos_Avaliativos.pdf baixado.
+2019/06/05 20:30:40 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:40 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:40 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:40 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:41 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:41 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:41 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/Resolucao%20%20n%20%2001%20%20-%20%20Audiencias%20Publicas.pdf
+2019/06/05 20:30:41 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:50 BRT 2019.
+2019/06/05 20:30:42 - HTTP - Finished writing 145507 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Resolucao__n__01____Audiencias_Publicas.pdf]
+2019/06/05 20:30:42 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:42 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:42 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:42 - Download - Documento CEE-AL_Resolucao__n__01____Audiencias_Publicas.pdf baixado.
+2019/06/05 20:30:42 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:42 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:42 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:42 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:42 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:42 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:42 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/Resol%20no%2006%20de%202014-CEE-AL-Regulacao%20das%20IES.pdf
+2019/06/05 20:30:42 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:51 BRT 2019.
+2019/06/05 20:30:42 - HTTP - Finished writing 220315 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Resol_no_06_de__14CEEALRegulacao_das_IES.pdf]
+2019/06/05 20:30:42 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:42 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:42 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:42 - Download - Documento CEE-AL_Resol_no_06_de__14CEEALRegulacao_das_IES.pdf baixado.
+2019/06/05 20:30:42 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:42 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:42 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:42 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:43 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:43 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:43 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/RESOLUCaO%20No%20001%20situacao%20escolar%20-1.pdf
+2019/06/05 20:30:43 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:51 BRT 2019.
+2019/06/05 20:30:43 - HTTP - Finished writing 62597 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_RESOLUCaO_No_001_situacao_escolar_1.pdf]
+2019/06/05 20:30:43 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:43 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:43 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:43 - Download - Documento CEE-AL_RESOLUCaO_No_001_situacao_escolar_1.pdf baixado.
+2019/06/05 20:30:43 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:43 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:43 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:43 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:44 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:44 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:44 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resolucao%2053%20de%202010.pdf
+2019/06/05 20:30:44 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:53 BRT 2019.
+2019/06/05 20:30:44 - HTTP - Finished writing 82264 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resolucao_53_de__10.pdf]
+2019/06/05 20:30:44 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:44 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:44 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:44 - Download - Documento CEE-AL_resolucao_53_de__10.pdf baixado.
+2019/06/05 20:30:44 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:44 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:44 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:44 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:45 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:45 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:45 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_10_2007.pdf
+2019/06/05 20:30:45 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:53 BRT 2019.
+2019/06/05 20:30:45 - HTTP - Finished writing 117018 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol10_07.pdf]
+2019/06/05 20:30:45 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:45 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:45 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:45 - Download - Documento CEE-AL_resol10_07.pdf baixado.
+2019/06/05 20:30:45 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:45 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:45 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:45 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:46 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:46 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:46 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/RESOLUCaO%20etnico%2082%202010.pdf
+2019/06/05 20:30:46 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:56 BRT 2019.
+2019/06/05 20:30:47 - HTTP - Finished writing 215162 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_RESOLUCaO_etnico_82__10.pdf]
+2019/06/05 20:30:47 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:47 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:47 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:47 - Download - Documento CEE-AL_RESOLUCaO_etnico_82__10.pdf baixado.
+2019/06/05 20:30:47 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:47 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:47 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:47 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:47 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:47 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:47 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_08_2007.pdf
+2019/06/05 20:30:47 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:58 BRT 2019.
+2019/06/05 20:30:47 - HTTP - Finished writing 125728 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol08_07.pdf]
+2019/06/05 20:30:47 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:47 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:47 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:47 - Download - Documento CEE-AL_resol08_07.pdf baixado.
+2019/06/05 20:30:47 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:47 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:47 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:47 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:48 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:48 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:48 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_07_2007.pdf
+2019/06/05 20:30:48 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:58 BRT 2019.
+2019/06/05 20:30:48 - HTTP - Finished writing 52475 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol07_07.pdf]
+2019/06/05 20:30:48 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:48 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:48 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:48 - Download - Documento CEE-AL_resol07_07.pdf baixado.
+2019/06/05 20:30:48 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:48 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:48 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:48 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:49 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:49 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:49 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_55_2002.pdf
+2019/06/05 20:30:49 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:59 BRT 2019.
+2019/06/05 20:30:49 - HTTP - Finished writing 10667 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol55_02.pdf]
+2019/06/05 20:30:49 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:49 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:49 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:49 - Download - Documento CEE-AL_resol55_02.pdf baixado.
+2019/06/05 20:30:49 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:49 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:49 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:49 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:50 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:50 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:50 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_07_2003.pdf
+2019/06/05 20:30:50 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 15:41:20 BRT 2019.
+2019/06/05 20:30:50 - HTTP - Finished writing 12637 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol07_03.pdf]
+2019/06/05 20:30:50 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:50 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:50 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:50 - Download - Documento CEE-AL_resol07_03.pdf baixado.
+2019/06/05 20:30:50 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:50 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:50 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:50 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:51 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:51 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:51 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/RESOLUCaO%20025-2003%20-%20CALENDARIO%20ESCOLAR%20DO%20SISTEMA%20ESTADUAL%20DE%20ENSINO%20DE%20ALAGOAS.pdf
+2019/06/05 20:30:51 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:59 BRT 2019.
+2019/06/05 20:30:51 - HTTP - Finished writing 58936 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_RESOLUCaO_025_03__CALENDARIO_ESCOLAR_DO_SISTEMA_ESTADUAL_DE_ENSINO_DE_ALAGOAS.pdf]
+2019/06/05 20:30:51 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:51 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:51 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:51 - Download - Documento CEE-AL_RESOLUCaO_025_03__CALENDARIO_ESCOLAR_DO_SISTEMA_ESTADUAL_DE_ENSINO_DE_ALAGOAS.pdf baixado.
+2019/06/05 20:30:51 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:51 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:51 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:51 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:52 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:52 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:52 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_51_2002%20-2.pdf
+2019/06/05 20:30:52 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:19:59 BRT 2019.
+2019/06/05 20:30:52 - HTTP - Finished writing 135592 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol51_02_2.pdf]
+2019/06/05 20:30:52 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:52 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:52 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:52 - Download - Documento CEE-AL_resol51_02_2.pdf baixado.
+2019/06/05 20:30:52 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:52 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:52 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:52 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:53 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:53 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:53 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/Res%2051%20anexos.rar
+2019/06/05 20:30:53 - HTTP - Resource type: application/rar, last modified on: Wed Jun 05 20:20:01 BRT 2019.
+2019/06/05 20:30:53 - HTTP - Finished writing 149791 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Res_51_anexos.rar]
+2019/06/05 20:30:53 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:53 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:53 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:53 - Download - Documento CEE-AL_Res_51_anexos.rar baixado.
+2019/06/05 20:30:53 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:53 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:53 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:53 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:54 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:54 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:54 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_48_2002.pdf
+2019/06/05 20:30:54 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:02 BRT 2019.
+2019/06/05 20:30:54 - HTTP - Finished writing 12811 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol48_02.pdf]
+2019/06/05 20:30:54 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:54 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:54 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:54 - Download - Documento CEE-AL_resol48_02.pdf baixado.
+2019/06/05 20:30:54 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:54 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:54 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:54 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:55 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:55 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:55 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_03_2002.pdf
+2019/06/05 20:30:55 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 14:51:56 BRT 2019.
+2019/06/05 20:30:55 - HTTP - Finished writing 14569 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol03_02.pdf]
+2019/06/05 20:30:55 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:55 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:55 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:55 - Download - Documento CEE-AL_resol03_02.pdf baixado.
+2019/06/05 20:30:55 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:55 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:55 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:55 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:56 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:56 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:56 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/resolucoes-cee/resol_18_2002.pdf
+2019/06/05 20:30:56 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:03 BRT 2019.
+2019/06/05 20:30:56 - HTTP - Finished writing 39816 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_resol18_02.pdf]
+2019/06/05 20:30:56 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:56 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:56 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:56 - Download - Documento CEE-AL_resol18_02.pdf baixado.
+2019/06/05 20:30:56 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:56 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:56 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:56 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:57 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:57 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:57 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/Parecer%20No.%2070.2017-%20Processos%20Remanescentes.pdf
+2019/06/05 20:30:57 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:03 BRT 2019.
+2019/06/05 20:30:57 - HTTP - Finished writing 140508 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Parecer_No._70._17_Processos_Remanescentes.pdf]
+2019/06/05 20:30:57 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:57 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:57 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:57 - Download - Documento CEE-AL_Parecer_No._70._17_Processos_Remanescentes.pdf baixado.
+2019/06/05 20:30:57 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:57 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:57 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:57 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:58 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:58 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:58 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/VALIDACaO%20DE%20ESTUDOS.pdf
+2019/06/05 20:30:58 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:04 BRT 2019.
+2019/06/05 20:30:58 - HTTP - Finished writing 148555 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_VALIDACaO_DE_ESTUDOS.pdf]
+2019/06/05 20:30:58 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:58 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:58 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:58 - Download - Documento CEE-AL_VALIDACaO_DE_ESTUDOS.pdf baixado.
+2019/06/05 20:30:58 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:58 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:58 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:58 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:30:59 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:30:59 - HTTP - Start of HTTP job entry.
+2019/06/05 20:30:59 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/PARECER%2001-2016%20CEB.pdf
+2019/06/05 20:30:59 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:04 BRT 2019.
+2019/06/05 20:30:59 - HTTP - Finished writing 144627 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_PARECER_01_16_CEB.pdf]
+2019/06/05 20:30:59 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:30:59 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:30:59 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:30:59 - Download - Documento CEE-AL_PARECER_01_16_CEB.pdf baixado.
+2019/06/05 20:30:59 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:30:59 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:30:59 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:30:59 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:00 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:00 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:00 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/PARECER%20da%20EPT%20no%20158.2016%20Reg.%20oferta%20de%20cursos%20programas%20de%20educacao%20rpofissional%20e%20tecnologica%20no%20sistema%20estadual%20de%20ensino%20de%20alagoas.pdf
+2019/06/05 20:31:00 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:05 BRT 2019.
+2019/06/05 20:31:01 - HTTP - Finished writing 362248 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_PARECER_da_EPT_no_158._16_Reg._oferta_de_cursos_programas_de_educacao_rpofissional_e_tecnologica_no_sistema_estadual_de_ensino_de_alagoas.pdf]
+2019/06/05 20:31:01 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:01 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:01 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:01 - Download - Documento CEE-AL_PARECER_da_EPT_no_158._16_Reg._oferta_de_cursos_programas_de_educacao_rpofissional_e_tecnologica_no_sistema_estadual_de_ensino_de_alagoas.pdf baixado.
+2019/06/05 20:31:01 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:01 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:01 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:01 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:01 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:01 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:01 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/1.%20Parecer%20de%20Ed%20do%20Campo%20para%20Pleno%20de%2011%20de%20nov.pdf
+2019/06/05 20:31:01 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:05 BRT 2019.
+2019/06/05 20:31:02 - HTTP - Finished writing 290544 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_1._Parecer_de_Ed_do_Campo_para_Pleno_de_11_de_nov.pdf]
+2019/06/05 20:31:02 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:02 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:02 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:02 - Download - Documento CEE-AL_1._Parecer_de_Ed_do_Campo_para_Pleno_de_11_de_nov.pdf baixado.
+2019/06/05 20:31:02 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:02 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:02 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:02 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:02 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:02 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:02 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/Parecer%20029.2014%20-CES-CEE.AL%20Educacao%20nas%20Prisoes.pdf
+2019/06/05 20:31:02 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:06 BRT 2019.
+2019/06/05 20:31:02 - HTTP - Finished writing 303922 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Parecer_029._14_CESCEE.AL_Educacao_nas_Prisoes.pdf]
+2019/06/05 20:31:02 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:02 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:02 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:02 - Download - Documento CEE-AL_Parecer_029._14_CESCEE.AL_Educacao_nas_Prisoes.pdf baixado.
+2019/06/05 20:31:02 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:02 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:02 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:02 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:03 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:03 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:03 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/parecer%20etnico%20359%202010.pdf
+2019/06/05 20:31:03 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:06 BRT 2019.
+2019/06/05 20:31:03 - HTTP - Finished writing 421614 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_parecer_etnico_359__10.pdf]
+2019/06/05 20:31:03 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:03 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:03 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:03 - Download - Documento CEE-AL_parecer_etnico_359__10.pdf baixado.
+2019/06/05 20:31:03 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:03 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:03 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:03 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:04 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:04 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:04 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/Parecer115%202010%20nome%20social%20das%20travestis.pdf
+2019/06/05 20:31:04 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:07 BRT 2019.
+2019/06/05 20:31:04 - HTTP - Finished writing 175213 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Parecer115__10_nome_social_das_travestis.pdf]
+2019/06/05 20:31:04 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:04 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:04 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:04 - Download - Documento CEE-AL_Parecer115__10_nome_social_das_travestis.pdf baixado.
+2019/06/05 20:31:04 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:04 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:04 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:04 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:05 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:05 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:05 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/Parecer%20no%20316-2009-CEE-CEP-Implanta%20o%20SISTEC-MEC%20em%20Alagoas%20e%20da%20outras%20providencias.pdf
+2019/06/05 20:31:05 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:07 BRT 2019.
+2019/06/05 20:31:05 - HTTP - Finished writing 163351 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Parecer_no_316_09CEECEPImplanta_o_SISTECMEC_em_Alagoas_e_da_outras_providencias.pdf]
+2019/06/05 20:31:05 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:05 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:05 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:05 - Download - Documento CEE-AL_Parecer_no_316_09CEECEPImplanta_o_SISTECMEC_em_Alagoas_e_da_outras_providencias.pdf baixado.
+2019/06/05 20:31:05 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:05 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:05 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:05 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:06 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:06 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:06 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/Parecer%20no%20383-2009-CEE-CEP-Adota%20o%20Catalogo%20de%20Cursos%20Tecnicos%20do%20MEC.pdf
+2019/06/05 20:31:06 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:08 BRT 2019.
+2019/06/05 20:31:06 - HTTP - Finished writing 160948 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Parecer_no_383_09CEECEPAdota_o_Catalogo_de_Cursos_Tecnicos_do_MEC.pdf]
+2019/06/05 20:31:06 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:06 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:06 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:06 - Download - Documento CEE-AL_Parecer_no_383_09CEECEPAdota_o_Catalogo_de_Cursos_Tecnicos_do_MEC.pdf baixado.
+2019/06/05 20:31:06 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:06 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:06 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:06 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:07 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:07 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:07 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/PARECER%200642002CEE.AL.pdf
+2019/06/05 20:31:07 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:09 BRT 2019.
+2019/06/05 20:31:07 - HTTP - Finished writing 258290 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_PARECER_064_02CEE.AL.pdf]
+2019/06/05 20:31:07 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:07 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:07 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:07 - Download - Documento CEE-AL_PARECER_064_02CEE.AL.pdf baixado.
+2019/06/05 20:31:07 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:07 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:07 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:07 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:08 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:08 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:08 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/Parecer%20no%20577-2004-CEE-CEP-Regulamenta%20a%20oferta%20do%20Ensino%20Normal%20em%20Alagoas.pdf
+2019/06/05 20:31:08 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:10 BRT 2019.
+2019/06/05 20:31:08 - HTTP - Finished writing 218556 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Parecer_no_577_04CEECEPRegulamenta_a_oferta_do_Ensino_Normal_em_Alagoas.pdf]
+2019/06/05 20:31:08 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:08 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:08 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:08 - Download - Documento CEE-AL_Parecer_no_577_04CEECEPRegulamenta_a_oferta_do_Ensino_Normal_em_Alagoas.pdf baixado.
+2019/06/05 20:31:08 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:08 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:08 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:08 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:09 - HTTT_GET_PDF - Starting entry [HTTP]
+2019/06/05 20:31:09 - HTTP - Start of HTTP job entry.
+2019/06/05 20:31:09 - HTTP - Connecting to URL: http://cee.al.gov.br/legislacao/atos-normativos/pareceres-normativos/Parecer%20nb0%20151-Escolas%20Indigenas.pdf
+2019/06/05 20:31:09 - Delay row.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:09 - HTTP - Resource type: application/pdf, last modified on: Wed Jun 05 20:20:11 BRT 2019.
+2019/06/05 20:31:09 - HTTP - Finished writing 221319 bytes to result file [/var/www/normativas-v02/storage/app/public/uploads//CEE-AL_Parecer_nb0_151Escolas_Indigenas.pdf]
+2019/06/05 20:31:09 - HTTT_GET_PDF - Starting entry [Checks if files exist]
+2019/06/05 20:31:09 - HTTT_GET_PDF - Starting entry [SQL]
+2019/06/05 20:31:09 - HTTT_GET_PDF - Starting entry [Write to log]
+2019/06/05 20:31:09 - Download - Documento CEE-AL_Parecer_nb0_151Escolas_Indigenas.pdf baixado.
+2019/06/05 20:31:09 - HTTT_GET_PDF - Finished job entry [Write to log] (result=[true])
+2019/06/05 20:31:09 - HTTT_GET_PDF - Finished job entry [SQL] (result=[true])
+2019/06/05 20:31:09 - HTTT_GET_PDF - Finished job entry [Checks if files exist] (result=[true])
+2019/06/05 20:31:09 - HTTT_GET_PDF - Finished job entry [HTTP] (result=[true])
+2019/06/05 20:31:09 - Get PDF Job.0 - Finished processing (I=0, O=0, R=37, W=111, U=0, E=0)
+2019/06/05 20:31:09 - results.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:09 - result rows.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:09 - result files.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:09 - AL - Starting entry [Updae_DB_Folder]
+2019/06/05 20:31:09 - Updae_DB_Folder - Using run configuration [Pentaho local]
+2019/06/05 20:31:09 - Updae_DB_Folder - Using legacy execution engine
+2019/06/05 20:31:09 - UPDATE_DB_FROM_FOLDER - Expedindo in�cio para transforma��o [UPDATE_DB_FROM_FOLDER]
+2019/06/05 20:31:09 - Get file names.0 - Finished processing (I=0, O=0, R=0, W=42, U=0, E=0)
+2019/06/05 20:31:09 - Table input.0 - Finished reading query, closing connection.
+2019/06/05 20:31:10 - Table input.0 - Finished processing (I=37, O=0, R=0, W=37, U=0, E=0)
+2019/06/05 20:31:10 - Stream lookup.0 - Finished processing (I=0, O=0, R=79, W=42, U=0, E=0)
+2019/06/05 20:31:10 - Filter Size 0.0 - Finished processing (I=0, O=0, R=42, W=42, U=0, E=0)
+2019/06/05 20:31:10 - UpdateFalhaDownload.0 - Finished reading query, closing connection.
+2019/06/05 20:31:10 - UpdateBaixado.0 - Finished reading query, closing connection.
+2019/06/05 20:31:10 - UpdateBaixado.0 - Finished processing (I=0, O=0, R=42, W=42, U=0, E=0)
+2019/06/05 20:31:10 - AL - Starting entry [Index_to_Elastic]
+2019/06/05 20:31:10 - Index_to_Elastic - Using run configuration [Pentaho local]
+2019/06/05 20:31:10 - Index_to_Elastic - Using legacy execution engine
+2019/06/05 20:31:10 - Indexar_to_Elastic - Expedindo in�cio para transforma��o [Indexar_to_Elastic]
+2019/06/05 20:31:10 - Table input.0 - Finished reading query, closing connection.
+2019/06/05 20:31:10 - Table input.0 - Finished processing (I=37, O=0, R=0, W=37, U=0, E=0)
+2019/06/05 20:31:10 - Get variables.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:10 - Calculator.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:12 - Write to log.0 - 
+2019/06/05 20:31:12 - Write to log.0 - ------------> Linenr 1------------------------------
+2019/06/05 20:31:12 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:12 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:12 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:12 - Write to log.0 - result: ${result}
+2019/06/05 20:31:12 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:12 - Write to log.0 - 
+2019/06/05 20:31:12 - Write to log.0 - 
+2019/06/05 20:31:12 - Write to log.0 - id = 717079
+2019/06/05 20:31:12 - Write to log.0 - arquivo = CEE-AL_RESOLUCaO_No_1_18__NOVA_REDACaO_ART_3_DA_RESOLUCaO_No_18_17.pdf
+2019/06/05 20:31:12 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717079/indexar
+2019/06/05 20:31:12 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_RESOLUCaO_No_1_18__NOVA_REDACaO_ART_3_DA_RESOLUCaO_No_18_17.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5152,"_primary_term":68}
+2019/06/05 20:31:12 - Write to log.0 - result_code = 200
+2019/06/05 20:31:12 - Write to log.0 - result_time = 545
+2019/06/05 20:31:12 - Write to log.0 - 
+2019/06/05 20:31:12 - Write to log.0 - ====================
+2019/06/05 20:31:13 - Write to log.0 - 
+2019/06/05 20:31:13 - Write to log.0 - ------------> Linenr 2------------------------------
+2019/06/05 20:31:13 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:13 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:13 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:13 - Write to log.0 - result: ${result}
+2019/06/05 20:31:13 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:13 - Write to log.0 - 
+2019/06/05 20:31:13 - Write to log.0 - 
+2019/06/05 20:31:13 - Write to log.0 - id = 717086
+2019/06/05 20:31:13 - Write to log.0 - arquivo = CEE-AL_Resol_no_06_de__14CEEALRegulacao_das_IES.pdf
+2019/06/05 20:31:13 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717086/indexar
+2019/06/05 20:31:13 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Resol_no_06_de__14CEEALRegulacao_das_IES.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5347,"_primary_term":68}
+2019/06/05 20:31:13 - Write to log.0 - result_code = 200
+2019/06/05 20:31:13 - Write to log.0 - result_time = 1358
+2019/06/05 20:31:13 - Write to log.0 - 
+2019/06/05 20:31:13 - Write to log.0 - ====================
+2019/06/05 20:31:14 - Write to log.0 - 
+2019/06/05 20:31:14 - Write to log.0 - ------------> Linenr 3------------------------------
+2019/06/05 20:31:14 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:14 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:14 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:14 - Write to log.0 - result: ${result}
+2019/06/05 20:31:14 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:14 - Write to log.0 - 
+2019/06/05 20:31:14 - Write to log.0 - 
+2019/06/05 20:31:14 - Write to log.0 - id = 717084
+2019/06/05 20:31:14 - Write to log.0 - arquivo = CEE-AL_Resol_no_07_de__14CEEALCiclos_Avaliativos.pdf
+2019/06/05 20:31:14 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717084/indexar
+2019/06/05 20:31:14 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Resol_no_07_de__14CEEALCiclos_Avaliativos.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5138,"_primary_term":68}
+2019/06/05 20:31:14 - Write to log.0 - result_code = 200
+2019/06/05 20:31:14 - Write to log.0 - result_time = 334
+2019/06/05 20:31:14 - Write to log.0 - 
+2019/06/05 20:31:14 - Write to log.0 - ====================
+2019/06/05 20:31:15 - Write to log.0 - 
+2019/06/05 20:31:15 - Write to log.0 - ------------> Linenr 4------------------------------
+2019/06/05 20:31:15 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:15 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:15 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:15 - Write to log.0 - result: ${result}
+2019/06/05 20:31:15 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:15 - Write to log.0 - 
+2019/06/05 20:31:15 - Write to log.0 - 
+2019/06/05 20:31:15 - Write to log.0 - id = 717081
+2019/06/05 20:31:15 - Write to log.0 - arquivo = CEE-AL_Res_no_02_14_Educacao_nas_Prisoes_Corrigida.pdf
+2019/06/05 20:31:15 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717081/indexar
+2019/06/05 20:31:15 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Res_no_02_14_Educacao_nas_Prisoes_Corrigida.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5317,"_primary_term":68}
+2019/06/05 20:31:15 - Write to log.0 - result_code = 200
+2019/06/05 20:31:15 - Write to log.0 - result_time = 535
+2019/06/05 20:31:15 - Write to log.0 - 
+2019/06/05 20:31:15 - Write to log.0 - ====================
+2019/06/05 20:31:15 - Write to log.0 - 
+2019/06/05 20:31:15 - Write to log.0 - ------------> Linenr 5------------------------------
+2019/06/05 20:31:15 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:15 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:15 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:15 - Write to log.0 - result: ${result}
+2019/06/05 20:31:15 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:15 - Write to log.0 - 
+2019/06/05 20:31:15 - Write to log.0 - 
+2019/06/05 20:31:15 - Write to log.0 - id = 717085
+2019/06/05 20:31:15 - Write to log.0 - arquivo = CEE-AL_Resolucao__n__01____Audiencias_Publicas.pdf
+2019/06/05 20:31:15 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717085/indexar
+2019/06/05 20:31:15 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Resolucao__n__01____Audiencias_Publicas.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5153,"_primary_term":68}
+2019/06/05 20:31:15 - Write to log.0 - result_code = 200
+2019/06/05 20:31:15 - Write to log.0 - result_time = 246
+2019/06/05 20:31:15 - Write to log.0 - 
+2019/06/05 20:31:15 - Write to log.0 - ====================
+2019/06/05 20:31:16 - Write to log.0 - 
+2019/06/05 20:31:16 - Write to log.0 - ------------> Linenr 6------------------------------
+2019/06/05 20:31:16 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:16 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:16 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:16 - Write to log.0 - result: ${result}
+2019/06/05 20:31:16 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:16 - Write to log.0 - 
+2019/06/05 20:31:16 - Write to log.0 - 
+2019/06/05 20:31:16 - Write to log.0 - id = 717083
+2019/06/05 20:31:16 - Write to log.0 - arquivo = CEE-AL_2._Resoluaa7aa3o_Normativa_de_Ed_do_Campo.pdf
+2019/06/05 20:31:16 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717083/indexar
+2019/06/05 20:31:16 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_2._Resoluaa7aa3o_Normativa_de_Ed_do_Campo.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5348,"_primary_term":68}
+2019/06/05 20:31:16 - Write to log.0 - result_code = 200
+2019/06/05 20:31:16 - Write to log.0 - result_time = 289
+2019/06/05 20:31:16 - Write to log.0 - 
+2019/06/05 20:31:16 - Write to log.0 - ====================
+2019/06/05 20:31:17 - Write to log.0 - 
+2019/06/05 20:31:17 - Write to log.0 - ------------> Linenr 7------------------------------
+2019/06/05 20:31:17 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:17 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:17 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:17 - Write to log.0 - result: ${result}
+2019/06/05 20:31:17 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:17 - Write to log.0 - 
+2019/06/05 20:31:17 - Write to log.0 - 
+2019/06/05 20:31:17 - Write to log.0 - id = 717082
+2019/06/05 20:31:17 - Write to log.0 - arquivo = CEE-AL_RESOLUCaO_28_16_CEB.CEPCEE.AL.pdf
+2019/06/05 20:31:17 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717082/indexar
+2019/06/05 20:31:17 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_RESOLUCaO_28_16_CEB.CEPCEE.AL.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5153,"_primary_term":68}
+2019/06/05 20:31:17 - Write to log.0 - result_code = 200
+2019/06/05 20:31:17 - Write to log.0 - result_time = 143
+2019/06/05 20:31:17 - Write to log.0 - 
+2019/06/05 20:31:17 - Write to log.0 - ====================
+2019/06/05 20:31:18 - Write to log.0 - 
+2019/06/05 20:31:18 - Write to log.0 - ------------> Linenr 8------------------------------
+2019/06/05 20:31:18 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:18 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:18 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:18 - Write to log.0 - result: ${result}
+2019/06/05 20:31:18 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:18 - Write to log.0 - 
+2019/06/05 20:31:18 - Write to log.0 - 
+2019/06/05 20:31:18 - Write to log.0 - id = 717078
+2019/06/05 20:31:18 - Write to log.0 - arquivo = CEE-AL_RESOLUCaO_No._050._18__Regularizacao_de_Jovens_e_Adultos_no_ambito_do_Sistema_Estadual_de_Ensino_Alagoas.pdf
+2019/06/05 20:31:18 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717078/indexar
+2019/06/05 20:31:18 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_RESOLUCaO_No._050._18__Regularizacao_de_Jovens_e_Adultos_no_ambito_do_Sistema_Estadual_de_Ensino_Alagoas.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5318,"_primary_term":68}
+2019/06/05 20:31:18 - Write to log.0 - result_code = 200
+2019/06/05 20:31:18 - Write to log.0 - result_time = 329
+2019/06/05 20:31:18 - Write to log.0 - 
+2019/06/05 20:31:18 - Write to log.0 - ====================
+2019/06/05 20:31:19 - Write to log.0 - 
+2019/06/05 20:31:19 - Write to log.0 - ------------> Linenr 9------------------------------
+2019/06/05 20:31:19 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:19 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:19 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:19 - Write to log.0 - result: ${result}
+2019/06/05 20:31:19 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:19 - Write to log.0 - 
+2019/06/05 20:31:19 - Write to log.0 - 
+2019/06/05 20:31:19 - Write to log.0 - id = 717100
+2019/06/05 20:31:19 - Write to log.0 - arquivo = CEE-AL_resol18_02.pdf
+2019/06/05 20:31:19 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717100/indexar
+2019/06/05 20:31:19 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol18_02.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5349,"_primary_term":68}
+2019/06/05 20:31:19 - Write to log.0 - result_code = 200
+2019/06/05 20:31:19 - Write to log.0 - result_time = 191
+2019/06/05 20:31:19 - Write to log.0 - 
+2019/06/05 20:31:19 - Write to log.0 - ====================
+2019/06/05 20:31:20 - Write to log.0 - 
+2019/06/05 20:31:20 - Write to log.0 - ------------> Linenr 10------------------------------
+2019/06/05 20:31:20 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:20 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:20 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:20 - Write to log.0 - result: ${result}
+2019/06/05 20:31:20 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:20 - Write to log.0 - 
+2019/06/05 20:31:20 - Write to log.0 - 
+2019/06/05 20:31:20 - Write to log.0 - id = 717099
+2019/06/05 20:31:20 - Write to log.0 - arquivo = CEE-AL_resol03_02.pdf
+2019/06/05 20:31:20 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717099/indexar
+2019/06/05 20:31:20 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol03_02.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5319,"_primary_term":68}
+2019/06/05 20:31:20 - Write to log.0 - result_code = 200
+2019/06/05 20:31:20 - Write to log.0 - result_time = 127
+2019/06/05 20:31:20 - Write to log.0 - 
+2019/06/05 20:31:20 - Write to log.0 - ====================
+2019/06/05 20:31:21 - Write to log.0 - 
+2019/06/05 20:31:21 - Write to log.0 - ------------> Linenr 11------------------------------
+2019/06/05 20:31:21 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:21 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:21 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:21 - Write to log.0 - result: ${result}
+2019/06/05 20:31:21 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:21 - Write to log.0 - 
+2019/06/05 20:31:21 - Write to log.0 - 
+2019/06/05 20:31:21 - Write to log.0 - id = 717089
+2019/06/05 20:31:21 - Write to log.0 - arquivo = CEE-AL_resol10_07.pdf
+2019/06/05 20:31:21 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717089/indexar
+2019/06/05 20:31:21 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol10_07.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5350,"_primary_term":68}
+2019/06/05 20:31:21 - Write to log.0 - result_code = 200
+2019/06/05 20:31:21 - Write to log.0 - result_time = 218
+2019/06/05 20:31:21 - Write to log.0 - 
+2019/06/05 20:31:21 - Write to log.0 - ====================
+2019/06/05 20:31:22 - Write to log.0 - 
+2019/06/05 20:31:22 - Write to log.0 - ------------> Linenr 12------------------------------
+2019/06/05 20:31:22 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:22 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:22 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:22 - Write to log.0 - result: ${result}
+2019/06/05 20:31:22 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:22 - Write to log.0 - 
+2019/06/05 20:31:22 - Write to log.0 - 
+2019/06/05 20:31:22 - Write to log.0 - id = 717091
+2019/06/05 20:31:22 - Write to log.0 - arquivo = CEE-AL_resol08_07.pdf
+2019/06/05 20:31:22 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717091/indexar
+2019/06/05 20:31:22 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol08_07.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5154,"_primary_term":68}
+2019/06/05 20:31:22 - Write to log.0 - result_code = 200
+2019/06/05 20:31:22 - Write to log.0 - result_time = 183
+2019/06/05 20:31:22 - Write to log.0 - 
+2019/06/05 20:31:22 - Write to log.0 - ====================
+2019/06/05 20:31:23 - Write to log.0 - 
+2019/06/05 20:31:23 - Write to log.0 - ------------> Linenr 13------------------------------
+2019/06/05 20:31:23 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:23 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:23 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:23 - Write to log.0 - result: ${result}
+2019/06/05 20:31:23 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:23 - Write to log.0 - 
+2019/06/05 20:31:23 - Write to log.0 - 
+2019/06/05 20:31:23 - Write to log.0 - id = 717088
+2019/06/05 20:31:23 - Write to log.0 - arquivo = CEE-AL_resolucao_53_de__10.pdf
+2019/06/05 20:31:23 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717088/indexar
+2019/06/05 20:31:23 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resolucao_53_de__10.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5154,"_primary_term":68}
+2019/06/05 20:31:23 - Write to log.0 - result_code = 200
+2019/06/05 20:31:23 - Write to log.0 - result_time = 119
+2019/06/05 20:31:23 - Write to log.0 - 
+2019/06/05 20:31:23 - Write to log.0 - ====================
+2019/06/05 20:31:24 - Write to log.0 - 
+2019/06/05 20:31:24 - Write to log.0 - ------------> Linenr 14------------------------------
+2019/06/05 20:31:24 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:24 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:24 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:24 - Write to log.0 - result: ${result}
+2019/06/05 20:31:24 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:24 - Write to log.0 - 
+2019/06/05 20:31:24 - Write to log.0 - 
+2019/06/05 20:31:24 - Write to log.0 - id = 717092
+2019/06/05 20:31:24 - Write to log.0 - arquivo = CEE-AL_resol07_07.pdf
+2019/06/05 20:31:24 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717092/indexar
+2019/06/05 20:31:24 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol07_07.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5139,"_primary_term":68}
+2019/06/05 20:31:24 - Write to log.0 - result_code = 200
+2019/06/05 20:31:24 - Write to log.0 - result_time = 92
+2019/06/05 20:31:24 - Write to log.0 - 
+2019/06/05 20:31:24 - Write to log.0 - ====================
+2019/06/05 20:31:25 - Write to log.0 - 
+2019/06/05 20:31:25 - Write to log.0 - ------------> Linenr 15------------------------------
+2019/06/05 20:31:25 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:25 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:25 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:25 - Write to log.0 - result: ${result}
+2019/06/05 20:31:25 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:25 - Write to log.0 - 
+2019/06/05 20:31:25 - Write to log.0 - 
+2019/06/05 20:31:25 - Write to log.0 - id = 717090
+2019/06/05 20:31:25 - Write to log.0 - arquivo = CEE-AL_RESOLUCaO_etnico_82__10.pdf
+2019/06/05 20:31:25 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717090/indexar
+2019/06/05 20:31:25 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_RESOLUCaO_etnico_82__10.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5320,"_primary_term":68}
+2019/06/05 20:31:25 - Write to log.0 - result_code = 200
+2019/06/05 20:31:25 - Write to log.0 - result_time = 162
+2019/06/05 20:31:25 - Write to log.0 - 
+2019/06/05 20:31:25 - Write to log.0 - ====================
+2019/06/05 20:31:26 - Write to log.0 - 
+2019/06/05 20:31:26 - Write to log.0 - ------------> Linenr 16------------------------------
+2019/06/05 20:31:26 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:26 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:26 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:26 - Write to log.0 - result: ${result}
+2019/06/05 20:31:26 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:26 - Write to log.0 - 
+2019/06/05 20:31:26 - Write to log.0 - 
+2019/06/05 20:31:26 - Write to log.0 - id = 717093
+2019/06/05 20:31:26 - Write to log.0 - arquivo = CEE-AL_resol55_02.pdf
+2019/06/05 20:31:26 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717093/indexar
+2019/06/05 20:31:26 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol55_02.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5351,"_primary_term":68}
+2019/06/05 20:31:26 - Write to log.0 - result_code = 200
+2019/06/05 20:31:26 - Write to log.0 - result_time = 77
+2019/06/05 20:31:26 - Write to log.0 - 
+2019/06/05 20:31:26 - Write to log.0 - ====================
+2019/06/05 20:31:27 - Write to log.0 - 
+2019/06/05 20:31:27 - Write to log.0 - ------------> Linenr 17------------------------------
+2019/06/05 20:31:27 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:27 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:27 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:27 - Write to log.0 - result: ${result}
+2019/06/05 20:31:27 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:27 - Write to log.0 - 
+2019/06/05 20:31:27 - Write to log.0 - 
+2019/06/05 20:31:27 - Write to log.0 - id = 717097
+2019/06/05 20:31:27 - Write to log.0 - arquivo = CEE-AL_Res_51_anexos.rar
+2019/06/05 20:31:27 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717097/indexar
+2019/06/05 20:31:27 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Res_51_anexos.rar","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5155,"_primary_term":68}
+2019/06/05 20:31:27 - Write to log.0 - result_code = 200
+2019/06/05 20:31:27 - Write to log.0 - result_time = 83
+2019/06/05 20:31:27 - Write to log.0 - 
+2019/06/05 20:31:27 - Write to log.0 - ====================
+2019/06/05 20:31:28 - Write to log.0 - 
+2019/06/05 20:31:28 - Write to log.0 - ------------> Linenr 18------------------------------
+2019/06/05 20:31:28 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:28 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:28 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:28 - Write to log.0 - result: ${result}
+2019/06/05 20:31:28 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:28 - Write to log.0 - 
+2019/06/05 20:31:28 - Write to log.0 - 
+2019/06/05 20:31:28 - Write to log.0 - id = 717096
+2019/06/05 20:31:28 - Write to log.0 - arquivo = CEE-AL_resol51_02_2.pdf
+2019/06/05 20:31:28 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717096/indexar
+2019/06/05 20:31:28 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol51_02_2.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5156,"_primary_term":68}
+2019/06/05 20:31:28 - Write to log.0 - result_code = 200
+2019/06/05 20:31:28 - Write to log.0 - result_time = 210
+2019/06/05 20:31:28 - Write to log.0 - 
+2019/06/05 20:31:28 - Write to log.0 - ====================
+2019/06/05 20:31:29 - Write to log.0 - 
+2019/06/05 20:31:29 - Write to log.0 - ------------> Linenr 19------------------------------
+2019/06/05 20:31:29 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:29 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:29 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:29 - Write to log.0 - result: ${result}
+2019/06/05 20:31:29 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:29 - Write to log.0 - 
+2019/06/05 20:31:29 - Write to log.0 - 
+2019/06/05 20:31:29 - Write to log.0 - id = 717094
+2019/06/05 20:31:29 - Write to log.0 - arquivo = CEE-AL_resol07_03.pdf
+2019/06/05 20:31:29 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717094/indexar
+2019/06/05 20:31:29 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol07_03.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5352,"_primary_term":68}
+2019/06/05 20:31:29 - Write to log.0 - result_code = 200
+2019/06/05 20:31:29 - Write to log.0 - result_time = 90
+2019/06/05 20:31:29 - Write to log.0 - 
+2019/06/05 20:31:29 - Write to log.0 - ====================
+2019/06/05 20:31:30 - Write to log.0 - 
+2019/06/05 20:31:30 - Write to log.0 - ------------> Linenr 20------------------------------
+2019/06/05 20:31:30 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:30 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:30 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:30 - Write to log.0 - result: ${result}
+2019/06/05 20:31:30 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:30 - Write to log.0 - 
+2019/06/05 20:31:30 - Write to log.0 - 
+2019/06/05 20:31:30 - Write to log.0 - id = 717098
+2019/06/05 20:31:30 - Write to log.0 - arquivo = CEE-AL_resol48_02.pdf
+2019/06/05 20:31:30 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717098/indexar
+2019/06/05 20:31:30 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_resol48_02.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5155,"_primary_term":68}
+2019/06/05 20:31:30 - Write to log.0 - result_code = 200
+2019/06/05 20:31:30 - Write to log.0 - result_time = 91
+2019/06/05 20:31:30 - Write to log.0 - 
+2019/06/05 20:31:30 - Write to log.0 - ====================
+2019/06/05 20:31:31 - Write to log.0 - 
+2019/06/05 20:31:31 - Write to log.0 - ------------> Linenr 21------------------------------
+2019/06/05 20:31:31 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:31 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:31 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:31 - Write to log.0 - result: ${result}
+2019/06/05 20:31:31 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:31 - Write to log.0 - 
+2019/06/05 20:31:31 - Write to log.0 - 
+2019/06/05 20:31:31 - Write to log.0 - id = 717095
+2019/06/05 20:31:31 - Write to log.0 - arquivo = CEE-AL_RESOLUCaO_025_03__CALENDARIO_ESCOLAR_DO_SISTEMA_ESTADUAL_DE_ENSINO_DE_ALAGOAS.pdf
+2019/06/05 20:31:31 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717095/indexar
+2019/06/05 20:31:31 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_RESOLUCaO_025_03__CALENDARIO_ESCOLAR_DO_SISTEMA_ESTADUAL_DE_ENSINO_DE_ALAGOAS.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5140,"_primary_term":68}
+2019/06/05 20:31:31 - Write to log.0 - result_code = 200
+2019/06/05 20:31:31 - Write to log.0 - result_time = 92
+2019/06/05 20:31:31 - Write to log.0 - 
+2019/06/05 20:31:31 - Write to log.0 - ====================
+2019/06/05 20:31:32 - Write to log.0 - 
+2019/06/05 20:31:32 - Write to log.0 - ------------> Linenr 22------------------------------
+2019/06/05 20:31:32 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:32 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:32 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:32 - Write to log.0 - result: ${result}
+2019/06/05 20:31:32 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:32 - Write to log.0 - 
+2019/06/05 20:31:32 - Write to log.0 - 
+2019/06/05 20:31:32 - Write to log.0 - id = 717107
+2019/06/05 20:31:32 - Write to log.0 - arquivo = CEE-AL_parecer_etnico_359__10.pdf
+2019/06/05 20:31:32 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717107/indexar
+2019/06/05 20:31:32 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_parecer_etnico_359__10.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5157,"_primary_term":68}
+2019/06/05 20:31:32 - Write to log.0 - result_code = 200
+2019/06/05 20:31:32 - Write to log.0 - result_time = 320
+2019/06/05 20:31:32 - Write to log.0 - 
+2019/06/05 20:31:32 - Write to log.0 - ====================
+2019/06/05 20:31:33 - Write to log.0 - 
+2019/06/05 20:31:33 - Write to log.0 - ------------> Linenr 23------------------------------
+2019/06/05 20:31:33 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:33 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:33 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:33 - Write to log.0 - result: ${result}
+2019/06/05 20:31:33 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:33 - Write to log.0 - 
+2019/06/05 20:31:33 - Write to log.0 - 
+2019/06/05 20:31:33 - Write to log.0 - id = 717111
+2019/06/05 20:31:33 - Write to log.0 - arquivo = CEE-AL_PARECER_064_02CEE.AL.pdf
+2019/06/05 20:31:33 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717111/indexar
+2019/06/05 20:31:33 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_PARECER_064_02CEE.AL.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5321,"_primary_term":68}
+2019/06/05 20:31:33 - Write to log.0 - result_code = 200
+2019/06/05 20:31:33 - Write to log.0 - result_time = 347
+2019/06/05 20:31:33 - Write to log.0 - 
+2019/06/05 20:31:33 - Write to log.0 - ====================
+2019/06/05 20:31:34 - Write to log.0 - 
+2019/06/05 20:31:34 - Write to log.0 - ------------> Linenr 24------------------------------
+2019/06/05 20:31:34 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:34 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:34 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:34 - Write to log.0 - result: ${result}
+2019/06/05 20:31:34 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:34 - Write to log.0 - 
+2019/06/05 20:31:34 - Write to log.0 - 
+2019/06/05 20:31:34 - Write to log.0 - id = 717108
+2019/06/05 20:31:34 - Write to log.0 - arquivo = CEE-AL_Parecer115__10_nome_social_das_travestis.pdf
+2019/06/05 20:31:34 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717108/indexar
+2019/06/05 20:31:34 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Parecer115__10_nome_social_das_travestis.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5353,"_primary_term":68}
+2019/06/05 20:31:34 - Write to log.0 - result_code = 200
+2019/06/05 20:31:34 - Write to log.0 - result_time = 241
+2019/06/05 20:31:34 - Write to log.0 - 
+2019/06/05 20:31:34 - Write to log.0 - ====================
+2019/06/05 20:31:35 - Write to log.0 - 
+2019/06/05 20:31:35 - Write to log.0 - ------------> Linenr 25------------------------------
+2019/06/05 20:31:35 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:35 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:35 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:35 - Write to log.0 - result: ${result}
+2019/06/05 20:31:35 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:35 - Write to log.0 - 
+2019/06/05 20:31:35 - Write to log.0 - 
+2019/06/05 20:31:35 - Write to log.0 - id = 717109
+2019/06/05 20:31:35 - Write to log.0 - arquivo = CEE-AL_Parecer_no_316_09CEECEPImplanta_o_SISTECMEC_em_Alagoas_e_da_outras_providencias.pdf
+2019/06/05 20:31:35 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717109/indexar
+2019/06/05 20:31:35 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Parecer_no_316_09CEECEPImplanta_o_SISTECMEC_em_Alagoas_e_da_outras_providencias.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5322,"_primary_term":68}
+2019/06/05 20:31:35 - Write to log.0 - result_code = 200
+2019/06/05 20:31:35 - Write to log.0 - result_time = 125
+2019/06/05 20:31:35 - Write to log.0 - 
+2019/06/05 20:31:35 - Write to log.0 - ====================
+2019/06/05 20:31:36 - Write to log.0 - 
+2019/06/05 20:31:36 - Write to log.0 - ------------> Linenr 26------------------------------
+2019/06/05 20:31:36 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:36 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:36 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:36 - Write to log.0 - result: ${result}
+2019/06/05 20:31:36 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:36 - Write to log.0 - 
+2019/06/05 20:31:36 - Write to log.0 - 
+2019/06/05 20:31:36 - Write to log.0 - id = 717110
+2019/06/05 20:31:36 - Write to log.0 - arquivo = CEE-AL_Parecer_no_383_09CEECEPAdota_o_Catalogo_de_Cursos_Tecnicos_do_MEC.pdf
+2019/06/05 20:31:36 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717110/indexar
+2019/06/05 20:31:36 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Parecer_no_383_09CEECEPAdota_o_Catalogo_de_Cursos_Tecnicos_do_MEC.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5158,"_primary_term":68}
+2019/06/05 20:31:36 - Write to log.0 - result_code = 200
+2019/06/05 20:31:36 - Write to log.0 - result_time = 170
+2019/06/05 20:31:36 - Write to log.0 - 
+2019/06/05 20:31:36 - Write to log.0 - ====================
+2019/06/05 20:31:37 - Write to log.0 - 
+2019/06/05 20:31:37 - Write to log.0 - ------------> Linenr 27------------------------------
+2019/06/05 20:31:37 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:37 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:37 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:37 - Write to log.0 - result: ${result}
+2019/06/05 20:31:37 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:37 - Write to log.0 - 
+2019/06/05 20:31:37 - Write to log.0 - 
+2019/06/05 20:31:37 - Write to log.0 - id = 717102
+2019/06/05 20:31:37 - Write to log.0 - arquivo = CEE-AL_VALIDACaO_DE_ESTUDOS.pdf
+2019/06/05 20:31:37 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717102/indexar
+2019/06/05 20:31:37 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_VALIDACaO_DE_ESTUDOS.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5159,"_primary_term":68}
+2019/06/05 20:31:37 - Write to log.0 - result_code = 200
+2019/06/05 20:31:37 - Write to log.0 - result_time = 134
+2019/06/05 20:31:37 - Write to log.0 - 
+2019/06/05 20:31:37 - Write to log.0 - ====================
+2019/06/05 20:31:38 - Write to log.0 - 
+2019/06/05 20:31:38 - Write to log.0 - ------------> Linenr 28------------------------------
+2019/06/05 20:31:38 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:38 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:38 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:38 - Write to log.0 - result: ${result}
+2019/06/05 20:31:38 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:38 - Write to log.0 - 
+2019/06/05 20:31:38 - Write to log.0 - 
+2019/06/05 20:31:38 - Write to log.0 - id = 717105
+2019/06/05 20:31:38 - Write to log.0 - arquivo = CEE-AL_1._Parecer_de_Ed_do_Campo_para_Pleno_de_11_de_nov.pdf
+2019/06/05 20:31:38 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717105/indexar
+2019/06/05 20:31:38 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_1._Parecer_de_Ed_do_Campo_para_Pleno_de_11_de_nov.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5160,"_primary_term":68}
+2019/06/05 20:31:38 - Write to log.0 - result_code = 200
+2019/06/05 20:31:38 - Write to log.0 - result_time = 512
+2019/06/05 20:31:38 - Write to log.0 - 
+2019/06/05 20:31:38 - Write to log.0 - ====================
+2019/06/05 20:31:39 - Write to log.0 - 
+2019/06/05 20:31:39 - Write to log.0 - ------------> Linenr 29------------------------------
+2019/06/05 20:31:39 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:39 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:39 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:39 - Write to log.0 - result: ${result}
+2019/06/05 20:31:39 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:39 - Write to log.0 - 
+2019/06/05 20:31:39 - Write to log.0 - 
+2019/06/05 20:31:39 - Write to log.0 - id = 717103
+2019/06/05 20:31:39 - Write to log.0 - arquivo = CEE-AL_PARECER_01_16_CEB.pdf
+2019/06/05 20:31:39 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717103/indexar
+2019/06/05 20:31:39 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_PARECER_01_16_CEB.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5161,"_primary_term":68}
+2019/06/05 20:31:39 - Write to log.0 - result_code = 200
+2019/06/05 20:31:39 - Write to log.0 - result_time = 126
+2019/06/05 20:31:39 - Write to log.0 - 
+2019/06/05 20:31:39 - Write to log.0 - ====================
+2019/06/05 20:31:40 - Write to log.0 - 
+2019/06/05 20:31:40 - Write to log.0 - ------------> Linenr 30------------------------------
+2019/06/05 20:31:40 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:40 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:40 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:40 - Write to log.0 - result: ${result}
+2019/06/05 20:31:40 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:40 - Write to log.0 - 
+2019/06/05 20:31:40 - Write to log.0 - 
+2019/06/05 20:31:40 - Write to log.0 - id = 717106
+2019/06/05 20:31:40 - Write to log.0 - arquivo = CEE-AL_Parecer_029._14_CESCEE.AL_Educacao_nas_Prisoes.pdf
+2019/06/05 20:31:40 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717106/indexar
+2019/06/05 20:31:40 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Parecer_029._14_CESCEE.AL_Educacao_nas_Prisoes.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5354,"_primary_term":68}
+2019/06/05 20:31:40 - Write to log.0 - result_code = 200
+2019/06/05 20:31:40 - Write to log.0 - result_time = 373
+2019/06/05 20:31:40 - Write to log.0 - 
+2019/06/05 20:31:40 - Write to log.0 - ====================
+2019/06/05 20:31:41 - Write to log.0 - 
+2019/06/05 20:31:41 - Write to log.0 - ------------> Linenr 31------------------------------
+2019/06/05 20:31:41 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:41 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:41 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:41 - Write to log.0 - result: ${result}
+2019/06/05 20:31:41 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:41 - Write to log.0 - 
+2019/06/05 20:31:41 - Write to log.0 - 
+2019/06/05 20:31:41 - Write to log.0 - id = 717113
+2019/06/05 20:31:41 - Write to log.0 - arquivo = CEE-AL_Parecer_nb0_151Escolas_Indigenas.pdf
+2019/06/05 20:31:41 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717113/indexar
+2019/06/05 20:31:41 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Parecer_nb0_151Escolas_Indigenas.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5355,"_primary_term":68}
+2019/06/05 20:31:41 - Write to log.0 - result_code = 200
+2019/06/05 20:31:41 - Write to log.0 - result_time = 119
+2019/06/05 20:31:41 - Write to log.0 - 
+2019/06/05 20:31:41 - Write to log.0 - ====================
+2019/06/05 20:31:42 - Write to log.0 - 
+2019/06/05 20:31:42 - Write to log.0 - ------------> Linenr 32------------------------------
+2019/06/05 20:31:42 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:42 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:42 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:42 - Write to log.0 - result: ${result}
+2019/06/05 20:31:42 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:42 - Write to log.0 - 
+2019/06/05 20:31:42 - Write to log.0 - 
+2019/06/05 20:31:42 - Write to log.0 - id = 717112
+2019/06/05 20:31:42 - Write to log.0 - arquivo = CEE-AL_Parecer_no_577_04CEECEPRegulamenta_a_oferta_do_Ensino_Normal_em_Alagoas.pdf
+2019/06/05 20:31:42 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717112/indexar
+2019/06/05 20:31:42 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Parecer_no_577_04CEECEPRegulamenta_a_oferta_do_Ensino_Normal_em_Alagoas.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5156,"_primary_term":68}
+2019/06/05 20:31:42 - Write to log.0 - result_code = 200
+2019/06/05 20:31:42 - Write to log.0 - result_time = 237
+2019/06/05 20:31:42 - Write to log.0 - 
+2019/06/05 20:31:42 - Write to log.0 - ====================
+2019/06/05 20:31:43 - Write to log.0 - 
+2019/06/05 20:31:43 - Write to log.0 - ------------> Linenr 33------------------------------
+2019/06/05 20:31:43 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:43 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:43 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:43 - Write to log.0 - result: ${result}
+2019/06/05 20:31:43 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:43 - Write to log.0 - 
+2019/06/05 20:31:43 - Write to log.0 - 
+2019/06/05 20:31:43 - Write to log.0 - id = 717077
+2019/06/05 20:31:43 - Write to log.0 - arquivo = CEE-AL_RESOLUCaO_No_145_18__Normas_de_ingresso_de_novos_conselheiros.pdf
+2019/06/05 20:31:43 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717077/indexar
+2019/06/05 20:31:43 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_RESOLUCaO_No_145_18__Normas_de_ingresso_de_novos_conselheiros.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5162,"_primary_term":68}
+2019/06/05 20:31:43 - Write to log.0 - result_code = 200
+2019/06/05 20:31:43 - Write to log.0 - result_time = 91
+2019/06/05 20:31:43 - Write to log.0 - 
+2019/06/05 20:31:43 - Write to log.0 - ====================
+2019/06/05 20:31:44 - Write to log.0 - 
+2019/06/05 20:31:44 - Write to log.0 - ------------> Linenr 34------------------------------
+2019/06/05 20:31:44 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:44 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:44 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:44 - Write to log.0 - result: ${result}
+2019/06/05 20:31:44 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:44 - Write to log.0 - 
+2019/06/05 20:31:44 - Write to log.0 - 
+2019/06/05 20:31:44 - Write to log.0 - id = 717080
+2019/06/05 20:31:44 - Write to log.0 - arquivo = CEE-AL_RESOLUCaO_no_18._17__13_CEEAL_Processos_remanescentes_no_ambito_das_Camaras_de_Educacao_Basica_e_de_Educacao_Profissional.pdf
+2019/06/05 20:31:44 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717080/indexar
+2019/06/05 20:31:44 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_RESOLUCaO_no_18._17__13_CEEAL_Processos_remanescentes_no_ambito_das_Camaras_de_Educacao_Basica_e_de_Educacao_Profissional.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5323,"_primary_term":68}
+2019/06/05 20:31:44 - Write to log.0 - result_code = 200
+2019/06/05 20:31:44 - Write to log.0 - result_time = 145
+2019/06/05 20:31:44 - Write to log.0 - 
+2019/06/05 20:31:44 - Write to log.0 - ====================
+2019/06/05 20:31:45 - Write to log.0 - 
+2019/06/05 20:31:45 - Write to log.0 - ------------> Linenr 35------------------------------
+2019/06/05 20:31:45 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:45 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:45 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:45 - Write to log.0 - result: ${result}
+2019/06/05 20:31:45 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:45 - Write to log.0 - 
+2019/06/05 20:31:45 - Write to log.0 - 
+2019/06/05 20:31:45 - Write to log.0 - id = 717087
+2019/06/05 20:31:45 - Write to log.0 - arquivo = CEE-AL_RESOLUCaO_No_001_situacao_escolar_1.pdf
+2019/06/05 20:31:45 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717087/indexar
+2019/06/05 20:31:45 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_RESOLUCaO_No_001_situacao_escolar_1.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5157,"_primary_term":68}
+2019/06/05 20:31:45 - Write to log.0 - result_code = 200
+2019/06/05 20:31:45 - Write to log.0 - result_time = 119
+2019/06/05 20:31:45 - Write to log.0 - 
+2019/06/05 20:31:45 - Write to log.0 - ====================
+2019/06/05 20:31:46 - Write to log.0 - 
+2019/06/05 20:31:46 - Write to log.0 - ------------> Linenr 36------------------------------
+2019/06/05 20:31:46 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:46 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:46 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:46 - Write to log.0 - result: ${result}
+2019/06/05 20:31:46 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:46 - Write to log.0 - 
+2019/06/05 20:31:46 - Write to log.0 - 
+2019/06/05 20:31:46 - Write to log.0 - id = 717101
+2019/06/05 20:31:46 - Write to log.0 - arquivo = CEE-AL_Parecer_No._70._17_Processos_Remanescentes.pdf
+2019/06/05 20:31:46 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717101/indexar
+2019/06/05 20:31:46 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_Parecer_No._70._17_Processos_Remanescentes.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5356,"_primary_term":68}
+2019/06/05 20:31:46 - Write to log.0 - result_code = 200
+2019/06/05 20:31:46 - Write to log.0 - result_time = 184
+2019/06/05 20:31:46 - Write to log.0 - 
+2019/06/05 20:31:46 - Write to log.0 - ====================
+2019/06/05 20:31:47 - Delay row.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:48 - Write to log.0 - 
+2019/06/05 20:31:48 - Write to log.0 - ------------> Linenr 37------------------------------
+2019/06/05 20:31:48 - Write to log.0 - -------------------------------------------
+2019/06/05 20:31:48 - Write to log.0 - ${arquivo}
+2019/06/05 20:31:48 - Write to log.0 - status: ${result_code}
+2019/06/05 20:31:48 - Write to log.0 - result: ${result}
+2019/06/05 20:31:48 - Write to log.0 - time: ${result_time}
+2019/06/05 20:31:48 - Write to log.0 - 
+2019/06/05 20:31:48 - Write to log.0 - 
+2019/06/05 20:31:48 - Write to log.0 - id = 717104
+2019/06/05 20:31:48 - Write to log.0 - arquivo = CEE-AL_PARECER_da_EPT_no_158._16_Reg._oferta_de_cursos_programas_de_educacao_rpofissional_e_tecnologica_no_sistema_estadual_de_ensino_de_alagoas.pdf
+2019/06/05 20:31:48 - Write to log.0 - url = http://normativas-v02.com/api/documentos/717104/indexar
+2019/06/05 20:31:48 - Write to log.0 - result = {"_index":"normativas","_type":"_doc","_id":"CEE-AL_PARECER_da_EPT_no_158._16_Reg._oferta_de_cursos_programas_de_educacao_rpofissional_e_tecnologica_no_sistema_estadual_de_ensino_de_alagoas.pdf","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":5158,"_primary_term":68}
+2019/06/05 20:31:48 - Write to log.0 - result_code = 200
+2019/06/05 20:31:48 - Write to log.0 - result_time = 562
+2019/06/05 20:31:48 - Write to log.0 - 
+2019/06/05 20:31:48 - Write to log.0 - ====================
+2019/06/05 20:31:48 - REST client.0 - Finished processing (I=0, O=0, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:48 - Write to log.0 - Finished processing (I=0, O=0, R=37, W=74, U=0, E=0)
+2019/06/05 20:31:48 - Filtra Falhas.0 - Finished processing (I=0, O=0, R=37, W=0, U=0, E=0)
+2019/06/05 20:31:48 - Text file output.0 - Finished processing (I=0, O=37, R=37, W=37, U=0, E=0)
+2019/06/05 20:31:48 - Update Falha Elastic.0 - Finished reading query, closing connection.
+2019/06/05 20:31:48 - AL - Starting entry [Mail Elastic]
+2019/06/05 20:31:53 - AL - Starting entry [Success]
+2019/06/05 20:31:53 - AL - Finished job entry [Success] (result=[true])
+2019/06/05 20:31:53 - AL - Finished job entry [Mail Elastic] (result=[true])
+2019/06/05 20:31:53 - AL - Finished job entry [Index_to_Elastic] (result=[true])
+2019/06/05 20:31:53 - AL - Finished job entry [Updae_DB_Folder] (result=[true])
+2019/06/05 20:31:53 - AL - Finished job entry [DB_to_Donwload] (result=[true])
+2019/06/05 20:31:53 - AL - Finished job entry [CSV_to_DB_AL] (result=[true])
+2019/06/05 20:31:53 - AL - Finished job entry [Mail Start] (result=[true])
+2019/06/05 20:31:53 - AL - Finished job entry [Set variables] (result=[true])
+2019/06/05 20:31:53 - AL - Job execution finished
+2019/06/05 20:31:53 - Kitchen - Finished!
+2019/06/05 20:31:53 - Kitchen - Start=2019/06/05 20:30:14.994, Stop=2019/06/05 20:31:53.260
+2019/06/05 20:31:53 - Kitchen - Processing ended after 1 minutes and 38 seconds (98 seconds total).
