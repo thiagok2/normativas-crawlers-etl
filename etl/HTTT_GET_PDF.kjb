@@ -19,7 +19,7 @@
     <access>Native</access>
     <database>normativas</database>
     <port>5432</port>
-    <username>${USER_DATABASE}</username>
+ <username>${USER_DATABASE}</username>
     <password>${PASSWORD_DATABASE}</password>
     <servername />
     <data_tablespace />
@@ -376,7 +376,7 @@
       <upload_fieldname />
       <dest_fieldname />
       <username />
-      <password>Encrypted </password>
+      <password>${PASSWORD_DATABASE}</password>
       <proxy_host />
       <proxy_port />
       <non_proxy_hosts />
