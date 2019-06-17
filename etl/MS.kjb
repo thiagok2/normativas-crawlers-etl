@@ -349,6 +349,11 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -396,6 +401,11 @@
           <name>DIR_UPLOAD</name>
           <stream_name>DIR_UPLOAD</stream_name>
           <value>${DIR_UPLOAD}</value>
+        </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
         </parameter>
       </parameters>
       <parallel>N</parallel>
@@ -579,6 +589,11 @@
           <name>URL_BASE</name>
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
+        </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
         </parameter>
       </parameters>
       <parallel>N</parallel>

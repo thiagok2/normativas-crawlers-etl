@@ -508,11 +508,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get variables</from>
-      <to>Calculator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Write to log</from>
       <to>Text file output</to>
       <enabled>Y</enabled>
@@ -535,6 +530,31 @@
     <hop>
       <from>Path</from>
       <to>LogHtml</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get variables</from>
+      <to>Check CEE</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check CEE</from>
+      <to>sigla ==  CEE</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sigla ==  CEE</from>
+      <to>Calculator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check CEE</from>
+      <to>Calculator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sigla ==  CEE</from>
+      <to>do nothing</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -619,8 +639,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>48</yloc>
+      <xloc>512</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -646,8 +666,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>48</yloc>
+      <xloc>640</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -690,8 +710,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>48</yloc>
+      <xloc>784</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -717,7 +737,7 @@
         <group />
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>URL_BASE</name>
@@ -729,7 +749,7 @@
         <group />
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>PATH</name>
@@ -741,7 +761,19 @@
         <group />
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>CEE</name>
+        <variable>${CEE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>both</trim_type>
       </field>
     </fields>
     <attributes />
@@ -753,8 +785,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>48</yloc>
+      <xloc>128</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -822,8 +854,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>16</yloc>
+      <xloc>1008</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -855,11 +887,26 @@
       <currency_symbol />
     </calculation>
     <calculation>
+      <field_name>fileName</field_name>
+      <calc_type>ADD</calc_type>
+      <field_a>CEE</field_a>
+      <field_b>id</field_b>
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>Y</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
       <field_name>pathHtmlLog</field_name>
       <calc_type>ADD3</calc_type>
       <field_a>PATH</field_a>
       <field_b>dirLog</field_b>
-      <field_c>id</field_c>
+      <field_c>fileName</field_c>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -878,8 +925,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>48</yloc>
+      <xloc>896</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -930,8 +977,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>192</yloc>
+      <xloc>640</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -947,7 +994,8 @@
       <schema_name />
     </partitioning>
     <connection>normativas</connection>
-    <sql>SELECT id, arquivo FROM documentos WHERE tipo_entrada = 'extrator' and status_extrator in ('BAIXADO', 'FALHA_ELASTIC')</sql>
+    <sql>SELECT u.sigla, d.* FROM documentos d INNER JOIN unidades u ON u.id = d.unidade_id 
+WHERE tipo_entrada = 'extrator' and status_extrator in ('BAIXADO', 'FALHA_ELASTIC')</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -962,8 +1010,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>48</yloc>
+      <xloc>16</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1055,8 +1103,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>192</yloc>
+      <xloc>944</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1096,8 +1144,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>48</yloc>
+      <xloc>1120</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1151,8 +1199,103 @@ time: ${result_time}
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>192</yloc>
+      <xloc>784</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check CEE</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>sigla ==  CEE</send_true_to>
+    <send_false_to>Calculator</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>CEE</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>sigla ==  CEE</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Calculator</send_true_to>
+    <send_false_to>do nothing</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>sigla</leftvalue>
+        <function>=</function>
+        <rightvalue>CEE</rightvalue>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>do nothing</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

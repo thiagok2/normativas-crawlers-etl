@@ -349,12 +349,17 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>272</xloc>
-      <yloc>128</yloc>
+      <yloc>144</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -397,12 +402,17 @@
           <stream_name>DIR_UPLOAD</stream_name>
           <value>${DIR_UPLOAD}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>432</xloc>
-      <yloc>128</yloc>
+      <yloc>144</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -440,7 +450,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>592</xloc>
-      <yloc>128</yloc>
+      <yloc>144</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -485,7 +495,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>432</xloc>
-      <yloc>320</yloc>
+      <yloc>336</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -497,7 +507,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>944</xloc>
-      <yloc>144</yloc>
+      <yloc>160</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -535,12 +545,17 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>736</xloc>
-      <yloc>128</yloc>
+      <yloc>144</yloc>
       <attributes_kjc />
     </entry>
     <entry>
