@@ -499,7 +499,7 @@
     </hop>
     <hop>
       <from>REST client</from>
-      <to>Write to log</to>
+      <to>Log</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -508,12 +508,12 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Write to log</from>
+      <from>Log</from>
       <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Write to log</from>
+      <from>Log</from>
       <to>Filtra Falhas</to>
       <enabled>Y</enabled>
     </hop>
@@ -616,7 +616,7 @@
       <currency_symbol />
     </calculation>
     <calculation>
-      <field_name>url</field_name>
+      <field_name>url_indexar</field_name>
       <calc_type>ADD3</calc_type>
       <field_a>base_url</field_a>
       <field_b>id</field_b>
@@ -640,6 +640,41 @@
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check CEE</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>sigla ==  CEE</send_true_to>
+    <send_false_to>Calculator</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>CEE</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -877,7 +912,7 @@
       <field_a>/logs/</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -892,7 +927,7 @@
       <field_a>CEE</field_a>
       <field_b>id</field_b>
       <field_c />
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>Y</remove>
@@ -947,7 +982,7 @@
     <urlInField>Y</urlInField>
     <dynamicMethod>N</dynamicMethod>
     <methodFieldName />
-    <urlField>url</urlField>
+    <urlField>url_indexar</urlField>
     <bodyField />
     <httpLogin />
     <httpPassword>Encrypted </httpPassword>
@@ -1150,7 +1185,7 @@ WHERE tipo_entrada = 'extrator' and status_extrator in ('BAIXADO', 'FALHA_ELASTI
     </GUI>
   </step>
   <step>
-    <name>Write to log</name>
+    <name>Log</name>
     <type>WriteToLog</type>
     <description />
     <distribute>N</distribute>
@@ -1161,7 +1196,7 @@ WHERE tipo_entrada = 'extrator' and status_extrator in ('BAIXADO', 'FALHA_ELASTI
       <schema_name />
     </partitioning>
     <loglevel>log_level_basic</loglevel>
-    <displayHeader>Y</displayHeader>
+    <displayHeader>N</displayHeader>
     <limitRows>N</limitRows>
     <limitRowsNumber>0</limitRowsNumber>
     <logmessage>-------------------------------------------
@@ -1205,8 +1240,8 @@ time: ${result_time}
     </GUI>
   </step>
   <step>
-    <name>Check CEE</name>
-    <type>FilterRows</type>
+    <name>do nothing</name>
+    <type>Dummy</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1215,16 +1250,6 @@ time: ${result_time}
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>sigla ==  CEE</send_true_to>
-    <send_false_to>Calculator</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>CEE</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -1234,8 +1259,8 @@ time: ${result_time}
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>112</yloc>
+      <xloc>528</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1270,31 +1295,6 @@ time: ${result_time}
     </remotesteps>
     <GUI>
       <xloc>368</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>do nothing</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>

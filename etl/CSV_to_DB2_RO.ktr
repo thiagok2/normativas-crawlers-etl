@@ -535,11 +535,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Lookup File</from>
-      <to>Tipo Documento</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Get variables</from>
       <to>Value mapper</to>
       <enabled>Y</enabled>
@@ -562,6 +557,16 @@
     <hop>
       <from>ceeRO.csv</from>
       <to>Get variables</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Lookup File</from>
+      <to>Existe?</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Existe?</from>
+      <to>Tipo Documento</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1809,6 +1814,50 @@ Documento = encodeURI(Documento);
     <GUI>
       <xloc>32</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Existe?</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Tipo Documento</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>exists</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>Boolean</type>
+          <text>N</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
