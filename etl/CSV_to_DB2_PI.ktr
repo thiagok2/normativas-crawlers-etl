@@ -530,11 +530,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add Constants</from>
-      <to>JS2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>ceePI-normas.csv</from>
       <to>Get variables</to>
       <enabled>Y</enabled>
@@ -587,6 +582,16 @@
     <hop>
       <from>JS Data 2</from>
       <to>Get variables</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add Constants</from>
+      <to>Add sequence</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add sequence</from>
+      <to>JS2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -674,6 +679,41 @@
     <GUI>
       <xloc>304</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add sequence</name>
+    <type>Sequence</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <valuename>seq</valuename>
+    <use_database>N</use_database>
+    <connection>normativas</connection>
+    <schema />
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name />
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1061,6 +1101,73 @@ try{
     </GUI>
   </step>
   <step>
+    <name>JS Data 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>meses = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+];
+
+var mesNome = Data.split('/')[1];
+
+
+var mesNum = meses.indexOf(mesNome) + 1;
+mesNum = (mesNum &lt; 10) ? '0'+mesNum : num2str(mesNum);
+	
+Data = Data.replace(mesNome, mesNum);
+Data = str2date(Data,'dd/MM/yyyy');
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>Data</name>
+        <rename>Data</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>JS2</name>
     <type>ScriptValueMod</type>
     <description />
@@ -1089,7 +1196,43 @@ var documentoOriginalNome = decodeURI(substr(substr(Documento,index+1, Documento
 var er = /[^a-z0-9-.]/gi;
 var NomeArquivoFinal = sigla+'_'+documentoOriginalNome.replace(er, "");
 
-var ano = year(Data);</jsScript_script>
+var ano = year(Data);
+
+
+Documento = encodeURI(Documento);
+Documento = replace(Documento,'%25','%');
+//Documento = Documento.replace('%20', '%2520');
+
+Id = Id + '_'+seq;</jsScript_script>
+      </jsScript>
+      <jsScript>
+        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>replace_Sample</jsScript_name>
+        <jsScript_script>// Replaces Strings inside the given Variable.
+// It is possible to make more replacements inside
+// one call. The given variables must be an odd number
+//
+// Usage:
+// replace(var, var, var);
+// 1: String - The Variable with the content to replace.
+// 2: String - The Value to search for.
+// 3: String - The Value to replace with.
+//
+// replace(var, var, var, var,var,...)
+// 1: String - The Variable with the content to replace.
+// 2: String - The First Value to search for.
+// 3: String - The First Value to replace with.
+// 4: String - The Second Value to search for.
+// 5: String - The Second Value to replace with.
+// ...
+//
+// 2006-11-15
+//
+var str1 = "Hello World, this is a nice function";      
+var str2 = replace(str1,"World", "Folk");
+Alert(str2);
+var str2 = replace(str1,"World", "Folk", "nice","beautifull");
+Alert(str2);</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
@@ -1124,6 +1267,22 @@ var ano = year(Data);</jsScript_script>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
+      </field>
+      <field>
+        <name>Documento</name>
+        <rename>Documento</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>Id</name>
+        <rename>Id</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
       </field>
     </fields>
     <attributes />
@@ -1303,6 +1462,9 @@ var ano = year(Data);</jsScript_script>
         <name>status_extrator</name>
       </field>
       <field>
+        <name>seq</name>
+      </field>
+      <field>
         <name>formato</name>
       </field>
       <field>
@@ -1347,6 +1509,9 @@ var ano = year(Data);</jsScript_script>
       </remove>
       <remove>
         <name>Assunto</name>
+      </remove>
+      <remove>
+        <name>seq</name>
       </remove>
       <meta>
         <name>ano</name>
@@ -1950,8 +2115,8 @@ var ano = year(Data);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>48</yloc>
+      <xloc>48</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2122,8 +2287,8 @@ var ano = year(Data);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>288</yloc>
+      <xloc>64</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2294,75 +2459,8 @@ var ano = year(Data);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
+      <xloc>176</xloc>
       <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>JS Data 2</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>meses = [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro'
-];
-
-var mesNome = Data.split('/')[1];
-
-
-var mesNum = meses.indexOf(mesNome) + 1;
-mesNum = (mesNum &lt; 10) ? '0'+mesNum : num2str(mesNum);
-	
-Data = Data.replace(mesNome, mesNum);
-Data = str2date(Data,'dd/MM/yyyy');
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>Data</name>
-        <rename>Data</rename>
-        <type>Date</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

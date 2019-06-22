@@ -16,6 +16,7 @@ with open(arquivo, 'w', encoding='utf-8', newline = '') as csvfile:
     c.writerow(['Id','Url','Tipo','Numero','Data','Processo','Relator','Interessado','Ementa','Assunto','Documento','Titulo'])
 
 # Resoluções
+url_raw = 'http://www.ceepi.pro.br/Sessões/sessões.htm'
 url =  'http://www.ceepi.pro.br/Sess%C3%B5es/sess%C3%B5es.htm'   
 page = http.request('GET', url)
 soup = BeautifulSoup(page.data, 'lxml')
@@ -52,14 +53,15 @@ for row in trs:
             for a in links:
                 url0 = a.get('href')
                 url0 = urljoin(url, str(url0))
-                #print('{} - {} - {}'.format(ano, tipo, url0))
+
+                url_raw = urljoin(url_raw, str(url0))
+
                 if 'Sessões' in url0:
                     url0 = url0.replace('Sessões','Sess%C3%B5es')
                 try:
                     page = http.request('GET', url0)
                     soup = BeautifulSoup(page.data, 'lxml')
                 except Exception as e:
-                    #url0 = quote(url0)
                     print(str(e))
                     print('url = {}'.format(url0))
                     continue

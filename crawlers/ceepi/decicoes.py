@@ -16,6 +16,7 @@ with open(arquivo, 'w', encoding='utf-8', newline = '') as csvfile:
     c.writerow(['Id','Url','Tipo','Numero','Data','Processo','Relator','Interessado','Ementa','Assunto','Documento','Titulo'])
 
 # Resoluções
+url_base_raw =  'http://www.ceepi.pro.br/decisões.htm'
 url =  'http://www.ceepi.pro.br/decis%C3%B5es.htm'   
 page = http.request('GET', url)
 soup = BeautifulSoup(page.data, 'lxml')
@@ -52,9 +53,11 @@ for row in trs:
             for a in links:
                 url0 = a.get('href')
                 url0 = urljoin(url, str(url0))
+
+                url_raw = urljoin(url_base_raw, str(url0))
                 #print('{} - {} - {}'.format(ano, tipo, url0))
-                if ('Resoluções' in url0 or 'resoluções' in url0):
-                    url0 = url0.replace('Resoluções','Resolu%C3%A7%C3%B5es').replace('resolução','resolu%C3%A7%C3%A3o').replace('resoluções','resolu%C3%A7%C3%B5es')
+              
+                url0 = url0.replace('ç','%C3%A7').replace('º','%C2%BA').replace('õ','%C3%B5').replace('ã','%C3%A3')
                 try:
                     page = http.request('GET', url0)
                     soup = BeautifulSoup(page.data, 'lxml')
@@ -83,7 +86,7 @@ for row in trs:
                             if(c == 0):
                                 _numero = _td.text.strip()[:20]
                                 if(_td.a and _numero):
-                                    _documento =  urljoin(url0, _td.a.get('href'))
+                                    _documento =  urljoin(url_raw, _td.a.get('href'))
                                 else:
                                     continue
                             if(c == 1 and _td.text):
