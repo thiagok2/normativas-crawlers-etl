@@ -21,7 +21,7 @@ with open(arquivo, 'w', encoding='utf-8', newline = '') as csvfile:
 # http://www.cee.ms.gov.br/atos-normativos/indicacoes/
 # http://www.cee.ms.gov.br/atos-normativos/deliberacoes/
 urls =  ['https://cee.go.gov.br/category/resolucoes/', 'https://cee.go.gov.br/category/resolucoes/page/2/']
-
+i = 1
 for url in urls:
     page = http.request('GET', url)
     soup = BeautifulSoup(page.data, 'html5lib')
@@ -38,7 +38,7 @@ for url in urls:
 
     #divAtos = soup.find_all('div', class_='info-resolucao')
     articles = soup.find_all('article')
-    i = 1
+    
     for article in articles:
         
         href = article.a.get('href')
@@ -80,7 +80,7 @@ for url in urls:
             else:
                 numero = 'SN'
             
-            print(numero + ' - ' + titulo)
+            #print(numero + ' - ' + titulo)
             id = conselho + '-' + tipo + '-' + str(i)
             i = i + 1
 
