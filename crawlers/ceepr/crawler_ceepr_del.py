@@ -67,6 +67,8 @@ for url in urls:
                 numero = titulo.lower().split('nº')[1]
             if 'n.º' in titulo.lower():
                 numero = titulo.lower().split('n.º')[1]
+            if 'n º' in titulo.lower():
+                numero = titulo.lower().split('n º')[1]
 
             if ',' in numero:
                 numero = numero.split(',')[0]

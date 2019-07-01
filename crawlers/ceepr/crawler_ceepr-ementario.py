@@ -47,14 +47,14 @@ for url in urls:
     linksAno = divPage.find_all('a')
 
     i = 1
-    time.sleep(2)
+    time.sleep(1)
     linksAno = (a for a in linksAno if 'Cursos aprovados' not in a.text and a.text.strip())
     for link in linksAno:
         tipo = 'Ementa'
         ano = link.text.strip()
         url1 = link.get('href')
-        time.sleep(5)
-        if ano and int(ano) < 2011:
+        time.sleep(1)
+        if ano:
             print(ano)
             try:
                 page1 = http.request('GET', url1)
@@ -67,7 +67,7 @@ for url in urls:
                 print('--------------')
         
             linksMes = (a for a in linksMes if 'Voltar' not in a.text and a.text.strip())
-            time.sleep(5)
+            time.sleep(1)
             for linkMes in linksMes:
                 mes = linkMes.text.strip()
                 urlMes = linkMes.get('href')
@@ -84,7 +84,7 @@ for url in urls:
                         i = i + 1
 
                         print('*** ' + str(i) + ' - ' + titulo + ' - ' + data + ' - ' + documento)
-                        time.sleep(1.5)
+                        time.sleep(0.5)
                         with open(arquivo, 'a', encoding='utf-8', newline = '') as csvfile:
                             c = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_ALL)
                             c.writerow([id, url, tipo, numero, data, processo, relator, interessado, ementa, assunto, documento,titulo])
@@ -95,7 +95,7 @@ for url in urls:
 
                         divAtos = soupFinal.find('div', {"id": "page"})
                         linksAtos = divAtos.find_all('a') 
-                        time.sleep(2)
+                        time.sleep(0.5)
                         for aAto in  linksAtos:
                             if aAto.text and aAto.text.strip() not in ['Voltar', 'Anterior', 'Próximo','Voltar CEIF','Voltar CEMEP','Voltar ao CEMEP','Voltar ao CEIF','Próxima']:
                                 titulo = aAto.text
@@ -116,7 +116,7 @@ for url in urls:
                                 i = i + 1
 
                                 print('*** ' + str(i) + ' - ' + titulo + ' - ' + data + ' - ' + documento)
-                                time.sleep(0.2)
+                                time.sleep(0.5)
                                 with open(arquivo, 'a', encoding='utf-8', newline = '') as csvfile:
                                     c = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_ALL)
                                     c.writerow([id, url, tipo, numero, data, processo, relator, interessado, ementa, assunto, documento,titulo])

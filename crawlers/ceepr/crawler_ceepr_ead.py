@@ -65,8 +65,12 @@ for url in urls:
             ementa = str(element.next_sibling)
         else:
             ementa = (titulo)
-         
-        id = conselho + '-' + tipo + '-' + str(i)
+            
+        ementa = ementa.strip()
+        if ementa.startswith(': '):
+            ementa = ementa[2:]
+
+        id = conselho + '- ead - '+ tipo + '-' + str(i)
         i = i + 1
 
         with open(arquivo, 'a', encoding='utf-8', newline = '') as csvfile:

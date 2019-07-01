@@ -29,6 +29,7 @@ urls =  ['http://www.cee.pr.gov.br/modules/conteudo/conteudo.php?conteudo=707', 
         'http://www.cee.pr.gov.br/modules/conteudo/conteudo.php?conteudo=302'   #2013
         'http://www.cee.pr.gov.br/modules/conteudo/conteudo.php?conteudo=275']  #2012
 
+i = 1
 for url in urls:
     page = http.request('GET', url)
     soup = BeautifulSoup(page.data, 'html5lib')
@@ -50,7 +51,7 @@ for url in urls:
     print(ano)
     links = divPage.find_all('a')
 
-    i = 1
+    
     #lista = (x for x in xyz if x not in a)
     links = (a for a in links if 'Voltar' not in a.text and a.text.strip())
     for link in links:
@@ -79,7 +80,7 @@ for url in urls:
         
         
         
-        id = conselho + '-' + tipo + '-' + str(i)
+        id = conselho + '-' + str(ano) +'-' + tipo + '-' + str(i)
         i = i + 1
 
         with open(arquivo, 'a', encoding='utf-8', newline = '') as csvfile:
