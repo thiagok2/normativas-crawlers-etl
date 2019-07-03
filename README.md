@@ -1,6 +1,17 @@
 # normativas-crawlers-etl
 
+=======
+## Introdução
+Projeto para extração dos documentos para a plataforma Normativas.
 
+h3 Workflow
+A extração está sendo realizada através da manipulação da página com Python e API do BeatifulSoup. A saída desse processo inicial é um arquivo .CSV
+
+O arquivo é lido através de um processo de ETL construído no Petanho Data Integration(PDI) para transformação e carga de dados no domínio da aplicaçãpo Normativas. Um modelo CSV encontra-se anexado ao projeto. Priorizar Título, Data, Documento(link), Tipo, Data, Ementa.
+
+## Python
+Scripts criado em python com a biblioteca do BeatifulSoup.
+https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 
 ## ETL
 * Pentaho Data Integration (8.2)
