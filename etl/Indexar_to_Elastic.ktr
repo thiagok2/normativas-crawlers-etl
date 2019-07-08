@@ -820,8 +820,63 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
+      <xloc>160</xloc>
       <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Log</name>
+    <type>WriteToLog</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>N</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>-------------------------------------------
+${arquivo}
+status: ${result_code}
+result: ${result}
+time: ${result_time}
+</logmessage>
+    <fields>
+      <field>
+        <name>id</name>
+      </field>
+      <field>
+        <name>arquivo</name>
+      </field>
+      <field>
+        <name>url</name>
+      </field>
+      <field>
+        <name>result</name>
+      </field>
+      <field>
+        <name>result_code</name>
+      </field>
+      <field>
+        <name>result_time</name>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1045,7 +1100,7 @@ WHERE tipo_entrada = 'extrator' and status_extrator in ('BAIXADO', 'FALHA_ELASTI
       </output>
     </remotesteps>
     <GUI>
-      <xloc>16</xloc>
+      <xloc>48</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1181,61 +1236,6 @@ WHERE tipo_entrada = 'extrator' and status_extrator in ('BAIXADO', 'FALHA_ELASTI
     <GUI>
       <xloc>1120</xloc>
       <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Log</name>
-    <type>WriteToLog</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <loglevel>log_level_basic</loglevel>
-    <displayHeader>N</displayHeader>
-    <limitRows>N</limitRows>
-    <limitRowsNumber>0</limitRowsNumber>
-    <logmessage>-------------------------------------------
-${arquivo}
-status: ${result_code}
-result: ${result}
-time: ${result_time}
-</logmessage>
-    <fields>
-      <field>
-        <name>id</name>
-      </field>
-      <field>
-        <name>arquivo</name>
-      </field>
-      <field>
-        <name>url</name>
-      </field>
-      <field>
-        <name>result</name>
-      </field>
-      <field>
-        <name>result_code</name>
-      </field>
-      <field>
-        <name>result_time</name>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>784</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

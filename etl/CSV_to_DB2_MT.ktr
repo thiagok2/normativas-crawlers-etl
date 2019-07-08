@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CSV_to_DB2_PR</name>
+    <name>CSV_to_DB2_MT</name>
     <description />
     <extended_description />
     <trans_version />
@@ -436,10 +436,10 @@
   </info>
   <notepads>
     <notepad>
-      <note>PR</note>
-      <xloc>432</xloc>
-      <yloc>0</yloc>
-      <width>51</width>
+      <note>MT</note>
+      <xloc>64</xloc>
+      <yloc>32</yloc>
+      <width>58</width>
       <heigth>49</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>25</fontsize>
@@ -530,93 +530,53 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select</from>
-      <to>Insert / update</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Lookup File</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Tipo Documento</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ceepr-cp</from>
-      <to>Get variables</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ceepr-del</from>
-      <to>Get variables</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ceepr-ead</from>
-      <to>JS02</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>JS02</from>
-      <to>Get variables</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ceepr-ementario</from>
-      <to>JS01</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>JS01</from>
-      <to>Get variables</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ceepr-par</from>
-      <to>JS03</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>JS03</from>
-      <to>Get variables</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add Constants</from>
-      <to>Filter Documento</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter Documento</from>
       <to>JS2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add sequence</from>
-      <to>Add Constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>JS2</from>
-      <to>Filter PDF</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter PDF</from>
-      <to>Lookup File</to>
+      <from>Lookup File</from>
+      <to>Tipo Documento</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get variables</from>
-      <to>MapperTipo</to>
+      <to>Value mapper</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>MapperTipo</from>
-      <to>Add sequence</to>
+      <from>Ano</from>
+      <to>Lookup File</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>JS2</from>
+      <to>Ano</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select</from>
+      <to>Strings cut</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Strings cut</from>
+      <to>Insert / update</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ceeMT.csv</from>
+      <to>Filter Revogadas</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter Revogadas</from>
+      <to>Get variables</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Value mapper</from>
+      <to>Add Constants</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -639,7 +599,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>CEE-PR</nullif>
+        <nullif>CEE-MT</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -692,6 +652,18 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>formato</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>pdf</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -702,14 +674,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>288</yloc>
+      <xloc>368</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Add sequence</name>
-    <type>Sequence</type>
+    <name>Ano</name>
+    <type>Calculator</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -718,16 +690,22 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <valuename>seq</valuename>
-    <use_database>N</use_database>
-    <connection>normativas</connection>
-    <schema />
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name />
-    <start_at>1</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>ano</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>data_publicacao</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -737,8 +715,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>208</yloc>
+      <xloc>560</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -792,8 +770,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>112</yloc>
+      <xloc>624</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -829,148 +807,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter Documento</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>JS2</send_true_to>
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>Documento</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue />
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>Titulo</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue />
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter PDF</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Lookup File</send_true_to>
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>formato</leftvalue>
-            <function>=</function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>pdf</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>768</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Tipo Documento</send_true_to>
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>exists</leftvalue>
-        <function>=</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>Boolean</type>
-          <text>N</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask />
-        </value>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>912</xloc>
-      <yloc>400</yloc>
+      <xloc>896</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1032,8 +870,8 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>208</yloc>
+      <xloc>208</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1063,7 +901,7 @@ and unidade_id = ? limit 1</sql>
       <value>
         <name>id_original_extrator</name>
         <rename>id_original_extrator</rename>
-        <update>N</update>
+        <update>Y</update>
       </value>
       <value>
         <name>url_extrator</name>
@@ -1160,235 +998,7 @@ and unidade_id = ? limit 1</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1248</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>JS01</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-Data = Data.replace('(Extra)','')
-			.replace('(extra)','')
-			.replace('(Extraordinária)','')
-			.replace('//','/')
-			.replace(' ','');
-
-var parte1 = Data.split('/')[0];
-var parte2 = Data.split('/')[1];
-
-var m, ano;
-
-if(isNum(parte1)){
-	ano = str2num(parte1);
-	m = parte2;
-}else{
-	ano = str2num(parte2);
-	m = parte1;
-}
-var meses = [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro'
- ];
-
-m = meses.indexOf(m) + 1;
-m = ("0" + m).slice(-2);
-
-d='01';
-
-Data = d+'/'+ m + '/'+ ano;
-
-Numero = 'EM ' +  m + '/'+ ano;
-
-
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>Data</name>
-        <rename>Data</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>Numero</name>
-        <rename>Numero</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>JS02</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-if(Numero){
-	ano = Numero.split('/')[1];
-	ano = str2num(ano);
-	if(ano &lt; 20)
-		ano = ano + 2000;
-	else
-		ano = ano + 1900;
-
-	Data = '31/12/'+ano;
-}
-	
-	</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>Data</name>
-        <rename>Data</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>JS03</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>if(Data){
-	Data = Data.replace(':','')
-			.replace('aprovado ','')
-			.replace('aprovado	em ','')
-			.replace('  ',' ')
-			.trim();
-	if(Data.indexOf('/') != -1){
-		dataArray = Data.split('/');
-		if(dataArray.length == 3 &amp;&amp; isNum(dataArray[2]) &amp;&amp; dataArray[2].length == 2){
-			ano = str2num(dataArray[2]);
-			ano = ano > 20 ? (ano + 1900) : (ano + 2000);
-			Data = dataArray[0]+ '/'+dataArray[1]+'/'+ano;
-		}
-	}	
-}
-
-var index = Documento.lastIndexOf('/');
-var arquivo = substr(substr(Documento,index+1, Documento.length),0,255);
-
-if(arquivo.indexOf('pa_')!= -1 &amp;&amp; arquivo.replace('pa_','').indexOf('_') != -1){
-	var arrayNumero = arquivo.replace('pa_','').replace('.pdf','').split('_');
-	if(arrayNumero.length == 3)
-		Numero = arrayNumero[0].toUpperCase() + ' '+arrayNumero[1] +'/'+arrayNumero[2];
-}
-			</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>Data</name>
-        <rename>Data</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>Numero</name>
-        <rename>Numero</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
+      <xloc>1056</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1410,51 +1020,35 @@ if(arquivo.indexOf('pa_')!= -1 &amp;&amp; arquivo.replace('pa_','').indexOf('_')
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var indexDot = Documento.lastIndexOf('.');
-var formato =  substr(substr(Documento,indexDot+1, Documento.length),0,4);
-
-
-var index = Documento.lastIndexOf('/');
-var documentoOriginalNome = substr(substr(Documento,index+1, Documento.length),0,255);
-
+        <jsScript_script>
 var er = /[^a-z0-9-.]/gi;
-var NomeArquivoFinal = sigla+'_'+seq+'_'+documentoOriginalNome;
-NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/g, '');
+var NomeArquivoFinal = sigla+'_'+Numero.replace(er, "")+'.pdf';
+NomeArquivoFinal = NomeArquivoFinal.replace(/[&amp;\/\\#,+()$~%'":*?&lt;&gt;{}]/g, '').replace('..','.');
+
+var NomeArquivoFinal = sigla+'_'+lower(NomeArquivoFinal);
 
 var data_publicacao = null;
 
-if(Data){
-	Data = Data.replace('  ',' ').replace('º','');
+var documentoOriginalNome = '';
 
-	try{ 
+if(Data){
+	try {
 		data_publicacao = str2date(Data,"dd/MM/yyyy")
-	}catch (e) {
-		try {
-			data_publicacao = str2date(Data,"dd 'de' MMMM 'de' yyyy");
-		}catch (e) {
-			try{
-				data_publicacao = str2date(Data,"dd/MM/yy")
-			}catch(e){
-				try{
-					data_publicacao = str2date(Data,"dd 'de' MMMM 'de' yy");
-				}catch(e){
-					try{
-						data_publicacao = str2date(Data,"d 'de' MMMM 'de' yy");
-					}catch(e){
-					
-					}
-				}
-				
-			}
-			
-		}
+	}
+	catch (e) {
+		
 	}
 }
-var ano;
-try{
-	ano = year(data_publicacao);
-}catch(e){
+if(Tipo == 'NA'){
+	if(indexOf(lower(Numero),'parecer') != -1)
+		Tipo = 'PAR';
+	else if(indexOf(lower(Numero),'portaria') != -1)
+		Tipo = 'POR';
+	else if(indexOf(lower(Numero),'deliberação') != -1)
+		Tipo = 'DEL';
 }
+	
+
 
 </jsScript_script>
       </jsScript>
@@ -1463,14 +1057,6 @@ try{
       <field>
         <name>documentoOriginalNome</name>
         <rename>documentoOriginalNome</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>formato</name>
-        <rename>formato</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1493,12 +1079,12 @@ try{
         <replace>N</replace>
       </field>
       <field>
-        <name>ano</name>
-        <rename>ano</rename>
-        <type>Integer</type>
+        <name>Tipo</name>
+        <rename>Tipo</rename>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
+        <replace>Y</replace>
       </field>
     </fields>
     <attributes />
@@ -1510,8 +1096,8 @@ try{
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>288</yloc>
+      <xloc>480</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1552,8 +1138,8 @@ try{
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>288</yloc>
+      <xloc>624</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1600,50 +1186,8 @@ try{
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>MapperTipo</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>Tipo</field_to_use>
-    <target_field />
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>Ementa</source_value>
-        <target_value>EME</target_value>
-      </field>
-      <field>
-        <source_value>Deliberação</source_value>
-        <target_value>DEL</target_value>
-      </field>
-      <field>
-        <source_value>Parecer</source_value>
-        <target_value>PAR</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>208</yloc>
+      <xloc>752</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1661,93 +1205,107 @@ try{
     <fields>
       <field>
         <name>Id</name>
+        <rename />
       </field>
       <field>
         <name>Url</name>
+        <rename />
       </field>
       <field>
         <name>Tipo</name>
+        <rename />
       </field>
       <field>
         <name>Numero</name>
+        <rename />
       </field>
       <field>
         <name>Data</name>
-      </field>
-      <field>
-        <name>Processo</name>
-      </field>
-      <field>
-        <name>Relator</name>
-      </field>
-      <field>
-        <name>Interessado</name>
+        <rename />
       </field>
       <field>
         <name>Ementa</name>
+        <rename />
       </field>
       <field>
         <name>Assunto</name>
+        <rename />
       </field>
       <field>
         <name>Documento</name>
+        <rename />
       </field>
       <field>
         <name>Titulo</name>
+        <rename />
       </field>
       <field>
         <name>URL_BASE</name>
+        <rename />
       </field>
       <field>
         <name>DIR_UPLOAD</name>
+        <rename />
       </field>
       <field>
         <name>CEE</name>
-      </field>
-      <field>
-        <name>seq</name>
+        <rename />
       </field>
       <field>
         <name>sigla</name>
+        <rename />
       </field>
       <field>
         <name>assunto_id</name>
+        <rename />
       </field>
       <field>
         <name>completed</name>
+        <rename />
       </field>
       <field>
         <name>tipo_entrada</name>
+        <rename />
       </field>
       <field>
         <name>status_extrator</name>
-      </field>
-      <field>
-        <name>documentoOriginalNome</name>
+        <rename />
       </field>
       <field>
         <name>formato</name>
+        <rename />
+      </field>
+      <field>
+        <name>documentoOriginalNome</name>
+        <rename />
       </field>
       <field>
         <name>NomeArquivoFinal</name>
+        <rename />
       </field>
       <field>
         <name>data_publicacao</name>
+        <rename />
       </field>
       <field>
         <name>ano</name>
+        <rename />
       </field>
       <field>
         <name>exists</name>
+        <rename />
       </field>
       <field>
         <name>tipo_id</name>
+        <rename />
       </field>
       <field>
         <name>unidade_id</name>
+        <rename />
       </field>
       <field>
         <name>user_id</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>
@@ -1766,16 +1324,13 @@ try{
         <name>URL_BASE</name>
       </remove>
       <remove>
+        <name>Data</name>
+      </remove>
+      <remove>
         <name>CEE</name>
       </remove>
       <remove>
         <name>Assunto</name>
-      </remove>
-      <remove>
-        <name>seq</name>
-      </remove>
-      <remove>
-        <name>Data</name>
       </remove>
       <meta>
         <name>ano</name>
@@ -2093,8 +1648,47 @@ try{
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
-      <yloc>288</yloc>
+      <xloc>896</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Strings cut</name>
+    <type>StringCut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>id_original_extrator</in_stream_name>
+        <out_stream_name />
+        <cut_from>0</cut_from>
+        <cut_to>20</cut_to>
+      </field>
+      <field>
+        <in_stream_name>numero</in_stream_name>
+        <out_stream_name />
+        <cut_from>0</cut_from>
+        <cut_to>20</cut_to>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>992</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2141,167 +1735,41 @@ try{
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
-      <yloc>288</yloc>
+      <xloc>752</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>ceepr-cp</name>
-    <type>CsvInput</type>
+    <name>Value mapper</name>
+    <type>ValueMapper</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/csv/ceepr-cp.csv</filename>
-    <filename_field />
-    <rownum_field />
-    <include_filename>N</include_filename>
-    <separator>;</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>Y</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding>UTF-8</encoding>
+    <field_to_use>Tipo</field_to_use>
+    <target_field />
+    <non_match_default>NA</non_match_default>
     <fields>
       <field>
-        <name>Id</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>294</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <source_value>Pautas e Atas da Plenária</source_value>
+        <target_value>PAU</target_value>
       </field>
       <field>
-        <name>Url</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>146</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <source_value>Pautas e Atas da CEPS</source_value>
+        <target_value>PAU</target_value>
       </field>
       <field>
-        <name>Tipo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <source_value>Pautas e Atas da CEB</source_value>
+        <target_value>PAU</target_value>
       </field>
       <field>
-        <name>Numero</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>52</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Data</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Processo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Relator</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Interessado</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Ementa</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>397</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Assunto</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>54</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Documento</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>182</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Titulo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
+        <source_value>Resoluções Normativas</source_value>
+        <target_value>RES</target_value>
       </field>
     </fields>
     <attributes />
@@ -2313,13 +1781,13 @@ try{
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>80</yloc>
+      <xloc>272</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>ceepr-del</name>
+    <name>ceeMT.csv</name>
     <type>CsvInput</type>
     <description />
     <distribute>N</distribute>
@@ -2329,7 +1797,7 @@ try{
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/csv/ceepr-del.csv</filename>
+    <filename>${Internal.Entry.Current.Directory}/csv/ceemt.csv</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -2350,7 +1818,7 @@ try{
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>294</length>
+        <length>19</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -2361,7 +1829,7 @@ try{
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>146</length>
+        <length>38</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -2372,7 +1840,7 @@ try{
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>177</length>
+        <length>9</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -2383,7 +1851,7 @@ try{
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>52</length>
+        <length>13</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -2394,40 +1862,7 @@ try{
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Processo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Relator</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Interessado</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
+        <length>30</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -2438,18 +1873,18 @@ try{
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>397</length>
+        <length>764</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
       <field>
         <name>Assunto</name>
-        <type>String</type>
+        <type>Boolean</type>
         <format />
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>54</length>
+        <length>-1</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -2460,7 +1895,7 @@ try{
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>182</length>
+        <length>106</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -2471,523 +1906,7 @@ try{
         <currency>R$</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>ceepr-ead</name>
-    <type>CsvInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/csv/ceepr-ead.csv</filename>
-    <filename_field />
-    <rownum_field />
-    <include_filename>N</include_filename>
-    <separator>;</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>Y</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding>UTF-8</encoding>
-    <fields>
-      <field>
-        <name>Id</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>294</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Url</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>146</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Tipo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Numero</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>52</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Data</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Processo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Relator</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Interessado</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Ementa</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>397</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Assunto</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>54</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Documento</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>182</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Titulo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>ceepr-ementario</name>
-    <type>CsvInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/csv/ceepr-ementario.csv</filename>
-    <filename_field />
-    <rownum_field />
-    <include_filename>N</include_filename>
-    <separator>;</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>Y</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding>UTF-8</encoding>
-    <fields>
-      <field>
-        <name>Id</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>294</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Url</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>146</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Tipo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Numero</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>52</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Data</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Processo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Relator</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Interessado</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Ementa</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>397</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Assunto</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>54</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Documento</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>182</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Titulo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>240</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>ceepr-par</name>
-    <type>CsvInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/csv/ceepr-par.csv</filename>
-    <filename_field />
-    <rownum_field />
-    <include_filename>N</include_filename>
-    <separator>;</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>Y</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding>UTF-8</encoding>
-    <fields>
-      <field>
-        <name>Id</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>294</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Url</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>146</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Tipo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Numero</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>52</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Data</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>177</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Processo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Relator</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Interessado</name>
-        <type>Boolean</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Ementa</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>397</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Assunto</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>54</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Documento</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>182</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>Titulo</name>
-        <type>String</type>
-        <format />
-        <currency>R$</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>25</length>
+        <length>31</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
       </field>
@@ -3003,6 +1922,50 @@ try{
     <GUI>
       <xloc>32</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter Revogadas</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Get variables</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Tipo</leftvalue>
+        <function>&lt;></function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Resoluções Revogadas</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
