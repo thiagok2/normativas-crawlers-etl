@@ -813,6 +813,50 @@ and unidade_id = ? limit 1</sql>
     </GUI>
   </step>
   <step>
+    <name>Filter Revogadas</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Get variables</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Tipo</leftvalue>
+        <function>&lt;></function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Resoluções Revogadas</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Get variables</name>
     <type>GetVariable</type>
     <description />
@@ -1205,107 +1249,81 @@ if(Tipo == 'NA'){
     <fields>
       <field>
         <name>Id</name>
-        <rename />
       </field>
       <field>
         <name>Url</name>
-        <rename />
       </field>
       <field>
         <name>Tipo</name>
-        <rename />
       </field>
       <field>
         <name>Numero</name>
-        <rename />
       </field>
       <field>
         <name>Data</name>
-        <rename />
       </field>
       <field>
         <name>Ementa</name>
-        <rename />
       </field>
       <field>
         <name>Assunto</name>
-        <rename />
       </field>
       <field>
         <name>Documento</name>
-        <rename />
       </field>
       <field>
         <name>Titulo</name>
-        <rename />
       </field>
       <field>
         <name>URL_BASE</name>
-        <rename />
       </field>
       <field>
         <name>DIR_UPLOAD</name>
-        <rename />
       </field>
       <field>
         <name>CEE</name>
-        <rename />
       </field>
       <field>
         <name>sigla</name>
-        <rename />
       </field>
       <field>
         <name>assunto_id</name>
-        <rename />
       </field>
       <field>
         <name>completed</name>
-        <rename />
       </field>
       <field>
         <name>tipo_entrada</name>
-        <rename />
       </field>
       <field>
         <name>status_extrator</name>
-        <rename />
       </field>
       <field>
         <name>formato</name>
-        <rename />
       </field>
       <field>
         <name>documentoOriginalNome</name>
-        <rename />
       </field>
       <field>
         <name>NomeArquivoFinal</name>
-        <rename />
       </field>
       <field>
         <name>data_publicacao</name>
-        <rename />
       </field>
       <field>
         <name>ano</name>
-        <rename />
       </field>
       <field>
         <name>exists</name>
-        <rename />
       </field>
       <field>
         <name>tipo_id</name>
-        <rename />
       </field>
       <field>
         <name>unidade_id</name>
-        <rename />
       </field>
       <field>
         <name>user_id</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>
@@ -1922,50 +1940,6 @@ if(Tipo == 'NA'){
     <GUI>
       <xloc>32</xloc>
       <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter Revogadas</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Get variables</send_true_to>
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>Tipo</leftvalue>
-        <function>&lt;></function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>Resoluções Revogadas</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask />
-        </value>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
