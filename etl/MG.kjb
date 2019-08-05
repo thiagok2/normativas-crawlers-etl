@@ -397,6 +397,11 @@
           <stream_name>DIR_UPLOAD</stream_name>
           <value>${DIR_UPLOAD}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -439,6 +444,11 @@
           <name>URL_BASE</name>
           <stream_name>URL_BASE</stream_name>
           <value />
+        </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
         </parameter>
       </parameters>
       <parallel>N</parallel>
@@ -540,6 +550,11 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -611,6 +626,11 @@
           <variable_name>URL_BASE</variable_name>
           <variable_value>${URL_BASE}</variable_value>
           <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>CEE</variable_name>
+          <variable_value>${CEE-MG}</variable_value>
+          <variable_type>CURRENT_JOB</variable_type>
         </field>
       </fields>
       <parallel>N</parallel>
