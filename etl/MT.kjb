@@ -349,6 +349,11 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -396,6 +401,11 @@
           <name>DIR_UPLOAD</name>
           <stream_name>DIR_UPLOAD</stream_name>
           <value>${DIR_UPLOAD}</value>
+        </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
         </parameter>
       </parameters>
       <parallel>N</parallel>
@@ -500,7 +510,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-${CEE}</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -580,6 +590,11 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -600,7 +615,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-${CEE}</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />

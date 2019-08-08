@@ -349,6 +349,11 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -369,7 +374,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-SP</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -414,7 +419,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-SP</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -494,6 +499,11 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -514,7 +524,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-SP</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -565,6 +575,11 @@
           <variable_name>URL_BASE</variable_name>
           <variable_value>${URL_BASE}</variable_value>
           <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name> CEE</variable_name>
+          <variable_value>CEE-DF</variable_value>
+          <variable_type>CURRENT_JOB</variable_type>
         </field>
       </fields>
       <parallel>N</parallel>

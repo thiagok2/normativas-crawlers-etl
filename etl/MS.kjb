@@ -465,7 +465,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-MS</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -510,7 +510,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-MS</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -615,7 +615,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-MS</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
