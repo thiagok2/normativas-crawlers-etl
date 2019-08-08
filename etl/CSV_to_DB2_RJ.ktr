@@ -1145,107 +1145,81 @@ catch (e) {
     <fields>
       <field>
         <name>Id</name>
-        <rename />
       </field>
       <field>
         <name>Url</name>
-        <rename />
       </field>
       <field>
         <name>Tipo</name>
-        <rename />
       </field>
       <field>
         <name>Numero</name>
-        <rename />
       </field>
       <field>
         <name>Data</name>
-        <rename />
       </field>
       <field>
         <name>Ementa</name>
-        <rename />
       </field>
       <field>
         <name>Assunto</name>
-        <rename />
       </field>
       <field>
         <name>Documento</name>
-        <rename />
       </field>
       <field>
         <name>Titulo</name>
-        <rename />
       </field>
       <field>
         <name>URL_BASE</name>
-        <rename />
       </field>
       <field>
         <name>DIR_UPLOAD</name>
-        <rename />
       </field>
       <field>
         <name>CEE</name>
-        <rename />
       </field>
       <field>
         <name>sigla</name>
-        <rename />
       </field>
       <field>
         <name>assunto_id</name>
-        <rename />
       </field>
       <field>
         <name>completed</name>
-        <rename />
       </field>
       <field>
         <name>tipo_entrada</name>
-        <rename />
       </field>
       <field>
         <name>status_extrator</name>
-        <rename />
       </field>
       <field>
         <name>documentoOriginalNome</name>
-        <rename />
       </field>
       <field>
         <name>NomeArquivoFinal</name>
-        <rename />
       </field>
       <field>
         <name>data_publicacao</name>
-        <rename />
       </field>
       <field>
         <name>ano</name>
-        <rename />
       </field>
       <field>
         <name>formato</name>
-        <rename />
       </field>
       <field>
         <name>exists</name>
-        <rename />
       </field>
       <field>
         <name>tipo_id</name>
-        <rename />
       </field>
       <field>
         <name>unidade_id</name>
-        <rename />
       </field>
       <field>
         <name>user_id</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>

@@ -349,6 +349,11 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -396,6 +401,11 @@
           <name>DIR_UPLOAD</name>
           <stream_name>DIR_UPLOAD</stream_name>
           <value>${DIR_UPLOAD}</value>
+        </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
         </parameter>
       </parameters>
       <parallel>N</parallel>
@@ -455,7 +465,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-CE</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -535,6 +545,11 @@
           <stream_name>URL_BASE</stream_name>
           <value>${URL_BASE}</value>
         </parameter>
+        <parameter>
+          <name>CEE</name>
+          <stream_name>CEE</stream_name>
+          <value>${CEE}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -555,7 +570,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-CE</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -607,6 +622,11 @@
           <variable_value>${URL_BASE}</variable_value>
           <variable_type>JVM</variable_type>
         </field>
+        <field>
+          <variable_name>CEE</variable_name>
+          <variable_value>CEE-CE</variable_value>
+          <variable_type>CURRENT_JOB</variable_type>
+        </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -627,7 +647,7 @@
       <destinationBCc />
       <replyto>normativas@nees.com.br</replyto>
       <replytoname>Normativas</replytoname>
-      <subject>Normativas - Carga CEE-CE</subject>
+      <subject>Normativas - Carga ${CEE}</subject>
       <include_date>Y</include_date>
       <contact_person />
       <contact_phone />
@@ -723,7 +743,7 @@
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
+      <unconditional>N</unconditional>
     </hop>
     <hop>
       <from>Mail Elastic</from>
@@ -760,6 +780,15 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Index_to_Elastic</from>
+      <to>Mail Falha</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>
