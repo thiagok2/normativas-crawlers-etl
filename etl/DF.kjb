@@ -577,7 +577,7 @@
           <variable_type>JVM</variable_type>
         </field>
         <field>
-          <variable_name> CEE</variable_name>
+          <variable_name>CEE</variable_name>
           <variable_value>CEE-DF</variable_value>
           <variable_type>CURRENT_JOB</variable_type>
         </field>
