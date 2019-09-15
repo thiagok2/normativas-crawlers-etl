@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>CME-RioDeJaneiro</name>
+  <name>CME-PortoAlegre</name>
   <description />
   <extended_description />
   <job_version />
@@ -310,13 +310,13 @@
       <attributes_kjc />
     </entry>
     <entry>
-      <name>CSV_to_DB_RIODEJANEIRO</name>
+      <name>CSV_to_DB_PORTOALEGRE</name>
       <description />
       <type>TRANS</type>
       <attributes />
       <specification_method>filename</specification_method>
       <trans_object_id />
-      <filename>${Internal.Entry.Current.Directory}/CSV_to_DB2_RIODEJANEIRO.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/CSV_to_DB2_PORTOALEGRE.ktr</filename>
       <transname />
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -629,7 +629,7 @@
         </field>
         <field>
           <variable_name>CEE</variable_name>
-          <variable_value>CME-RIO-DE-JANEIRO</variable_value>
+          <variable_value>CME-PORTO-ALEGRE</variable_value>
           <variable_type>CURRENT_JOB</variable_type>
         </field>
       </fields>
@@ -688,7 +688,7 @@
   </entries>
   <hops>
     <hop>
-      <from>CSV_to_DB_RIODEJANEIRO</from>
+      <from>CSV_to_DB_PORTOALEGRE</from>
       <to>DB_to_Donwload</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -706,7 +706,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>CSV_to_DB_RIODEJANEIRO</from>
+      <from>CSV_to_DB_PORTOALEGRE</from>
       <to>Mail Falha</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -761,7 +761,7 @@
     </hop>
     <hop>
       <from>Mail Start</from>
-      <to>CSV_to_DB_RIODEJANEIRO</to>
+      <to>CSV_to_DB_PORTOALEGRE</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -789,11 +789,12 @@
   </hops>
   <notepads>
     <notepad>
-      <note>CME-RIO-DE-JANEIRO</note>
+      <note>CME-PortoAlegre
+</note>
       <xloc>16</xloc>
       <yloc>336</yloc>
-      <width>345</width>
-      <heigth>49</heigth>
+      <width>275</width>
+      <heigth>88</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>25</fontsize>
       <fontbold>N</fontbold>
